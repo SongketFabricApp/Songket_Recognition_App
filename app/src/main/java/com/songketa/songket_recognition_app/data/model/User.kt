@@ -1,4 +1,4 @@
-package com.sonketa.songket_recognition_app.data.model
+package com.songketa.songket_recognition_app.data.model
 
 data class User(
     val name: String,

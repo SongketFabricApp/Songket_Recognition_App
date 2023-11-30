@@ -1,4 +1,4 @@
-package com.sonketa.songket_recognition_app
+package com.songketa.songket_recognition_app
 
 import org.junit.Test
 

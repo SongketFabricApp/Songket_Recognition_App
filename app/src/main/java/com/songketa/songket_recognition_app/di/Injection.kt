@@ -1,6 +1,6 @@
-package com.sonketa.songket_recognition_app.di
+package com.songketa.songket_recognition_app.di
 
-import com.sonketa.songket_recognition_app.data.Repository
+import com.songketa.songket_recognition_app.data.Repository
 
 object Injection {
     fun provideRepository(): Repository {
