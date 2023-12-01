@@ -6,4 +6,6 @@
     <string name="sign_in">Sign In</string>
     <string name="sign_up">Sign Up</string>
     <string name="songketa_logo">songketa_logo</string>
+    <string name="invalid_email">"Invalid email format "</string>
+    <string name="invalid_password">Invalid password format</string>
 </resources>
