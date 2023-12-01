@@ -8,4 +8,10 @@
     <string name="songketa_logo">songketa_logo</string>
     <string name="invalid_email">"Invalid email format "</string>
     <string name="invalid_password">Invalid password format</string>
+    <string name="show_password">Show Password</string>
+    <string name="insert_your_password">Insert Your Password</string>
+    <string name="password">Password</string>
+    <string name="insert_your_email">Insert Your Email</string>
+    <string name="email">Email</string>
+    <string name="login_to_your_account">Login To Your Account</string>
 </resources>

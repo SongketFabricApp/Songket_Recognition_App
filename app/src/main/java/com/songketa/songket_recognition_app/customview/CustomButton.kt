@@ -33,12 +33,12 @@ class CustomButton : MaterialButton{
         if(isEnabled) setTextColor(txtColor) else setTextColor(txtColor2)
         textSize = 20f
         gravity = Gravity.CENTER
-        text = if(isEnabled) "Submit" else ""
+        text = if(isEnabled) "Sign In" else ""
     }
     private fun init() {
         txtColor = ContextCompat.getColor(context, android.R.color.white)
-        txtColor2 = ContextCompat.getColor(context, android.R.color.black)
-        enabledBackground = ContextCompat.getDrawable(context, R.color.blue_1) as Drawable
-        disabledBackground = ContextCompat.getDrawable(context, R.color.blue_4) as Drawable
+        txtColor2 = ContextCompat.getColor(context, R.color.blue_1)
+        enabledBackground = ContextCompat.getDrawable(context, R.drawable.bg_button_enabled) as Drawable
+        disabledBackground = ContextCompat.getDrawable(context, R.drawable.bg_button_disabled) as Drawable
     }
 }
