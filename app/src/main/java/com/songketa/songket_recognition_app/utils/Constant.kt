@@ -7,4 +7,6 @@ object Constant {
     const val TIMER_2: Long = 1000
     const val location :Int = 1
     const val PaddingBound: Int = 200
+    var Email: String = "songketa@gmail.com"
+    var Password: String = "songketahebat"
 }

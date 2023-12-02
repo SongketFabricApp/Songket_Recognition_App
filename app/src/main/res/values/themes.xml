@@ -3,6 +3,9 @@
     <style name="Base.Theme.Songket_Recognition_App" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">@color/blue_1</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="android:windowIsTranslucent">true</item>
     </style>
 
     <style name="Theme.Songket_Recognition_App" parent="Base.Theme.Songket_Recognition_App" />
