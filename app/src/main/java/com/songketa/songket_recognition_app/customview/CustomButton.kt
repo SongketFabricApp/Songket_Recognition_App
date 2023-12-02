@@ -31,9 +31,9 @@ class CustomButton : MaterialButton{
         super.onDraw(canvas)
         background = if(isEnabled) enabledBackground  else disabledBackground
         if(isEnabled) setTextColor(txtColor) else setTextColor(txtColor2)
-        textSize = 20f
+        textSize = 18f
         gravity = Gravity.CENTER
-        text = if(isEnabled) "Sign In" else "Sign In"
+//        text = if(isEnabled) "Sign In" else "Sign In"
         textAlignment = TEXT_ALIGNMENT_CENTER
     }
     private fun init() {

@@ -6,4 +6,259 @@
     android:layout_height="match_parent"
     tools:context=".ui.signup.SignUpActivity">
 
+    <TextView
+        android:id="@+id/tv_signup"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:text="@string/create_new_account_here"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/guide_horizontal1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/tv_username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/username"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_signup" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_username"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_username"
+        app:startIconDrawable="@drawable/ic_username">
+        <com.songketa.songket_recognition_app.customview.CustomTextInput
+            android:id="@+id/username_field"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="text"
+            android:hint="@string/enter_username"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/tv_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/email"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/til_username" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_email"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_email"
+        app:startIconDrawable="@drawable/ic_email">
+        <com.songketa.songket_recognition_app.customview.CustomEditText
+            android:id="@+id/email_field"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textEmailAddress"
+            android:hint="@string/enter_your_email"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/tv_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/phone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/til_email" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_phone"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_phone"
+        app:startIconDrawable="@drawable/ic_phone">
+        <com.songketa.songket_recognition_app.customview.CustomPhone
+            android:id="@+id/phone_field"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPassword"
+            app:passwordToggleEnabled="true"
+            android:hint="@string/enter_your_phone_number"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/tv_province"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/province"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/til_phone" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_province"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_province"
+        app:startIconDrawable="@drawable/ic_province">
+        <com.songketa.songket_recognition_app.customview.CustomTextInput
+            android:id="@+id/province_field"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="text"
+            android:hint="@string/enter_province"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/tv_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/password"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/til_province"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_password"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_password"
+        app:passwordToggleEnabled="false"
+        app:startIconDrawable="@drawable/ic_pass">
+        <com.songketa.songket_recognition_app.customview.CustomPassword
+            android:id="@+id/password_field"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPassword"
+            android:hint="@string/enter_your_password" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/tv_confirm_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/confirm_password"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/til_password"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_confirm_password"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_confirm_password"
+        app:passwordToggleEnabled="false"
+        app:startIconDrawable="@drawable/ic_pass">
+        <com.songketa.songket_recognition_app.customview.CustomPassword
+            android:id="@+id/confirm_password_field"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPassword"
+            android:hint="@string/confirm_your_password"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.songketa.songket_recognition_app.customview.CustomButton
+        android:id="@+id/btn_sign_up"
+        android:layout_width="300dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:text="@string/create_account"
+        android:enabled="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/til_confirm_password" />
+
+    <TextView
+        android:id="@+id/tv_or_signin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/already_have_an_account"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_sign_up" />
+
+    <TextView
+        android:id="@+id/tv_signin_here"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="@string/sign_in_here"
+        android:textColor="@color/blue_5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_or_signin"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guide_horizontal2"
+        android:layout_width="wrap_content"
+        android:layout_height="64dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintGuide_percent="0.30191082"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guide_vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="64dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintGuide_percent="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guide_horizontal1"
+        android:layout_width="wrap_content"
+        android:layout_height="64dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.1" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
