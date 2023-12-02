@@ -34,6 +34,7 @@ class CustomButton : MaterialButton{
         textSize = 20f
         gravity = Gravity.CENTER
         text = if(isEnabled) "Sign In" else "Sign In"
+        textAlignment = TEXT_ALIGNMENT_CENTER
     }
     private fun init() {
         txtColor = ContextCompat.getColor(context, android.R.color.white)

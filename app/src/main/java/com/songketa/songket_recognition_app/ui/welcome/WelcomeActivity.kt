@@ -1,5 +1,6 @@
 package com.songketa.songket_recognition_app.ui.welcome
 
+import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -8,6 +9,8 @@ import android.view.WindowManager
 import com.songketa.songket_recognition_app.R
 import com.songketa.songket_recognition_app.databinding.ActivityMainBinding
 import com.songketa.songket_recognition_app.databinding.ActivityWelcomeBinding
+import com.songketa.songket_recognition_app.ui.signin.SignInActivity
+import com.songketa.songket_recognition_app.ui.splashscreen.SplashScreenActivity
 
 class WelcomeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityWelcomeBinding
@@ -36,6 +39,9 @@ class WelcomeActivity : AppCompatActivity() {
 
     private fun setupAction(){
         binding.signInButton.setOnClickListener {
+            val intent = Intent(this, SignInActivity::class.java)
+            startActivity(intent)
+            finish()
 
         }
         binding.signUpButton.setOnClickListener {
