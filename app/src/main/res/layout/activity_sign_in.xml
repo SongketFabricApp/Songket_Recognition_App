@@ -18,6 +18,7 @@
         android:textColor="@color/black"
         android:textSize="22sp"
         android:textStyle="bold"
+        android:fontFamily="@font/roboto_bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -43,6 +44,7 @@
         android:text="@string/email"
         android:textSize="18sp"
         android:alpha="0"
+        android:fontFamily="@font/roboto_medium"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView"
         tools:alpha="100"/>
@@ -68,6 +70,8 @@
             android:ems="10"
             android:hint="@string/insert_your_email"
             android:inputType="textEmailAddress"
+            android:fontFamily="@font/roboto_regular"
+            android:background="@color/white"
             tools:alpha="100" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -78,6 +82,7 @@
         android:layout_marginHorizontal="20dp"
         android:text="@string/password"
         android:alpha="0"
+        android:fontFamily="@font/roboto_medium"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/emailEditTextLayout"
         android:textSize="18sp"
@@ -103,6 +108,8 @@
             android:ems="10"
             android:hint="@string/insert_your_password"
             android:inputType="textPassword"
+            android:background="@color/white"
+            android:fontFamily="@font/roboto_regular"
             tools:alpha="100" />
 
         <com.google.android.material.checkbox.MaterialCheckBox
@@ -111,6 +118,7 @@
             android:layout_height="wrap_content"
             android:text="@string/show_password"
             android:textSize="15sp"
+            android:fontFamily="@font/roboto_medium"
             app:passwordToggleEnabled="true"
             android:paddingStart="9dp"
             tools:ignore="RtlSymmetry" />

@@ -33,7 +33,7 @@ class CustomButton : MaterialButton{
         if(isEnabled) setTextColor(txtColor) else setTextColor(txtColor2)
         textSize = 20f
         gravity = Gravity.CENTER
-        text = if(isEnabled) "Sign In" else ""
+        text = if(isEnabled) "Sign In" else "Sign In"
     }
     private fun init() {
         txtColor = ContextCompat.getColor(context, android.R.color.white)
