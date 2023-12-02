@@ -14,4 +14,22 @@
     <string name="insert_your_email">Insert Your Email</string>
     <string name="email">Email</string>
     <string name="login_to_your_account">Login To Your Account</string>
+
+    <string name="required_field">Please fill this field</string>
+    <string name="invalid_phone_number">Invalid phone number</string>
+    <string name="create_new_account_here">Create New Account Here</string>
+    <string name="username">Username</string>
+    <string name="enter_username">Enter username</string>
+    <string name="enter_email">Enter email</string>
+    <string name="enter_your_email">Enter your email</string>
+    <string name="phone">Phone</string>
+    <string name="enter_your_phone_number">Enter your phone number</string>
+    <string name="province">Province</string>
+    <string name="enter_province">Enter your province</string>
+    <string name="enter_your_password">Enter your password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="confirm_your_password">Confirm your password</string>
+    <string name="create_account">Create Account</string>
+    <string name="already_have_an_account">Already have an account?</string>
+    <string name="sign_in_here">Sign In here</string>
 </resources>

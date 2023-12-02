@@ -10,6 +10,7 @@ import com.songketa.songket_recognition_app.R
 import com.songketa.songket_recognition_app.databinding.ActivityMainBinding
 import com.songketa.songket_recognition_app.databinding.ActivityWelcomeBinding
 import com.songketa.songket_recognition_app.ui.signin.SignInActivity
+import com.songketa.songket_recognition_app.ui.signup.SignUpActivity
 import com.songketa.songket_recognition_app.ui.splashscreen.SplashScreenActivity
 
 class WelcomeActivity : AppCompatActivity() {
@@ -42,9 +43,11 @@ class WelcomeActivity : AppCompatActivity() {
             val intent = Intent(this, SignInActivity::class.java)
             startActivity(intent)
             finish()
-
         }
         binding.signUpButton.setOnClickListener {
+            val intent = Intent(this, SignUpActivity::class.java)
+            startActivity(intent)
+            finish()
 
         }
     }
