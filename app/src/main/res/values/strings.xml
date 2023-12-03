@@ -32,4 +32,7 @@
     <string name="create_account">Create Account</string>
     <string name="already_have_an_account">Already have an account?</string>
     <string name="sign_in_here">Sign In here</string>
+    <string name="or">Or</string>
+    <string name="sign_in_with">Sign in with</string>
+    <string name="songket_recognition">Songket Recognition</string>
 </resources>

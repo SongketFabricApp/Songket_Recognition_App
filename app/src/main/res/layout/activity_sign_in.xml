@@ -12,28 +12,30 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="68dp"
+        android:layout_marginTop="52dp"
+        android:fontFamily="@font/roboto_bold"
         android:text="@string/login_to_your_account"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="22sp"
         android:textStyle="bold"
-        android:fontFamily="@font/roboto_bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="294dp"
-        android:layout_height="286dp"
+        android:layout_width="247dp"
+        android:layout_height="229dp"
         android:layout_marginTop="52dp"
+        android:contentDescription="@string/songketa_logo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3"
-        tools:srcCompat="@drawable/logo"
-        android:contentDescription="@string/songketa_logo" />
+        android:src="@drawable/logo"
+        tools:srcCompat="@drawable/logo" />
 
     <TextView
         android:id="@+id/emailTextView"
@@ -43,7 +45,6 @@
         android:layout_marginTop="20dp"
         android:text="@string/email"
         android:textSize="18sp"
-        android:alpha="0"
         android:fontFamily="@font/roboto_medium"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView"
@@ -55,23 +56,23 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="12dp"
+        app:errorEnabled="true"
+        app:errorTextColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/emailTextView"
-        app:startIconDrawable="@drawable/ic_email"
-        app:errorEnabled="true"
-        app:errorTextColor="@color/black">
+        app:startIconDrawable="@drawable/ic_email">
 
         <com.songketa.songket_recognition_app.customview.CustomEditText
             android:id="@+id/emailEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:alpha="0"
+            android:background="@color/white"
             android:ems="10"
+            android:fontFamily="@font/roboto_regular"
             android:hint="@string/insert_your_email"
             android:inputType="textEmailAddress"
-            android:fontFamily="@font/roboto_regular"
-            android:background="@color/white"
             tools:alpha="100" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -81,7 +82,6 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
         android:text="@string/password"
-        android:alpha="0"
         android:fontFamily="@font/roboto_medium"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/emailEditTextLayout"
@@ -94,47 +94,80 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/passwordTextView"
 
+        app:layout_constraintTop_toBottomOf="@+id/passwordTextView"
         app:startIconDrawable="@drawable/ic_pass">
 
         <com.songketa.songket_recognition_app.customview.CustomPassword
             android:id="@+id/passwordEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:alpha="0"
+            android:background="@color/white"
             android:ems="10"
+            android:fontFamily="@font/roboto_regular"
             android:hint="@string/insert_your_password"
             android:inputType="textPassword"
-            android:background="@color/white"
-            android:fontFamily="@font/roboto_regular"
             tools:alpha="100" />
 
         <com.google.android.material.checkbox.MaterialCheckBox
             android:id="@+id/seePassword"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_medium"
+            android:paddingStart="9dp"
             android:text="@string/show_password"
             android:textSize="15sp"
-            android:fontFamily="@font/roboto_medium"
             app:passwordToggleEnabled="true"
-            android:paddingStart="9dp"
             tools:ignore="RtlSymmetry" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.songketa.songket_recognition_app.customview.CustomButton
-        android:id="@+id/signButton"
+        android:id="@+id/sign_in_button"
         android:layout_width="275dp"
         android:layout_height="wrap_content"
-        android:textAlignment="center"
         android:text="@string/sign_in"
+        android:textAlignment="center"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/passwordEditTextLayout"
-        app:layout_constraintVertical_bias="0.219" />
+        app:layout_constraintVertical_bias="0.208" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="@string/or"
+        app:layout_constraintEnd_toEndOf="@+id/sign_in_button"
+        app:layout_constraintStart_toStartOf="@+id/sign_in_button"
+        app:layout_constraintTop_toBottomOf="@+id/sign_in_button" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="@string/sign_in_with"
+        app:layout_constraintEnd_toEndOf="@+id/textView9"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/textView9"
+        app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
+    <ImageButton
+        android:id="@+id/imageButton6"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="56dp"
+        android:background="@color/blue_3"
+        android:scaleType="centerCrop"
+        app:layout_constraintStart_toEndOf="@+id/textView10"
+        app:layout_constraintTop_toBottomOf="@+id/sign_in_button"
+        app:srcCompat="@drawable/google_logo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
