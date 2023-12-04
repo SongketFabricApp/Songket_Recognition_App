@@ -21,7 +21,7 @@
       app:layout_constraintStart_toStartOf="parent">
 
     <androidx.appcompat.widget.SearchView
-        android:id="@+id/searchView"
+        android:id="@+id/search_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:queryHint="search here.."
@@ -31,7 +31,7 @@
   </com.google.android.material.card.MaterialCardView>
 
   <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-      android:id="@+id/swipeRefreshLayout"
+      android:id="@+id/swipe_fresh"
       android:layout_width="0dp"
       android:layout_height="0dp"
       app:layout_constraintBottom_toBottomOf="parent"
@@ -42,14 +42,14 @@
       android:layout_marginTop="10dp">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_stories"
+        android:id="@+id/rv_list_songket"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
         tools:layout_editor_absoluteX="-40dp"
-        tools:listitem="@layout/songket_home_item" />
+        tools:listitem="@layout/songket_list_item" />
   </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
   <com.google.android.material.bottomnavigation.BottomNavigationView
