@@ -50,4 +50,17 @@
         tools:layout_editor_absoluteX="-40dp"
         tools:listitem="@layout/songket_home_item" />
   </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+  <com.google.android.material.bottomnavigation.BottomNavigationView
+      android:id="@+id/bottomNavigationView"
+      style="@style/Widget.MaterialComponents.BottomNavigationView.Colored"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      app:itemIconTint="@color/color_state"
+      app:itemTextColor="@color/color_state"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:labelVisibilityMode="labeled"
+      app:menu="@menu/menu" />
 </androidx.constraintlayout.widget.ConstraintLayout>
