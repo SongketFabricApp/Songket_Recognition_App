@@ -7,5 +7,5 @@
     <color name="blue_3">#A0E9FF</color>
     <color name="blue_4">#CDF5FD</color>
     <color name="blue_5">#3691A5</color>
-
+    <color name="transparent">#999999</color>
 </resources>
