@@ -28,16 +28,16 @@
             card_view:layout_constraintTop_toTopOf="parent"
             android:contentDescription="@string/image_songket" />
 
+
         <com.google.android.material.divider.MaterialDivider
             android:id="@+id/materialDivider"
             android:layout_width="280dp"
             android:layout_height="2dp"
             android:layout_marginTop="12dp"
-            card_view:layout_constraintEnd_toEndOf="parent"
-            card_view:layout_constraintHorizontal_bias="0.655"
-            card_view:layout_constraintStart_toEndOf="@+id/iv_item_songket_picture"
+            card_view:layout_constraintEnd_toEndOf="@+id/tv_item_username"
+            card_view:layout_constraintHorizontal_bias="0.0"
+            card_view:layout_constraintStart_toStartOf="@+id/tv_item_username"
             card_view:layout_constraintTop_toBottomOf="@+id/tv_item_username" />
-
 
         <TextView
             android:id="@+id/tv_item_username"
