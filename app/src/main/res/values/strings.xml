@@ -35,4 +35,7 @@
     <string name="or">Or</string>
     <string name="sign_in_with">Sign in with</string>
     <string name="songket_recognition">Songket Recognition</string>
+    <string name="camera">Camera</string>
+    <string name="galery">Galery</string>
+    <string name="check_out">Check out</string>
 </resources>
