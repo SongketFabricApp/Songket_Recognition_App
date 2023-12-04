@@ -40,4 +40,8 @@
     <string name="home">Home</string>
     <string name="bookmark">Bookmark</string>
     <string name="scan">Scan</string>
+    <string name="camera">Camera</string>
+    <string name="galery">Galery</string>
+    <string name="check_out">Check Out</string>
+    <string name="button_language">Button Language</string>
 </resources>
