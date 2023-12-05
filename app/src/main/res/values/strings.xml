@@ -50,4 +50,9 @@
     <string name="satellite">Satellite</string>
     <string name="terrain">Terrain</string>
     <string name="hybrid">Hybrid</string>
+    <string name="welcome">Welcome</string>
+    <string name="you_may_be_interested">You may be Interested</string>
+    <string name="explore_more">Explore more</string>
+    <string name="other_interesting_features">Other interesting features</string>
+    <string name="welcome_image">Welcome image</string>
 </resources>

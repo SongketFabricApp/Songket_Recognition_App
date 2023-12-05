@@ -17,55 +17,62 @@
         android:layout_height="wrap_content"
         android:padding="4dp">
 
+
         <ImageView
             android:id="@+id/iv_item_songket_picture"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_margin="12dp"
+            android:layout_width="122dp"
+            android:layout_height="144dp"
+            android:layout_margin="0dp"
+            android:contentDescription="@string/image_songket"
             android:src="@color/black"
             card_view:layout_constraintBottom_toBottomOf="parent"
             card_view:layout_constraintStart_toStartOf="parent"
             card_view:layout_constraintTop_toTopOf="parent"
-            android:contentDescription="@string/image_songket" />
-
-
-        <com.google.android.material.divider.MaterialDivider
-            android:id="@+id/materialDivider"
-            android:layout_width="280dp"
-            android:layout_height="2dp"
-            android:layout_marginTop="12dp"
-            card_view:layout_constraintEnd_toEndOf="@+id/tv_item_username"
-            card_view:layout_constraintHorizontal_bias="0.0"
-            card_view:layout_constraintStart_toStartOf="@+id/tv_item_username"
-            card_view:layout_constraintTop_toBottomOf="@+id/tv_item_username" />
+            card_view:layout_constraintVertical_bias="1.0" />
 
         <TextView
             android:id="@+id/tv_item_username"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="8dp"
+            android:fontFamily="@font/roboto_bold"
             android:textSize="20sp"
             android:textStyle="normal"
+            android:textColor="@color/blue_1"
             card_view:layout_constraintBottom_toBottomOf="parent"
             card_view:layout_constraintEnd_toEndOf="parent"
-            card_view:layout_constraintHorizontal_bias="0.03"
+            card_view:layout_constraintHorizontal_bias="0.0"
             card_view:layout_constraintStart_toEndOf="@+id/iv_item_songket_picture"
             card_view:layout_constraintTop_toTopOf="parent"
-            card_view:layout_constraintVertical_bias="0.245"
+            card_view:layout_constraintVertical_bias="0.102"
             tools:text="Songket Bulan Bintang" />
 
         <TextView
             android:id="@+id/tv_desc"
-            android:layout_width="283dp"
-            android:layout_height="13dp"
-            android:layout_marginTop="16dp"
+            android:layout_width="259dp"
+            android:layout_height="67dp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/roboto_light"
             card_view:layout_constraintBottom_toBottomOf="parent"
-            card_view:layout_constraintEnd_toEndOf="parent"
-            card_view:layout_constraintHorizontal_bias="0.222"
-            card_view:layout_constraintStart_toStartOf="@+id/materialDivider"
-            card_view:layout_constraintTop_toBottomOf="@+id/materialDivider"
-            card_view:layout_constraintVertical_bias="0.0"
-            tools:text="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" />
+            card_view:layout_constraintEnd_toEndOf="@+id/textView12"
+            card_view:layout_constraintHorizontal_bias="0.0"
+            card_view:layout_constraintStart_toStartOf="@+id/textView12"
+            card_view:layout_constraintTop_toBottomOf="@+id/textView12"
+            card_view:layout_constraintVertical_bias="1.0"
+            tools:text="lorem ipsum dolor sit amet" />
+
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/roboto_medium"
+            android:text="@string/province"
+            android:textColor="@color/blue_1"
+            card_view:layout_constraintEnd_toEndOf="@+id/tv_item_username"
+            card_view:layout_constraintHorizontal_bias="0.0"
+            card_view:layout_constraintStart_toStartOf="@+id/tv_item_username"
+            card_view:layout_constraintTop_toBottomOf="@+id/tv_item_username" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

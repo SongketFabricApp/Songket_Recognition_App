@@ -6,6 +6,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import com.songketa.songket_recognition_app.MainActivity
 import com.songketa.songket_recognition_app.databinding.ActivitySignInBinding
+import com.songketa.songket_recognition_app.ui.home.HomeActivity
 import com.songketa.songket_recognition_app.ui.welcome.WelcomeActivity
 import com.songketa.songket_recognition_app.utils.Constant
 import com.songketa.songket_recognition_app.utils.Constant.Email
@@ -27,7 +28,7 @@ class SignInActivity : AppCompatActivity() {
             val email = binding.emailEditText.text.toString()
             val pass = binding.passwordEditText.text.toString()
             if (email.equals(Email)&& pass.equals(Password)){
-                val intent = Intent(this, WelcomeActivity::class.java)
+                val intent = Intent(this, HomeActivity::class.java)
                 startActivity(intent)
                 finish()
             }
