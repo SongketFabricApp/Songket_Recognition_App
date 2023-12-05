@@ -37,32 +37,34 @@ class   HomeActivity : AppCompatActivity() {
     }
 
     private fun navigationListener() {
-
         navigation.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.nav_home -> {
-                    updateBottomNavColor(R.color.white)
                     true
                 }
                 R.id.nav_scan -> {
                     startActivity(Intent(this, CameraActivity::class.java))
+                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_in_left)
+                    finish()
                     true
                 }
                 R.id.nav_bookmark -> {
                     startActivity(Intent(this, BookmarkActivity::class.java))
+                    finish()
                     true
                 }
                 R.id.nav_account -> {
                     startActivity(Intent(this, ProfileActivity::class.java))
+                    finish()
                     true
                 }
                 else -> false
             }
         }
     }
-    private fun updateBottomNavColor(colorResId: Int) {
-        val bottomNavigationView: BottomNavigationView = findViewById(R.id.bottomNavigationView)
-        bottomNavigationView.itemIconTintList = getColorStateList(colorResId)
-        bottomNavigationView.itemTextColor = getColorStateList(colorResId)
-    }
+//    private fun updateBottomNavColor(colorResId: Int) {
+//        val bottomNavigationView: BottomNavigationView = findViewById(R.id.bottomNavigationView)
+//        bottomNavigationView.itemIconTintList = getColorStateList(colorResId)
+//        bottomNavigationView.itemTextColor = getColorStateList(colorResId)
+//    }
 }
