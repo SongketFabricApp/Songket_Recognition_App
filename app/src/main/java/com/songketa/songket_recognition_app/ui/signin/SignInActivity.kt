@@ -28,7 +28,7 @@ class SignInActivity : AppCompatActivity() {
             val email = binding.emailEditText.text.toString()
             val pass = binding.passwordEditText.text.toString()
             if (email.equals(Email)&& pass.equals(Password)){
-                val intent = Intent(this, HomeActivity::class.java)
+                val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
                 finish()
             }

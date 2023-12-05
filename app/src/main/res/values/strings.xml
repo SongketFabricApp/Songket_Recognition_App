@@ -55,4 +55,6 @@
     <string name="explore_more">Explore more</string>
     <string name="other_interesting_features">Other interesting features</string>
     <string name="welcome_image">Welcome image</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
