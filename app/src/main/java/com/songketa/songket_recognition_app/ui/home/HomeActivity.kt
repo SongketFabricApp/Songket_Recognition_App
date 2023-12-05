@@ -16,14 +16,11 @@ import com.songketa.songket_recognition_app.ui.profile.ProfileActivity
 
 class   HomeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHomeBinding
-    private lateinit var navigation: BottomNavigationView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        init()
-        navigationListener()
 
         val layoutManager = LinearLayoutManager(this, RecyclerView.HORIZONTAL,false)
         binding.rvSongket.layoutManager = layoutManager
@@ -32,36 +29,7 @@ class   HomeActivity : AppCompatActivity() {
         binding.rvMenu.layoutManager = layoutManager2
     }
 
-    private fun init() {
-        navigation = findViewById(R.id.bottomNavigationView)
-    }
 
-    private fun navigationListener() {
-        navigation.setOnItemSelectedListener { item ->
-            when (item.itemId) {
-                R.id.nav_home -> {
-                    true
-                }
-                R.id.nav_scan -> {
-                    startActivity(Intent(this, CameraActivity::class.java))
-                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_in_left)
-                    finish()
-                    true
-                }
-                R.id.nav_bookmark -> {
-                    startActivity(Intent(this, BookmarkActivity::class.java))
-                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_in_left)
-                    finish()
-                    true
-                }
-                R.id.nav_account -> {
-                    startActivity(Intent(this, ProfileActivity::class.java))
-                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_in_left)
-                    finish()
-                    true
-                }
-                else -> false
-            }
-        }
-    }
+
+
 }
