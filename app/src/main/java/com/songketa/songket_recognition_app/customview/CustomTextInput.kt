@@ -10,12 +10,10 @@ import com.google.android.material.textfield.TextInputEditText
 import com.songketa.songket_recognition_app.R
 
 
-class CustomTextInput: TextInputEditText, TextWatcher {
+class CustomTextInput : TextInputEditText, TextWatcher {
 
     var isValid: Boolean? = null
-        set(value) {
-            field = value ?: (text?.isNotEmpty() == true)
-        }
+        private set
 
     constructor(context: Context) : super(context) {
         init()
@@ -33,7 +31,6 @@ class CustomTextInput: TextInputEditText, TextWatcher {
         init()
     }
 
-
     private fun init() {
         addTextChangedListener(this)
     }
@@ -42,23 +39,8 @@ class CustomTextInput: TextInputEditText, TextWatcher {
 
     override fun afterTextChanged(p0: Editable?) {
         if (text != null && text?.isNotEmpty() == true) {
-            if (inputType == InputType.TYPE_CLASS_TEXT + InputType.TYPE_TEXT_VARIATION_PASSWORD) {
-                if (length() < 8) {
-                    error = context.getString(R.string.invalid_password)
-                    isValid = false
-                } else {
-                    isValid = true
-                }
-            } else if (inputType == InputType.TYPE_CLASS_TEXT + InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS) {
-                if (!Patterns.EMAIL_ADDRESS.matcher(text.toString()).matches()) {
-                    error = context.getString(R.string.invalid_email)
-                    isValid = false
-                } else {
-                    isValid = true
-                }
-            } else {
-                isValid = true
-            }
+            isValid = true
+            error = null
         } else {
             error = context.getString(R.string.required_field)
             isValid = false
