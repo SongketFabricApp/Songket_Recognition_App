@@ -19,4 +19,9 @@ class DetailSongketActivity : AppCompatActivity() {
 
     }
 
+
+    companion object{
+        const val ID = ""
+    }
+
 }

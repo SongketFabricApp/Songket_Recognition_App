@@ -1,5 +1,4 @@
 import org.apache.tools.ant.util.JavaEnvUtils.VERSION_1_8
-
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -46,6 +45,9 @@ android {
 }
 
 dependencies {
+
+    implementation ("com.github.bumptech.glide:glide:4.16.0")
+
 
     implementation("androidx.fragment:fragment-ktx:1.6.2")
 

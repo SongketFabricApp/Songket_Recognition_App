@@ -11,6 +11,7 @@ import com.songketa.songket_recognition_app.MainActivity
 import com.songketa.songket_recognition_app.R
 import com.songketa.songket_recognition_app.databinding.ActivitySplashScreenBinding
 import com.songketa.songket_recognition_app.ui.detailsongket.DetailSongketActivity
+import com.songketa.songket_recognition_app.ui.home.HomeActivity
 import com.songketa.songket_recognition_app.ui.signin.SignInActivity
 import com.songketa.songket_recognition_app.ui.welcome.WelcomeActivity
 import com.songketa.songket_recognition_app.utils.Constant
@@ -38,7 +39,7 @@ class SplashScreenActivity : AppCompatActivity() {
     }
 
     private fun navigateToMainActivity() {
-        val intent = Intent(this, WelcomeActivity::class.java)
+        val intent = Intent(this, HomeActivity::class.java)
         startActivity(intent)
         finish()
     }

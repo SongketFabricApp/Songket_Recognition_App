@@ -11,7 +11,6 @@ import androidx.core.content.ContextCompat
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
-import com.google.android.gms.maps.model.LatLngBounds
 import com.songketa.songket_recognition_app.R
 import com.songketa.songket_recognition_app.databinding.ActivityMapsBinding
 
