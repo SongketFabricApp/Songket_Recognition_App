@@ -59,7 +59,7 @@
         android:layout_marginTop="32dp"
         android:fontFamily="@font/roboto_medium"
         android:text="@string/you_may_be_interested"
-        android:textSize="16sp"
+        android:textSize="19sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
@@ -96,7 +96,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:text="@string/other_interesting_features"
-        android:textSize="16sp"
+        android:textSize="19sp"
         android:fontFamily="@font/roboto_medium"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rv_songket" />
