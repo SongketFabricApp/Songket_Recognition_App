@@ -84,6 +84,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginTop="16dp"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView6"
@@ -118,7 +119,8 @@
             android:background="@color/background"
             android:orientation="horizontal">
 
-            <ImageButton
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/btn_market_finder"
                 android:layout_width="233dp"
                 android:layout_height="233dp"
                 android:background="@color/white"
@@ -127,7 +129,8 @@
                 android:layout_margin="5dp"
                 android:src="@drawable/buttonmarketfinder" />
 
-            <ImageButton
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/btn_scan"
                 android:layout_width="233dp"
                 android:layout_height="233dp"
                 android:background="@color/white"
@@ -136,7 +139,8 @@
                 android:layout_margin="5dp"
                 android:src="@drawable/buttonscan" />
 
-            <ImageButton
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/btn_songeket_list"
                 android:layout_width="233dp"
                 android:layout_height="233dp"
                 android:background="@color/white"
@@ -145,7 +149,8 @@
                 android:layout_margin="5dp"
                 android:src="@drawable/buttonsongketlist" />
 
-            <ImageButton
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/btn_artikel"
                 android:layout_width="233dp"
                 android:layout_height="233dp"
                 android:background="@color/white"
