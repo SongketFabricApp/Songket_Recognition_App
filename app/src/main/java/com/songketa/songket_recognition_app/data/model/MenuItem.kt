@@ -1,21 +1,23 @@
 package com.songketa.songket_recognition_app.data.model
 
+import com.songketa.songket_recognition_app.R
+
 object MenuItem {
     val menu = listOf(
         Menu(
             id = 0,
             name = "Scan",
-            image = "@drawable/google_logo"
+            image = R.drawable.google
         ),
         Menu(
             id = 1,
             name = "Market Finder",
-            image = "@drawable/google_logo"
+            image = R.drawable.google
         ),
         Menu(
             id = 2,
             name = "Artikel",
-            image = "@drawable/google_logo"
+            image = R.drawable.google
         ),
         )
 }

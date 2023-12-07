@@ -40,7 +40,7 @@
             android:exported="false"
             android:label="@string/title_activity_maps" />
         <activity
-            android:name=".ui.splashscreen.SplashScreenActivity"
+            android:name=".ui.listsongket.ListSongketActivity"
             android:exported="false" />
         <activity
             android:name=".ui.camera.CameraActivity"
@@ -70,7 +70,7 @@
             android:name=".ui.welcome.WelcomeActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.listsongket.ListSongketActivity"
+            android:name=".ui.splashscreen.SplashScreenActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

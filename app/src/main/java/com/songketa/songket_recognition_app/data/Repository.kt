@@ -15,12 +15,6 @@ class Repository (private val apiService : ApiService){
         return MenuItem.menu
     }
 
-    fun getMenuById(menuId: Int):Menu?{
-        return getMenuData().find {
-            it.id == menuId
-        }
-    }
-
     companion object {
         @Volatile
         private var instance: Repository? = null

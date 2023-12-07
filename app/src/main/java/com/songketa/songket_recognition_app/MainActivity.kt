@@ -24,7 +24,6 @@ class MainActivity : AppCompatActivity() {
 
         binding.bottomNavigationView.setOnItemSelectedListener {
             when(it.itemId){
-
                 R.id.nav_home -> replaceFragment(HomeFragment())
                 R.id.nav_scan -> replaceFragment(CameraFragment())
                 R.id.nav_bookmark -> replaceFragment(BookmarkFragment())
