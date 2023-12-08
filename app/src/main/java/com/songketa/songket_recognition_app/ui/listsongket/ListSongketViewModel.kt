@@ -12,7 +12,7 @@ class ListSongketViewModel(private val repository: Repository) : ViewModel() {
     private val _data = MutableLiveData<List<DatasetItem>>()
     val data: LiveData<List<DatasetItem>> get() = _data
 
-    fun fetchData() {
+    fun getListSongket() {
         viewModelScope.launch {
             _data.value = repository.getListSongket()
         }

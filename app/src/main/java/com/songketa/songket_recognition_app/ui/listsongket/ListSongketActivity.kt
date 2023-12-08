@@ -28,25 +28,17 @@ class ListSongketActivity : AppCompatActivity() {
         binding = ActivityListSongketBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-//        // Inisialisasi ViewModel dan RecyclerView Adapter
-//        viewModel = ViewModelProvider(this, ViewModelFactory(Injection.provideRepository())).get(ListSongketViewModel::class.java)
-//
-//        adapter = ListSongketAdapter()
-//
-//        // Set up RecyclerView
-//        val recyclerView: RecyclerView = binding.rvListSongket
-//        recyclerView.layoutManager = LinearLayoutManager(this)
-//        recyclerView.adapter = adapter
-//
-//
-//        // Amati perubahan data dari ViewModel
-//        viewModel.data.observe(this, Observer { newData ->
-//            // Perbarui data pada adapter ketika ada perubahan
-//            adapter.setData(newData)
-//        })
-//
-//        // Panggil fungsi fetchData dari ViewModel untuk mengambil data dari API
-//        viewModel.fetchData()
+        viewModel = ViewModelProvider(this, ViewModelFactory(Injection.provideRepository())).get(ListSongketViewModel::class.java)
+        adapter = ListSongketAdapter()
+
+        val recyclerView: RecyclerView = binding.rvListSongket
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.adapter = adapter
+
+        viewModel.data.observe(this, Observer { newData ->
+            adapter.setData(newData)
+        })
+//        viewModel.getListSongket()
 
         init()
         navigationListener()

@@ -32,7 +32,7 @@ class ListSongketAdapter(private val context: Context) : ListAdapter<DatasetItem
     class MyViewHolder(val binding: SongketListItemBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(songket: DatasetItem){
             binding.tvSongketName.text = songket.fabricname
-            binding.tvAsalSogket.text = songket.region
+            binding.tvAsalSogket.text = songket.origin
             Glide.with(binding.root.context).load(songket.imgUrl)
                 .into(binding.ivSongketImage)
         }

@@ -21,7 +21,7 @@ class ListSongketAdapter : RecyclerView.Adapter<ListSongketAdapter.ViewHolder>()
                     .centerCrop()
                     .into(ivSongketImage)
                 tvSongketName.text = songket.fabricname
-                tvAsalSogket.text = songket.region
+                tvAsalSogket.text = songket.origin
             }
         }
     }

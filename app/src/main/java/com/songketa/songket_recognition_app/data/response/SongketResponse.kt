@@ -17,14 +17,17 @@ data class DatasetItem(
 	@field:SerializedName("img_url")
 	val imgUrl: String,
 
+	@field:SerializedName("origin")
+	val origin: String,
+
 	@field:SerializedName("pattern")
 	val pattern: String,
 
 	@field:SerializedName("description")
 	val description: String,
 
-	@field:SerializedName("region")
-	val region: String,
+	@field:SerializedName("idfabric")
+	val idfabric: String,
 
 	@field:SerializedName("fabricname")
 	val fabricname: String
