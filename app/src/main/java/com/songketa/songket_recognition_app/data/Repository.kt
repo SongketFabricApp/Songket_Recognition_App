@@ -7,7 +7,8 @@ import com.songketa.songket_recognition_app.data.response.DatasetItem
 
 class Repository (private val apiService : ApiService){
 
-    suspend fun getListSongket():List<DatasetItem>{
+
+    suspend fun getListSongket(): List<DatasetItem> {
         return apiService.getListSongket()
     }
 

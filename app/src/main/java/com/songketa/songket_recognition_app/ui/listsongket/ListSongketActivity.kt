@@ -39,44 +39,6 @@ class ListSongketActivity : AppCompatActivity() {
             adapter.setData(newData)
         })
 //        viewModel.getListSongket()
-
-        init()
-        navigationListener()
     }
 
-    private fun init() {
-        navigation = findViewById(R.id.bottomNavigationView)
-    }
-
-    private fun navigationListener() {
-        navigation.setOnItemSelectedListener { item ->
-            when (item.itemId) {
-                R.id.nav_home -> {
-                    startActivity(Intent(this, HomeActivity::class.java))
-                    finish()
-                    true
-                }
-
-                R.id.nav_scan -> {
-                    startActivity(Intent(this, CameraActivity::class.java))
-                    finish()
-                    true
-                }
-
-                R.id.nav_bookmark -> {
-                    startActivity(Intent(this, BookmarkActivity::class.java))
-                    finish()
-                    true
-                }
-
-                R.id.nav_account -> {
-                    startActivity(Intent(this, ProfileActivity::class.java))
-                    finish()
-                    true
-                }
-
-                else -> false
-            }
-        }
-    }
 }

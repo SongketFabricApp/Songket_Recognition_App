@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.widget.AppCompatImageButton
 import androidx.core.content.ContentProviderCompat.requireContext
@@ -49,6 +50,7 @@ class HomeFragment : Fragment() {
         val buttonScan = view.findViewById<AppCompatImageButton>(R.id.btn_scan)
         val buttonSongketList = view.findViewById<AppCompatImageButton>(R.id.btn_songeket_list)
         val buttonArtikel = view.findViewById<AppCompatImageButton>(R.id.btn_artikel)
+        val textView7 = view.findViewById<TextView>(R.id.textView7)
 
         buttonMarketFinder.setOnClickListener {
             val intent = Intent(activity, MapsActivity::class.java)
@@ -59,8 +61,12 @@ class HomeFragment : Fragment() {
         }
         buttonSongketList.setOnClickListener {
             val intent = Intent(activity, ListSongketActivity::class.java)
-            startActivity(intent)        }
-
+            startActivity(intent)
+        }
+        textView7.setOnClickListener {
+            val intent = Intent(activity, ListSongketActivity::class.java)
+            startActivity(intent)
+        }
         buttonArtikel.setOnClickListener {
             Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
         }

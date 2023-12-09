@@ -15,12 +15,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
+import com.songketa.songket_recognition_app.R
 import com.songketa.songket_recognition_app.databinding.FragmentCameraBinding
+import com.songketa.songket_recognition_app.ui.home.HomeFragment
 import com.songketa.songket_recognition_app.utils.CameraUtils
 import java.io.File
 
@@ -76,8 +79,19 @@ class CameraFragment : Fragment(), View.OnClickListener, LocationListener {
         binding.btnCheckOut.setOnClickListener(this)
 
         getLocation()
+        val callback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                replaceFragment(HomeFragment())
+            }
+        }
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
     }
 
+    private fun replaceFragment(fragment: Fragment) {
+        requireActivity().supportFragmentManager.beginTransaction()
+            .replace(R.id.frame_layout, fragment)
+            .commit()
+    }
     override fun onClick(v: View) {
         when (v.id) {
             binding.btnCamera.id -> {
