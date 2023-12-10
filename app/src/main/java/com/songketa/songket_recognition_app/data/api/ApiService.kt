@@ -33,7 +33,11 @@ interface ApiService {
 //    ): Call<DatasetItem>
 
     @GET("dataset")
-    suspend fun getListSongket(): List<SongketResponse>
+    suspend fun getListSongket(
+    ): SongketResponse
+
+//    @GET("dataset")
+//    suspend fun getListSongket(): List<SongketResponse>
 
 //    @GET("stories/{id}")
 //    suspend fun getDetailStory(

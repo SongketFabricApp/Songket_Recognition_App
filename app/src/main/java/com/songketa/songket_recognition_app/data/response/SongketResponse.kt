@@ -8,7 +8,14 @@ import com.google.gson.annotations.SerializedName
 data class SongketResponse(
 
 	@field:SerializedName("dataset")
-	val dataset: List<DatasetItem>
+	val dataset: List<DatasetItem>,
+
+	@field:SerializedName("error")
+	val error: Boolean,
+
+	@field:SerializedName("message")
+	val message: String
+
 ) : Parcelable
 
 @Parcelize

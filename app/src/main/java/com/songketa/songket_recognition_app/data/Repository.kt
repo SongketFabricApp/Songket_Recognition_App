@@ -8,9 +8,14 @@ import com.songketa.songket_recognition_app.data.api.ApiService
 import com.songketa.songket_recognition_app.data.model.Menu
 import com.songketa.songket_recognition_app.data.model.MenuItem
 import com.songketa.songket_recognition_app.data.model.User
+import com.songketa.songket_recognition_app.data.response.DatasetItem
 import com.songketa.songket_recognition_app.data.response.LoginResponse
+import com.songketa.songket_recognition_app.data.response.RegisterResponse
 import com.songketa.songket_recognition_app.data.response.SongketResponse
 import com.songketa.songket_recognition_app.utils.UserPreferences
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.runBlocking
 import retrofit2.HttpException
 
 class Repository private constructor(private val userPreference: UserPreferences, private val apiService: ApiService){
@@ -41,18 +46,60 @@ class Repository private constructor(private val userPreference: UserPreferences
         }
     }
 
-
-
-    suspend fun getListSongket(): List<SongketResponse> {
-        return apiService.getListSongket()
+    fun register(name: String, email: String, phone: String, password: String): LiveData<Result<RegisterResponse>> = liveData {
+        emit(Result.Loading)
+        try {
+            val response = apiService.register(name, email, phone, password)
+            if(response.error ==false){
+                emit(Result.Success(response))
+            }else{
+                emit(Result.Error(response.message))
+            }
+        } catch (e: HttpException) {
+            val jsonInString = e.response()?.errorBody()?.string()
+            val errorBody = Gson().fromJson(jsonInString, RegisterResponse::class.java)
+            val errorMessage = errorBody.message
+            emit(Result.Error("Registration Failed: $errorMessage"))
+        } catch (e: Exception){
+            emit(Result.Error("Something Error"))
+        }
     }
 
-    fun getMenuData(): List<Menu> {
-        return MenuItem.menu
+    fun getSongket(): LiveData<Result<List<DatasetItem>>> = liveData {
+        emit(Result.Loading)
+        try {
+            val songketList: List<DatasetItem>
+            val user = runBlocking { userPreference.getSession().first() }
+            val response = ApiConfig.getApiService(user.token)
+            val songketResponse =response.getListSongket()
+            songketList = songketResponse.dataset
+
+            if (songketResponse.error == false) {
+                emit(Result.Success(songketList))
+            } else {
+                emit(Result.Error(songketResponse.message))
+            }
+        }catch (e: HttpException) {
+            val jsonInString = e.response()?.errorBody()?.string()
+            val errorBody = Gson().fromJson(jsonInString, LoginResponse::class.java)
+            val errorMessage = errorBody.message
+            emit(Result.Error("Cannot Get Stories: $errorMessage"))
+        } catch (e: Exception){
+            emit(Result.Error("Something Error"))
+        }
     }
+
 
     suspend fun saveSession(user: User) {
         userPreference.saveSession(user)
+    }
+
+    fun getSession(): Flow<User> {
+        return userPreference.getSession()
+    }
+
+    suspend fun logout() {
+        userPreference.logout()
     }
 
     companion object {
