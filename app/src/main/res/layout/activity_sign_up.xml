@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/blue_3"
     tools:context=".ui.signup.SignUpActivity">
 
     <TextView
@@ -38,6 +39,7 @@
         android:layout_marginEnd="32dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:boxStrokeColor="@color/black"
         app:layout_constraintTop_toBottomOf="@+id/tv_username"
         app:startIconDrawable="@drawable/ic_username">
 
@@ -46,6 +48,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:background="@color/white"
             android:inputType="text"
             android:hint="@string/enter_username"/>
     </com.google.android.material.textfield.TextInputLayout>
@@ -75,6 +78,7 @@
             android:id="@+id/email_field"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/white"
             android:ems="10"
             android:inputType="textEmailAddress"
             android:hint="@string/enter_your_email"/>
@@ -105,6 +109,7 @@
             android:id="@+id/phone_field"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/white"
             android:ems="10"
             android:inputType="textPassword"
             app:passwordToggleEnabled="true"
@@ -137,6 +142,7 @@
             android:id="@+id/password_field"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/white"
             android:ems="10"
             android:inputType="textPassword"
             android:hint="@string/enter_your_password" />
@@ -168,6 +174,7 @@
             android:id="@+id/confirm_password_field"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/white"
             android:ems="10"
             android:inputType="textPassword"
             android:hint="@string/confirm_your_password"/>
@@ -175,16 +182,17 @@
 
     <com.songketa.songket_recognition_app.customview.CustomButton
         android:id="@+id/btn_sign_up"
-        android:layout_width="300dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="32dp"
-        android:text="@string/create_account"
-        android:enabled="false"
+        android:layout_width="275dp"
+        android:layout_height="wrap_content"
+        android:text="@string/sign_up"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/til_confirm_password" />
+        app:layout_constraintTop_toBottomOf="@+id/til_confirm_password"
+        app:layout_constraintVertical_bias="0.208" />
+
 
     <TextView
         android:id="@+id/tv_or_signin"

@@ -13,7 +13,7 @@
         android:layout_height="420dp">
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/tv_welcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -25,7 +25,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/tv_username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -34,11 +34,11 @@
         android:text="@string/username"
         android:textColor="@color/blue_1"
         android:textSize="28sp"
-        app:layout_constraintStart_toEndOf="@+id/textView4"
+        app:layout_constraintStart_toEndOf="@+id/tv_welcome"
         app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/img_banner"
             android:layout_width="415dp"
             android:layout_height="170dp"
             android:layout_marginStart="16dp"
@@ -49,11 +49,11 @@
             android:src="@drawable/bg_gradient"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView4"
+            app:layout_constraintTop_toBottomOf="@+id/tv_welcome"
             tools:srcCompat="@drawable/bg_gradient" />
 
         <TextView
-            android:id="@+id/textView7"
+            android:id="@+id/tv_explore"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -68,7 +68,7 @@
             app:layout_constraintTop_toBottomOf="@+id/rv_ad" />
 
         <TextView
-            android:id="@+id/textView8"
+            android:id="@+id/tv_menu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
@@ -78,45 +78,78 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.044"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+            app:layout_constraintTop_toBottomOf="@+id/img_banner" />
 
         <ImageButton
-            android:id="@+id/imageButton4"
+            android:id="@+id/menu_maps"
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:background="@android:color/transparent"
-            android:src="@drawable/bg_button_enabled"
+            android:src="@drawable/icon_home_maps2"
+            android:scaleType="fitCenter"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView8" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_menu" />
+
+        <TextView
+            android:id="@+id/tv_maps"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Market Finder"
+            app:layout_constraintStart_toStartOf="@+id/menu_maps"
+            app:layout_constraintTop_toBottomOf="@+id/menu_maps" />
+
 
 
         <ImageButton
-            android:id="@+id/imageButton5"
+            android:id="@+id/menu_scan"
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
+            android:scaleType="fitCenter"
             android:background="@android:color/transparent"
-            android:src="@drawable/bg_button_enabled"
-            app:layout_constraintEnd_toStartOf="@+id/imageButton7"
-            app:layout_constraintStart_toEndOf="@+id/imageButton4"
-            app:layout_constraintTop_toBottomOf="@+id/textView8" />
+            android:src="@drawable/icon_home_scanner2"
+            app:layout_constraintEnd_toStartOf="@+id/menu_list"
+            app:layout_constraintStart_toEndOf="@+id/menu_maps"
+            app:layout_constraintTop_toBottomOf="@+id/tv_menu" />
+
+        <TextView
+            android:id="@+id/tv_scanner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="116dp"
+            android:layout_marginTop="8dp"
+            android:text="Scanner"
+            app:layout_constraintStart_toStartOf="@+id/tv_maps"
+            app:layout_constraintTop_toBottomOf="@+id/menu_scan" />
 
         <ImageButton
-            android:id="@+id/imageButton7"
+            android:id="@+id/menu_list"
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
+            android:scaleType="fitCenter"
             android:background="@android:color/transparent"
-            android:src="@drawable/bg_button_enabled"
+            android:src="@drawable/icon_home_list"
             app:layout_constraintEnd_toStartOf="@+id/imageButton8"
-            app:layout_constraintStart_toEndOf="@+id/imageButton5"
-            app:layout_constraintTop_toBottomOf="@+id/textView8" />
+            app:layout_constraintStart_toEndOf="@+id/menu_scan"
+            app:layout_constraintTop_toBottomOf="@+id/tv_menu" />
 
+
+        <TextView
+            android:id="@+id/tv_list"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="88dp"
+            android:layout_marginTop="8dp"
+            android:text="List Songket"
+            app:layout_constraintStart_toStartOf="@+id/tv_scanner"
+            app:layout_constraintTop_toBottomOf="@+id/menu_list" />
 
         <ImageButton
             android:id="@+id/imageButton8"
@@ -124,10 +157,22 @@
             android:layout_height="70dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
+            android:scaleType="fitCenter"
             android:background="@android:color/transparent"
-            android:src="@drawable/bg_button_enabled"
+            android:src="@drawable/icon_home_article"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView8" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_menu" />
+
+
+        <TextView
+            android:id="@+id/tv_article"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="96dp"
+            android:layout_marginTop="4dp"
+            android:text="What's new?"
+            app:layout_constraintStart_toStartOf="@+id/tv_list"
+            app:layout_constraintTop_toBottomOf="@+id/menu_list" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_ad"
@@ -139,7 +184,7 @@
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageButton4"
+            app:layout_constraintTop_toBottomOf="@+id/menu_maps"
             tools:listitem="@layout/songket_home_item" />
 
         <TextView

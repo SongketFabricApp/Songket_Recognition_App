@@ -1,5 +1,6 @@
 package com.songketa.songket_recognition_app.ui.signup
 
+import android.content.Intent
 import android.graphics.Paint
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
@@ -11,6 +12,8 @@ import androidx.activity.viewModels
 import com.songketa.songket_recognition_app.R
 import com.songketa.songket_recognition_app.databinding.ActivitySignUpBinding
 import com.songketa.songket_recognition_app.ui.ViewModelFactory
+import com.songketa.songket_recognition_app.ui.signin.SignInActivity
+import com.songketa.songket_recognition_app.ui.welcome.WelcomeActivity
 
 class SignUpActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySignUpBinding
@@ -20,11 +23,20 @@ class SignUpActivity : AppCompatActivity() {
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_sign_up)
+        binding = ActivitySignUpBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         val tvSignInHere = findViewById<TextView>(R.id.tv_signin_here)
         tvSignInHere.paintFlags = tvSignInHere.paintFlags or Paint.UNDERLINE_TEXT_FLAG
 
+        setBind()
+
+    }
+
+    override fun onBackPressed() {
+        val intent = Intent(this, WelcomeActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 
     private fun setupView() {
@@ -39,5 +51,17 @@ class SignUpActivity : AppCompatActivity() {
         }
         supportActionBar?.hide()
 
+    }
+
+    private fun setBind(){
+        binding.tvSigninHere.setOnClickListener{
+            navigateToSignInActivity()
+        }
+    }
+
+    private fun navigateToSignInActivity() {
+        val intent = Intent(this, SignInActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 }

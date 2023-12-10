@@ -1,6 +1,7 @@
 package com.songketa.songket_recognition_app.ui.signin
 
 import android.content.Intent
+import android.graphics.Paint
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -9,6 +10,7 @@ import android.text.method.PasswordTransformationMethod
 import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
@@ -18,6 +20,7 @@ import com.songketa.songket_recognition_app.data.model.User
 import com.songketa.songket_recognition_app.databinding.ActivitySignInBinding
 import com.songketa.songket_recognition_app.ui.ViewModelFactory
 import com.songketa.songket_recognition_app.data.Result
+import com.songketa.songket_recognition_app.ui.welcome.WelcomeActivity
 
 class SignInActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySignInBinding
@@ -29,8 +32,13 @@ class SignInActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivitySignInBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         setupAction()
+    }
+
+    override fun onBackPressed() {
+        val intent = Intent(this, WelcomeActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 
     private fun setupView() {
