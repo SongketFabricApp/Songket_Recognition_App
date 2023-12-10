@@ -89,7 +89,6 @@ class Repository private constructor(private val userPreference: UserPreferences
         }
     }
 
-
     suspend fun saveSession(user: User) {
         userPreference.saveSession(user)
     }

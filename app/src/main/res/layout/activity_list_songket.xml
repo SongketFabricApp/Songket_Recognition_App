@@ -9,6 +9,16 @@
     android:background="@color/background"
     tools:context=".ui.listsongket.ListSongketActivity">
 
+  <com.google.android.material.progressindicator.LinearProgressIndicator
+      android:id="@+id/progressIndicator"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:indeterminate="true"
+      android:visibility="gone"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+
   <com.google.android.material.card.MaterialCardView
       android:id="@+id/card_view"
       android:layout_width="0dp"
@@ -18,15 +28,16 @@
       app:cardUseCompatPadding="true"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintHorizontal_bias="0.5"
-      app:layout_constraintStart_toStartOf="parent">
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent">
 
     <androidx.appcompat.widget.SearchView
         android:id="@+id/search_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:queryHint="search here.."
         app:iconifiedByDefault="false"
-        app:queryBackground="@android:color/transparent" />
+        app:queryBackground="@android:color/transparent"
+        app:queryHint="search here.." />
 
   </com.google.android.material.card.MaterialCardView>
 
