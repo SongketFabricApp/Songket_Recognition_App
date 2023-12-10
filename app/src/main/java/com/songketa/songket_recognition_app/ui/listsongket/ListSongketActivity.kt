@@ -28,8 +28,8 @@ class ListSongketActivity : AppCompatActivity() {
         binding = ActivityListSongketBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        viewModel = ViewModelProvider(this, ViewModelFactory(Injection.provideRepository())).get(ListSongketViewModel::class.java)
-        adapter = ListSongketAdapter()
+//        viewModel = ViewModelProvider(this, ViewModelFactory(Injection.provideRepository())).get(ListSongketViewModel::class.java)
+//        adapter = ListSongketAdapter()
 
         val recyclerView: RecyclerView = binding.rvListSongket
         recyclerView.layoutManager = LinearLayoutManager(this)

@@ -56,5 +56,8 @@
     <string name="other_interesting_features">Other interesting features</string>
     <string name="welcome_image">Welcome image</string>
     <string name="message">Features still not available</string>
+    <string name="head_notif">YATTA!</string>
+    <string name="login_succes_notif">Login Succes, Welcome</string>
+    <string name="next_notif">Next</string>
 
 </resources>

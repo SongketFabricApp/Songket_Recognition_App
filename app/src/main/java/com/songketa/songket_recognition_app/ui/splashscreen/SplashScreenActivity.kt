@@ -39,7 +39,7 @@ class SplashScreenActivity : AppCompatActivity() {
     }
 
     private fun navigateToMainActivity() {
-        val intent = Intent(this, MainActivity::class.java)
+        val intent = Intent(this, WelcomeActivity::class.java)
         startActivity(intent)
         finish()
     }

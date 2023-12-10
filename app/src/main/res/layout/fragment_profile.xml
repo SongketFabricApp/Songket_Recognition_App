@@ -88,6 +88,7 @@
             android:minHeight="?attr/actionBarSize"
             android:theme="?attr/actionBarTheme"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView4">
 
@@ -95,25 +96,26 @@
                 android:id="@+id/textView25"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/eye_friendly_mode"
                 android:fontFamily="@font/roboto_bold"
+                android:text="@string/eye_friendly_mode"
                 android:textSize="20sp"
                 android:layout_marginStart="20dp"
                 app:layout_constraintStart_toStartOf="parent"
                 tools:layout_editor_absoluteX="26dp"
                 tools:layout_editor_absoluteY="441dp" />
-        </androidx.appcompat.widget.Toolbar>
 
-        <androidx.appcompat.widget.SwitchCompat
-            android:id="@+id/switch1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            app:layout_constraintBottom_toBottomOf="@+id/toolbar"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/toolbar"
-            app:trackTint="@color/switch_track_selector"
-            app:thumbTint="@color/switch_thumb_selector"/>
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/switch1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_gravity="end"
+                app:layout_constraintBottom_toBottomOf="@+id/toolbar"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/toolbar"
+                app:trackTint="@color/switch_track_selector"
+                app:thumbTint="@color/switch_thumb_selector"/>
+        </androidx.appcompat.widget.Toolbar>
 
 
         <androidx.appcompat.widget.Toolbar
