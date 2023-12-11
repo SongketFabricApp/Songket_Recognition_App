@@ -37,20 +37,49 @@
         app:layout_constraintStart_toEndOf="@+id/tv_welcome"
         app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
+
+        <ViewFlipper
             android:id="@+id/img_banner"
-            android:layout_width="415dp"
+            android:layout_width="match_parent"
             android:layout_height="170dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
-            android:contentDescription="@string/welcome_image"
-            android:scaleType="fitXY"
-            android:src="@drawable/bg_gradient"
+            android:autoStart="true"
+            android:flipInterval="2000"
+            android:inAnimation="@android:anim/slide_in_left"
+            android:outAnimation="@android:anim/slide_out_right"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_welcome"
-            tools:srcCompat="@drawable/bg_gradient" />
+            app:layout_constraintHorizontal_bias="0.5">
+
+            <ImageView
+                android:id="@+id/iv_slide1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/bg_gradient">
+            </ImageView>
+            <ImageView
+                android:id="@+id/iv_slide2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/buttonartikel">
+            </ImageView>
+            <ImageView
+                android:id="@+id/iv_slide3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/logo">
+            </ImageView>
+            <ImageView
+                android:id="@+id/iv_slide4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/icon_home_maps">
+            </ImageView>
+
+        </ViewFlipper>
 
         <TextView
             android:id="@+id/tv_explore"

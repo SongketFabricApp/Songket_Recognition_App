@@ -26,15 +26,19 @@ interface ApiService {
         @Field("password") password: String
     ): LoginResponse
 
+    @GET("dataset")
+    suspend fun getListSongket(
+    ): SongketResponse
+
+//    @GET("stories")
+//    suspend fun getListSongket(
+//    ): SongketResponse
+
 //    @Multipart
 //    @POST("")
 //    fun uploadImage(
 //        @Part file: MultipartBody.Part
 //    ): Call<DatasetItem>
-
-    @GET("dataset")
-    suspend fun getListSongket(
-    ): SongketResponse
 
 //    @GET("dataset")
 //    suspend fun getListSongket(): List<SongketResponse>
