@@ -20,8 +20,6 @@ import com.songketa.songket_recognition_app.ui.maps.MapsActivity
 import com.songketa.songket_recognition_app.data.Result
 import com.songketa.songket_recognition_app.data.response.DatasetItem
 import com.songketa.songket_recognition_app.ui.signin.SignInActivity
-import com.songketa.songket_recognition_app.ui.welcome.WelcomeActivity
-import kotlinx.coroutines.launch
 
 
 class HomeFragment : Fragment() {
@@ -57,6 +55,7 @@ class HomeFragment : Fragment() {
                 requireActivity().finish()
             } else {
                 getStory()
+                binding.tvUsername.text = user.email
             }
         }
     }
