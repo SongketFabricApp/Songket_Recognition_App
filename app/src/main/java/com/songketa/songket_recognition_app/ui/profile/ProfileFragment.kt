@@ -63,6 +63,9 @@ class ProfileFragment : Fragment() {
         binding.btnSwitch.setOnCheckedChangeListener { _: CompoundButton?, isChecked: Boolean ->
             themeViewModel.saveThemeSetting(isChecked)
         }
+        binding.card2.setOnClickListener {
+            startActivity(Intent(Settings.ACTION_LOCALE_SETTINGS))
+        }
 
         return binding.root
     }
