@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.songketa.songket_recognition_app.R
+import com.songketa.songket_recognition_app.adapter.ListSongketAdapter
 import com.songketa.songket_recognition_app.databinding.ActivityListSongketBinding
 import com.songketa.songket_recognition_app.di.Injection
 import com.songketa.songket_recognition_app.ui.ViewModelFactory
@@ -20,7 +21,8 @@ import com.songketa.songket_recognition_app.ui.camera.CameraActivity
 import com.songketa.songket_recognition_app.ui.home.HomeActivity
 import com.songketa.songket_recognition_app.ui.profile.ProfileActivity
 import com.songketa.songket_recognition_app.data.Result
-import com.songketa.songket_recognition_app.data.response.DatasetItem
+import com.songketa.songket_recognition_app.data.response.ListStoryItem
+import com.songketa.songket_recognition_app.ui.signin.SignInActivity
 
 class ListSongketActivity : AppCompatActivity() {
     private lateinit var binding: ActivityListSongketBinding
@@ -35,26 +37,11 @@ class ListSongketActivity : AppCompatActivity() {
 
         getStory()
 
-
         val layoutManager = LinearLayoutManager(this)
         binding.rvListSongket.layoutManager = layoutManager
-
-
-
-//        viewModel = ViewModelProvider(this, ViewModelFactory(Injection.provideRepository())).get(ListSongketViewModel::class.java)
-//        adapter = ListSongketAdapter()
-
-//        val recyclerView: RecyclerView = binding.rvListSongket
-//        recyclerView.layoutManager = LinearLayoutManager(this)
-//        recyclerView.adapter = adapter
-//
-//        viewModel.data.observe(this, Observer { newData ->
-//            adapter.setData(newData)
-//        })
-//        viewModel.getListSongket()
     }
 
-    private fun songketAdapter(listSongket: List<DatasetItem>) {
+    private fun songketAdapter(listSongket: List<ListStoryItem>) {
         val adapter = ListSongketAdapter(this@ListSongketActivity)
         adapter.submitList(listSongket)
         binding.rvListSongket.adapter = adapter

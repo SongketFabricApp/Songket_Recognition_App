@@ -1,6 +1,5 @@
 package com.songketa.songket_recognition_app.data.api
 
-import com.songketa.songket_recognition_app.data.response.DatasetItem
 import com.songketa.songket_recognition_app.data.response.LoginResponse
 import com.songketa.songket_recognition_app.data.response.RegisterResponse
 import com.songketa.songket_recognition_app.data.response.SongketResponse
@@ -26,13 +25,10 @@ interface ApiService {
         @Field("password") password: String
     ): LoginResponse
 
-    @GET("dataset")
+    @GET("stories")
     suspend fun getListSongket(
     ): SongketResponse
 
-//    @GET("stories")
-//    suspend fun getListSongket(
-//    ): SongketResponse
 
 //    @Multipart
 //    @POST("")

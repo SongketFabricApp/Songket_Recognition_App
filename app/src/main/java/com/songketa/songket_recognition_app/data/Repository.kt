@@ -8,7 +8,7 @@ import com.songketa.songket_recognition_app.data.api.ApiService
 import com.songketa.songket_recognition_app.data.model.Menu
 import com.songketa.songket_recognition_app.data.model.MenuItem
 import com.songketa.songket_recognition_app.data.model.User
-import com.songketa.songket_recognition_app.data.response.DatasetItem
+import com.songketa.songket_recognition_app.data.response.ListStoryItem
 import com.songketa.songket_recognition_app.data.response.LoginResponse
 import com.songketa.songket_recognition_app.data.response.RegisterResponse
 import com.songketa.songket_recognition_app.data.response.SongketResponse
@@ -65,14 +65,14 @@ class Repository private constructor(private val userPreference: UserPreferences
         }
     }
 
-    fun getSongket(): LiveData<Result<List<DatasetItem>>> = liveData {
+    fun getSongket(): LiveData<Result<List<ListStoryItem>>> = liveData {
         emit(Result.Loading)
         try {
-            val songketList: List<DatasetItem>
+            var songketList: List<ListStoryItem>
             val user = runBlocking { userPreference.getSession().first() }
             val response = ApiConfig.getApiService(user.token)
             val songketResponse =response.getListSongket()
-            songketList = songketResponse.dataset
+            songketList = songketResponse.listStory
 
             if (songketResponse.error == false) {
                 emit(Result.Success(songketList))
@@ -107,9 +107,7 @@ class Repository private constructor(private val userPreference: UserPreferences
 
         fun getInstance(userPreference: UserPreferences,apiService: ApiService): Repository =
             instance ?: synchronized(this) {
-                Repository(userPreference,apiService).apply {
-                    instance = this
-                }
-            }
+                instance ?: Repository(userPreference, apiService)
+            }.also { instance = it }
     }
 }

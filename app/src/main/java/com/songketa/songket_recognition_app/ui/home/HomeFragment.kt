@@ -6,13 +6,17 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.songketa.songket_recognition_app.R
 import com.songketa.songket_recognition_app.adapter.HomeMenuAdapter
+import com.songketa.songket_recognition_app.data.api.ApiService
 import com.songketa.songket_recognition_app.data.model.Menu
+import com.songketa.songket_recognition_app.data.response.ListStoryItem
 import com.songketa.songket_recognition_app.databinding.ActivityHomeBinding
 import com.songketa.songket_recognition_app.databinding.FragmentHomeBinding
 import com.songketa.songket_recognition_app.ui.ViewModelFactory
@@ -20,26 +24,49 @@ import com.songketa.songket_recognition_app.ui.camera.CameraActivity
 import com.songketa.songket_recognition_app.ui.camera.CameraFragment
 import com.songketa.songket_recognition_app.ui.listsongket.ListSongketActivity
 import com.songketa.songket_recognition_app.ui.maps.MapsActivity
+import com.songketa.songket_recognition_app.data.Result
+import com.songketa.songket_recognition_app.ui.signin.SignInActivity
 import com.songketa.songket_recognition_app.ui.welcome.WelcomeActivity
 import kotlinx.coroutines.launch
 
 
 class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
+
     private val viewModel by viewModels<HomeViewModel>{
         ViewModelFactory.getInstance(requireContext())
     }
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        observeSession()
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
         val view = binding.root
+        setupMenuClickListeners()
+
+        val linearLayoutManager = LinearLayoutManager(requireContext())
+        linearLayoutManager.orientation = LinearLayoutManager.VERTICAL
+        binding.rvSongket.layoutManager = linearLayoutManager
+
+        return view
+    }
+
+    private fun observeSession() {
+        viewModel.getSession().observe(viewLifecycleOwner) { user ->
+            if (!user.isLogin) {
+                startActivity(Intent(requireContext(), SignInActivity::class.java))
+                requireActivity().finish()
+            } else {
+                getStory()
+            }
+        }
+    }
+    private fun setupMenuClickListeners() {
         binding.menuMaps.setOnClickListener {
             startActivity(Intent(requireContext(), MapsActivity::class.java))
         }
@@ -49,8 +76,40 @@ class HomeFragment : Fragment() {
         binding.menuList.setOnClickListener {
             startActivity(Intent(requireContext(), ListSongketActivity::class.java))
         }
+    }
 
-        return view
+    private fun getStory(){
+        viewModel.getSongket().observe(viewLifecycleOwner){ story ->
+            if(story != null){
+                when(story){
+                    is Result.Loading ->{
+                        showLoading(true)
+                    }
+                    is Result.Success -> {
+                        val listStory = story.data
+                        songketAdapter(listStory)
+                    }
+                    is Result.Error -> {
+                        showLoading(false)
+                        showToast(story.error)
+                    }
+                }
+            }
+        }
+    }
+
+    private fun songketAdapter(listStory: List<ListStoryItem>) {
+        val adapter = HomeMenuAdapter(requireContext())
+        adapter.submitList(listStory)
+        binding.rvSongket.adapter = adapter
+    }
+
+    private fun showLoading(isLoading: Boolean) {
+        binding.progressIndicator.visibility = if (isLoading) View.VISIBLE else View.GONE
+    }
+
+    private fun showToast(message: String) {
+        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
     }
 
     private fun onButtonClicked() {

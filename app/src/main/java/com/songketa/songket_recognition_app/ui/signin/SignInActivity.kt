@@ -20,6 +20,7 @@ import com.songketa.songket_recognition_app.data.model.User
 import com.songketa.songket_recognition_app.databinding.ActivitySignInBinding
 import com.songketa.songket_recognition_app.ui.ViewModelFactory
 import com.songketa.songket_recognition_app.data.Result
+import com.songketa.songket_recognition_app.ui.listsongket.ListSongketActivity
 import com.songketa.songket_recognition_app.ui.welcome.WelcomeActivity
 
 class SignInActivity : AppCompatActivity() {
@@ -32,6 +33,7 @@ class SignInActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivitySignInBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        setupView()
         setupAction()
     }
 
@@ -105,28 +107,7 @@ class SignInActivity : AppCompatActivity() {
                 }
             }
         }
-//            if (email.equals(Email)&& pass.equals(Password)){
-//                val intent = Intent(this, MainActivity::class.java)
-//                startActivity(intent)
-//                finish()
-//            }
-//            else{
-//                AlertDialog.Builder(this).apply {
-//                    setTitle(title)
-//                    setMessage("Login Failed")
-//                    setPositiveButton("hoho") { _, _ ->
-//                        val intent = Intent(context, SignInActivity::class.java)
-//                        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-//                        startActivity(intent)
-//                        finish()
-//                    }
-//                    create()
-//                    show()
-//                }
-//            }
-
-
-        }
+    }
 
     private fun showLoading(isLoading: Boolean) {
         binding.progressIndicator.visibility = if (isLoading) View.VISIBLE else View.GONE
