@@ -38,7 +38,7 @@ class CustomButton : MaterialButton{
     }
     private fun init() {
         txtColor = ContextCompat.getColor(context, android.R.color.white)
-        txtColor2 = ContextCompat.getColor(context, R.color.blue_1)
+        txtColor2 = ContextCompat.getColor(context, R.color.primary)
         enabledBackground = ContextCompat.getDrawable(context, R.drawable.bg_button_enabled) as Drawable
         disabledBackground = ContextCompat.getDrawable(context, R.drawable.bg_button_disabled) as Drawable
     }

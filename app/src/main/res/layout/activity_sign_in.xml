@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/blue_3"
+    android:background="@color/accent"
     tools:context=".ui.signin.SignInActivity">
 
     <com.google.android.material.progressindicator.LinearProgressIndicator
@@ -172,7 +172,7 @@
         android:layout_height="25dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="41dp"
-        android:background="@color/blue_3"
+        android:background="@color/accent"
         android:scaleType="centerCrop"
         app:layout_constraintStart_toEndOf="@+id/textView10"
         app:layout_constraintTop_toBottomOf="@+id/sign_in_button"

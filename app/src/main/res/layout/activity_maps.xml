@@ -17,7 +17,7 @@
             android:layout_height="?attr/actionBarSize"
             android:elevation="0dp"
             app:title="Market Finder"
-            android:background="@color/blue_1"
+            android:background="@color/primary"
             app:titleTextColor="#fff"
             app:menu="@menu/map_options" />
 

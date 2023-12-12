@@ -6,11 +6,11 @@
 
 <!--    Blue Light-->
     <color name="background">#F4F4F4</color>
-    <color name="blue_1">#00A9FF</color>
-    <color name="blue_2">#89CFF3</color>
-    <color name="blue_3">#A0E9FF</color>
-    <color name="blue_4">#CDF5FD</color>
-    <color name="blue_5">#3691A5</color>
-
-
+    <color name="primary">#00A9FF</color>
+    <color name="secondary">#89CFF3</color>
+    <color name="accent">#A0E9FF</color>
+    <color name="secondary2">#CDF5FD</color>
+    <color name="highlight">#3691A5</color>
+    <color name="textColor">#292727</color>
+    <color name="backgroundSplash">#A0E9FF</color>
 </resources>

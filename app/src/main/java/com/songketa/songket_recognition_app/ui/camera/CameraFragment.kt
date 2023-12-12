@@ -4,6 +4,7 @@ import android.Manifest
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.content.res.Configuration
 import android.graphics.BitmapFactory
 import android.location.Location
 import android.location.LocationListener
@@ -49,7 +50,30 @@ class CameraFragment : Fragment(), View.OnClickListener, LocationListener {
             getFile = myFile
             val result = BitmapFactory.decodeFile(myFile.path)
             binding.ivInputImage.setImageBitmap(result)
+
+            updateImageViewColor()
         }
+    }
+
+    // Fungsi untuk mengupdate warna ImageView
+    private fun updateImageViewColor() {
+        val themeColor: Int
+
+        // Tentukan warna berdasarkan tema atau state tertentu
+        if (isDarkTheme()) {
+            themeColor = ContextCompat.getColor(requireContext(), R.color.secondary)
+        } else {
+            themeColor = ContextCompat.getColor(requireContext(), R.color.secondary)
+        }
+
+        // Set warna ke ImageView
+        binding.ivInputImage.setColorFilter(themeColor)
+    }
+
+    // Fungsi untuk mengecek apakah tema yang sedang berjalan adalah tema gelap
+    private fun isDarkTheme(): Boolean {
+        val currentNightMode = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
+        return currentNightMode == Configuration.UI_MODE_NIGHT_YES
     }
 
     private val launcherIntentGallery = registerForActivityResult(

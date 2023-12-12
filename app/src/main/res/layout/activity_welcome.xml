@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/blue_3"
+    android:background="@color/accent"
     tools:context=".ui.welcome.WelcomeActivity">
 
 
@@ -54,7 +54,7 @@
         android:layout_width="230dp"
         android:layout_height="60dp"
         android:layout_marginTop="88dp"
-        android:backgroundTint="@color/blue_1"
+        android:backgroundTint="@color/primary"
         android:text="@string/sign_in"
         android:textSize="19sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -70,12 +70,12 @@
         android:layout_marginTop="20dp"
         android:text="@string/sign_up"
         android:textSize="19sp"
-        android:textColor="@color/blue_1"
+        android:textColor="@color/primary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sign_in_button"
-        app:strokeColor="@color/blue_1"
+        app:strokeColor="@color/primary"
         app:strokeWidth="2dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
