@@ -14,6 +14,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
+import com.songketa.songket_recognition_app.MainActivity
 import com.songketa.songket_recognition_app.R
 import com.songketa.songket_recognition_app.databinding.ActivitySignUpBinding
 import com.songketa.songket_recognition_app.ui.ViewModelFactory
@@ -31,12 +32,18 @@ class SignUpActivity : AppCompatActivity() {
         binding = ActivitySignUpBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val tvSignInHere = findViewById<TextView>(R.id.tv_signin_here)
+        binding.tvSigninHere.setOnClickListener {
+            navigateToSignInActivity()
+        }
+
+        val tvSignInHere = binding.tvSigninHere
         tvSignInHere.paintFlags = tvSignInHere.paintFlags or Paint.UNDERLINE_TEXT_FLAG
+//
+//        val tvSignInHere = findViewById<TextView>(R.id.tv_signin_here)
+//        tvSignInHere.paintFlags = tvSignInHere.paintFlags or Paint.UNDERLINE_TEXT_FLAG
 
         setupView()
         setupAction()
-        setBind()
     }
 
     override fun onBackPressed() {
@@ -59,14 +66,9 @@ class SignUpActivity : AppCompatActivity() {
 
     }
     private fun setupAction() {
-//        binding.seePassword.setOnCheckedChangeListener { _, isChecked ->
-//            binding.passwordEditText.transformationMethod = if (isChecked) {
-//                HideReturnsTransformationMethod.getInstance()
-//            } else {
-//                PasswordTransformationMethod.getInstance()
-//            }
-//            binding.passwordEditText.text?.let { binding.passwordEditText.setSelection(it.length) }
-//        }
+        binding.tvSigninHere.setOnClickListener{
+            navigateToSignInActivity()
+        }
 
         binding.btnSignUp.setOnClickListener {
             val email = binding.emailField.text.toString()
@@ -78,30 +80,36 @@ class SignUpActivity : AppCompatActivity() {
             val message = getString(R.string.register_succes_notif)
             val next = getString(R.string.next_notif)
 
-            viewModel.register(email = email, name = name, phone = phone,password = pass).observe(this){hoho ->
-                when(hoho){
+            viewModel.register(email = email, name = name, phone = phone,password = pass).observe(this){result  ->
+                when(result){
                     is Result.Loading ->{
                         showLoading(true)
                     }
                     is Result.Success -> {
                         showLoading(false)
-                        AlertDialog.Builder(this).apply {
-                            setTitle(title)
-                            setMessage(message)
-                            setPositiveButton(next) { _, _ ->
-                                finish()
-                            }
-                            create()
-                            show()
-                        }
+                        showSuccessDialog(title, message, next)
                     }
                     is Result.Error -> {
                         showLoading(false)
-                        showToast(hoho.error)
+                        showToast(result.error)
                     }
                 }
             }
 
+        }
+    }
+    private fun showSuccessDialog(title: String, message: String, next: String) {
+        AlertDialog.Builder(this).apply {
+            setTitle(title)
+            setMessage(message)
+            setPositiveButton(next) { _, _ ->
+                val intent = Intent(context, SignInActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                startActivity(intent)
+                finish()
+            }
+            create()
+            show()
         }
     }
 
@@ -111,12 +119,6 @@ class SignUpActivity : AppCompatActivity() {
 
     private fun showToast(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
-    }
-
-    private fun setBind(){
-        binding.tvSigninHere.setOnClickListener{
-            navigateToSignInActivity()
-        }
     }
 
     private fun navigateToSignInActivity() {

@@ -86,19 +86,7 @@ class SignInActivity : AppCompatActivity() {
                             email = email,
                         )
                         viewModel.saveSession(user)
-
-                        AlertDialog.Builder(this).apply {
-                            setTitle(title)
-                            setMessage(message)
-                            setPositiveButton(next) { _, _ ->
-                                val intent = Intent(context, MainActivity::class.java)
-                                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-                                startActivity(intent)
-                                finish()
-                            }
-                            create()
-                            show()
-                        }
+                        showSuccessDialog(title, message, next)
                     }
                     is Result.Error -> {
                         showLoading(false)
@@ -106,6 +94,21 @@ class SignInActivity : AppCompatActivity() {
                     }
                 }
             }
+        }
+    }
+
+    private fun showSuccessDialog(title: String, message: String, next: String) {
+        AlertDialog.Builder(this).apply {
+            setTitle(title)
+            setMessage(message)
+            setPositiveButton(next) { _, _ ->
+                val intent = Intent(context, MainActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                startActivity(intent)
+                finish()
+            }
+            create()
+            show()
         }
     }
 
