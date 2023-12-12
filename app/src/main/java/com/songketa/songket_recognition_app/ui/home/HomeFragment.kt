@@ -9,18 +9,12 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.songketa.songket_recognition_app.R
-import com.songketa.songket_recognition_app.adapter.HomeMenuAdapter
-import com.songketa.songket_recognition_app.data.api.ApiService
-import com.songketa.songket_recognition_app.data.model.Menu
+import com.songketa.songket_recognition_app.adapter.HomeSongketAdapter
 import com.songketa.songket_recognition_app.data.response.ListStoryItem
-import com.songketa.songket_recognition_app.databinding.ActivityHomeBinding
 import com.songketa.songket_recognition_app.databinding.FragmentHomeBinding
 import com.songketa.songket_recognition_app.ui.ViewModelFactory
-import com.songketa.songket_recognition_app.ui.camera.CameraActivity
 import com.songketa.songket_recognition_app.ui.camera.CameraFragment
 import com.songketa.songket_recognition_app.ui.listsongket.ListSongketActivity
 import com.songketa.songket_recognition_app.ui.maps.MapsActivity
@@ -99,7 +93,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun songketAdapter(listStory: List<ListStoryItem>) {
-        val adapter = HomeMenuAdapter(requireContext())
+        val adapter = HomeSongketAdapter(requireContext())
         adapter.submitList(listStory)
         binding.rvSongket.adapter = adapter
     }
