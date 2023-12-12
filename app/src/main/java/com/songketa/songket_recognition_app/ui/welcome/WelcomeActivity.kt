@@ -6,23 +6,37 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.WindowInsets
 import android.view.WindowManager
+import androidx.activity.viewModels
+import com.songketa.songket_recognition_app.MainActivity
 import com.songketa.songket_recognition_app.R
 import com.songketa.songket_recognition_app.databinding.ActivityMainBinding
 import com.songketa.songket_recognition_app.databinding.ActivityWelcomeBinding
+import com.songketa.songket_recognition_app.ui.ViewModelFactory
 import com.songketa.songket_recognition_app.ui.signin.SignInActivity
 import com.songketa.songket_recognition_app.ui.signup.SignUpActivity
 import com.songketa.songket_recognition_app.ui.splashscreen.SplashScreenActivity
 
 class WelcomeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityWelcomeBinding
+    private val viewModel by viewModels<WelcomeViewModel>{
+        ViewModelFactory.getInstance(this)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityWelcomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setupView()
-        setupAction()
+        viewModel.getSession().observe(this) { user ->
+            if (!user.isLogin) {
+                startActivity(Intent(this, MainActivity::class.java))
+                finish()
+            } else {
+                setupView()
+                setupAction()
+            }
+        }
+
     }
 
     private fun setupView() {

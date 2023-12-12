@@ -8,7 +8,6 @@ import retrofit2.Call
 import retrofit2.http.*
 
 interface ApiService {
-
     @FormUrlEncoded
     @POST("register")
     suspend fun register(
@@ -25,22 +24,7 @@ interface ApiService {
         @Field("password") password: String
     ): LoginResponse
 
-    @GET("stories")
+    @GET("dataset")
     suspend fun getListSongket(
     ): SongketResponse
-
-
-//    @Multipart
-//    @POST("")
-//    fun uploadImage(
-//        @Part file: MultipartBody.Part
-//    ): Call<DatasetItem>
-
-//    @GET("dataset")
-//    suspend fun getListSongket(): List<SongketResponse>
-
-//    @GET("stories/{id}")
-//    suspend fun getDetailStory(
-//        @Path("id") id: String
-//    ): DetailStoryResponse
 }

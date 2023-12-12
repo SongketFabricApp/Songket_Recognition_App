@@ -21,7 +21,7 @@ import com.songketa.songket_recognition_app.ui.camera.CameraActivity
 import com.songketa.songket_recognition_app.ui.home.HomeActivity
 import com.songketa.songket_recognition_app.ui.profile.ProfileActivity
 import com.songketa.songket_recognition_app.data.Result
-import com.songketa.songket_recognition_app.data.response.ListStoryItem
+import com.songketa.songket_recognition_app.data.response.DatasetItem
 import com.songketa.songket_recognition_app.ui.signin.SignInActivity
 
 class ListSongketActivity : AppCompatActivity() {
@@ -41,7 +41,7 @@ class ListSongketActivity : AppCompatActivity() {
         binding.rvListSongket.layoutManager = layoutManager
     }
 
-    private fun songketAdapter(listSongket: List<ListStoryItem>) {
+    private fun songketAdapter(listSongket: List<DatasetItem>) {
         val adapter = ListSongketAdapter(this@ListSongketActivity)
         adapter.submitList(listSongket)
         binding.rvListSongket.adapter = adapter

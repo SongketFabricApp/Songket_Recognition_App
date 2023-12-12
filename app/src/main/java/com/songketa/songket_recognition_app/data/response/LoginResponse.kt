@@ -14,6 +14,7 @@ data class LoginResponse(
 
     @field:SerializedName("message")
     val message: String
+
 ) : Parcelable
 
 @Parcelize
@@ -27,4 +28,5 @@ data class LoginResult(
 
     @field:SerializedName("token")
     val token: String
+
 ) : Parcelable

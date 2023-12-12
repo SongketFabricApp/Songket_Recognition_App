@@ -8,11 +8,11 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.songketa.songket_recognition_app.data.response.ListStoryItem
+import com.songketa.songket_recognition_app.data.response.DatasetItem
 import com.songketa.songket_recognition_app.databinding.SongketListItemBinding
 import com.songketa.songket_recognition_app.ui.detailsongket.DetailSongketActivity
 
-class ListSongketAdapter(private val context: Context) : ListAdapter<ListStoryItem, ListSongketAdapter.MyViewHolder>(
+class ListSongketAdapter(private val context: Context) : ListAdapter<DatasetItem, ListSongketAdapter.MyViewHolder>(
     DIFF_CALLBACK
 ) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -24,25 +24,25 @@ class ListSongketAdapter(private val context: Context) : ListAdapter<ListStoryIt
         holder.bind(songket)
         holder.itemView.setOnClickListener {
             val moveDataUserIntent = Intent(holder.itemView.context, DetailSongketActivity::class.java)
-            moveDataUserIntent.putExtra(DetailSongketActivity.ID, songket.id)
+            moveDataUserIntent.putExtra(DetailSongketActivity.ID, songket.idfabric)
             holder.itemView.context.startActivity(moveDataUserIntent)
         }
 
     }
     class MyViewHolder(val binding: SongketListItemBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(songket: ListStoryItem){
-            binding.tvSongketName.text = songket.name
-//            binding.tvAsalSogket.text = songket.origin
-            Glide.with(binding.root.context).load(songket.photoUrl)
+        fun bind(songket: DatasetItem){
+            binding.tvSongketName.text = songket.fabricname
+            binding.tvAsalSogket.text = songket.origin
+            Glide.with(binding.root.context).load(songket.imgUrl)
                 .into(binding.ivSongketImage)
         }
     }
     companion object {
-        val DIFF_CALLBACK = object : DiffUtil.ItemCallback<ListStoryItem>() {
-            override fun areItemsTheSame(oldItem: ListStoryItem, newItem: ListStoryItem): Boolean {
+        val DIFF_CALLBACK = object : DiffUtil.ItemCallback<DatasetItem>() {
+            override fun areItemsTheSame(oldItem: DatasetItem, newItem: DatasetItem): Boolean {
                 return oldItem == newItem
             }
-            override fun areContentsTheSame(oldItem: ListStoryItem, newItem: ListStoryItem): Boolean {
+            override fun areContentsTheSame(oldItem: DatasetItem, newItem: DatasetItem): Boolean {
                 return oldItem == newItem
             }
         }

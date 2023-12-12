@@ -58,6 +58,7 @@
     <string name="message">Features still not available</string>
     <string name="head_notif">YATTA!</string>
     <string name="login_succes_notif">Login Succes, Welcome</string>
+    <string name="register_succes_notif">Register Succes</string>
     <string name="next_notif">Next</string>
 
 </resources>

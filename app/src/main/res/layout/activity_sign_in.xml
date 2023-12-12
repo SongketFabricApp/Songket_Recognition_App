@@ -67,6 +67,7 @@
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="12dp"
         app:errorEnabled="true"
+        android:hint="@string/insert_your_email"
         app:errorTextColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -80,7 +81,6 @@
             android:background="@color/white"
             android:ems="10"
             android:fontFamily="@font/roboto_regular"
-            android:hint="@string/insert_your_email"
             android:inputType="textEmailAddress"
             tools:alpha="100" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -106,7 +106,7 @@
         android:layout_marginTop="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-
+        android:hint="@string/insert_your_password"
         app:layout_constraintTop_toBottomOf="@+id/passwordTextView"
         app:startIconDrawable="@drawable/ic_pass">
 
@@ -117,7 +117,6 @@
             android:background="@color/white"
             android:ems="10"
             android:fontFamily="@font/roboto_regular"
-            android:hint="@string/insert_your_password"
             android:inputType="textPassword"
             tools:alpha="100" />
 

@@ -12,6 +12,7 @@ import com.songketa.songket_recognition_app.R
 import com.songketa.songket_recognition_app.databinding.ActivitySplashScreenBinding
 import com.songketa.songket_recognition_app.ui.detailsongket.DetailSongketActivity
 import com.songketa.songket_recognition_app.ui.home.HomeActivity
+import com.songketa.songket_recognition_app.ui.listsongket.ListSongketActivity
 import com.songketa.songket_recognition_app.ui.signin.SignInActivity
 import com.songketa.songket_recognition_app.ui.welcome.WelcomeActivity
 import com.songketa.songket_recognition_app.utils.Constant
@@ -32,13 +33,13 @@ class SplashScreenActivity : AppCompatActivity() {
             }
 
             override fun onFinish() {
-                navigateToMainActivity()
+                navigateToActivity()
             }
         }
         countdownTimer.start()
     }
 
-    private fun navigateToMainActivity() {
+    private fun navigateToActivity() {
         val intent = Intent(this, WelcomeActivity::class.java)
         startActivity(intent)
         finish()

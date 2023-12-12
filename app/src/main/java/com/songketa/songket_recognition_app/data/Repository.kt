@@ -5,13 +5,10 @@ import androidx.lifecycle.liveData
 import com.google.gson.Gson
 import com.songketa.songket_recognition_app.data.api.ApiConfig
 import com.songketa.songket_recognition_app.data.api.ApiService
-import com.songketa.songket_recognition_app.data.model.Menu
-import com.songketa.songket_recognition_app.data.model.MenuItem
 import com.songketa.songket_recognition_app.data.model.User
-import com.songketa.songket_recognition_app.data.response.ListStoryItem
+import com.songketa.songket_recognition_app.data.response.DatasetItem
 import com.songketa.songket_recognition_app.data.response.LoginResponse
 import com.songketa.songket_recognition_app.data.response.RegisterResponse
-import com.songketa.songket_recognition_app.data.response.SongketResponse
 import com.songketa.songket_recognition_app.utils.UserPreferences
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
@@ -19,12 +16,11 @@ import kotlinx.coroutines.runBlocking
 import retrofit2.HttpException
 
 class Repository private constructor(private val userPreference: UserPreferences, private val apiService: ApiService){
-
     fun login(email: String, password: String): LiveData<Result<LoginResponse>> = liveData {
         emit(Result.Loading)
         try {
             val response = apiService.login(email, password)
-            if(response.error ==false){
+            if(response.error == false){
                 val user = User(
                     email = email,
                     token = response.loginResult.token,
@@ -65,10 +61,10 @@ class Repository private constructor(private val userPreference: UserPreferences
         }
     }
 
-    fun getSongket(): LiveData<Result<List<ListStoryItem>>> = liveData {
+    fun getSongket(): LiveData<Result<List<DatasetItem>>> = liveData {
         emit(Result.Loading)
         try {
-            var songketList: List<ListStoryItem>
+            var songketList: List<DatasetItem>
             val user = runBlocking { userPreference.getSession().first() }
             val response = ApiConfig.getApiService(user.token)
             val songketResponse =response.getListSongket()

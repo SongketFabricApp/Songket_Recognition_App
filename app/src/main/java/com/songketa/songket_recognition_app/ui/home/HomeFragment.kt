@@ -12,13 +12,13 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.songketa.songket_recognition_app.R
 import com.songketa.songket_recognition_app.adapter.HomeSongketAdapter
-import com.songketa.songket_recognition_app.data.response.ListStoryItem
 import com.songketa.songket_recognition_app.databinding.FragmentHomeBinding
 import com.songketa.songket_recognition_app.ui.ViewModelFactory
 import com.songketa.songket_recognition_app.ui.camera.CameraFragment
 import com.songketa.songket_recognition_app.ui.listsongket.ListSongketActivity
 import com.songketa.songket_recognition_app.ui.maps.MapsActivity
 import com.songketa.songket_recognition_app.data.Result
+import com.songketa.songket_recognition_app.data.response.DatasetItem
 import com.songketa.songket_recognition_app.ui.signin.SignInActivity
 import com.songketa.songket_recognition_app.ui.welcome.WelcomeActivity
 import kotlinx.coroutines.launch
@@ -92,7 +92,7 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun songketAdapter(listStory: List<ListStoryItem>) {
+    private fun songketAdapter(listStory: List<DatasetItem>) {
         val adapter = HomeSongketAdapter(requireContext())
         adapter.submitList(listStory)
         binding.rvSongket.adapter = adapter
