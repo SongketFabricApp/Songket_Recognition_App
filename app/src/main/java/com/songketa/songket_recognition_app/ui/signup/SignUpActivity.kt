@@ -2,6 +2,7 @@ package com.songketa.songket_recognition_app.ui.signup
 
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Paint
 import android.os.Build
@@ -16,6 +17,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
+import com.jakewharton.rxbinding2.widget.RxTextView
 import com.songketa.songket_recognition_app.MainActivity
 import com.songketa.songket_recognition_app.R
 import com.songketa.songket_recognition_app.databinding.ActivitySignUpBinding
@@ -23,6 +25,11 @@ import com.songketa.songket_recognition_app.ui.ViewModelFactory
 import com.songketa.songket_recognition_app.ui.signin.SignInActivity
 import com.songketa.songket_recognition_app.ui.welcome.WelcomeActivity
 import com.songketa.songket_recognition_app.data.Result
+import com.songketa.songket_recognition_app.data.model.User
+import com.songketa.songket_recognition_app.utils.disable
+import com.songketa.songket_recognition_app.utils.enable
+import io.reactivex.Observable
+import com.songketa.songket_recognition_app.utils.softkeyboard
 
 class SignUpActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySignUpBinding
@@ -40,15 +47,14 @@ class SignUpActivity : AppCompatActivity() {
 
         val tvSignInHere = binding.tvSigninHere
         tvSignInHere.paintFlags = tvSignInHere.paintFlags or Paint.UNDERLINE_TEXT_FLAG
-//
-//        val tvSignInHere = findViewById<TextView>(R.id.tv_signin_here)
-//        tvSignInHere.paintFlags = tvSignInHere.paintFlags or Paint.UNDERLINE_TEXT_FLAG
+
         playAnimation()
         setupView()
-        setupAction()
+        processingSignup()
     }
 
     override fun onBackPressed() {
+        super.onBackPressed()
         val intent = Intent(this, WelcomeActivity::class.java)
         startActivity(intent)
         finish()
@@ -67,39 +73,7 @@ class SignUpActivity : AppCompatActivity() {
         supportActionBar?.hide()
 
     }
-    private fun setupAction() {
-        binding.tvSigninHere.setOnClickListener{
-            navigateToSignInActivity()
-        }
 
-        binding.btnSignUp.setOnClickListener {
-            val email = binding.emailField.text.toString()
-            val name = binding.usernameField.text.toString()
-            val phone = binding.phoneField.text.toString()
-            val pass = binding.passwordField.text.toString()
-
-            val title = getString(R.string.head_notif)
-            val message = getString(R.string.register_succes_notif)
-            val next = getString(R.string.next_notif)
-
-            viewModel.register(email = email, name = name, phone = phone,password = pass).observe(this){result  ->
-                when(result){
-                    is Result.Loading ->{
-                        showLoading(true)
-                    }
-                    is Result.Success -> {
-                        showLoading(false)
-                        showSuccessDialog(title, message, next)
-                    }
-                    is Result.Error -> {
-                        showLoading(false)
-                        showToast(result.error)
-                    }
-                }
-            }
-
-        }
-    }
     private fun showSuccessDialog(title: String, message: String, next: String) {
         AlertDialog.Builder(this).apply {
             setTitle(title)
@@ -125,13 +99,11 @@ class SignUpActivity : AppCompatActivity() {
         val phoneedit = ObjectAnimator.ofFloat(binding.tilPhone, View.ALPHA, 1f).setDuration(200)
         val titlepass = ObjectAnimator.ofFloat(binding.tvPassword, View.ALPHA, 1f).setDuration(200)
         val passedit = ObjectAnimator.ofFloat(binding.tilPassword, View.ALPHA, 1f).setDuration(200)
-        val titlepassconfirm = ObjectAnimator.ofFloat(binding.tilConfirmPassword, View.ALPHA, 1f).setDuration(200)
-        val passeditconfirm = ObjectAnimator.ofFloat(binding.confirmPasswordField, View.ALPHA, 1f).setDuration(200)
         val login = ObjectAnimator.ofFloat(binding.btnSignUp, View.ALPHA, 1f).setDuration(200)
 
         AnimatorSet().apply {
             playSequentially(titleregister,titleusername,usernameedit,titlemail,
-                emailedit,titlphone,phoneedit,titlepass,passedit,titlepassconfirm,passeditconfirm,login)
+                emailedit,titlphone,phoneedit,titlepass,passedit,login)
             start()
         }
     }
@@ -149,4 +121,251 @@ class SignUpActivity : AppCompatActivity() {
         startActivity(intent)
         finish()
     }
+
+    private fun confirmAccount(): Boolean {
+        val valid: Boolean?
+        val username = binding.usernameField.text?.trim().toString()
+        val email = binding.emailField.text?.trim().toString()
+        val phone = binding.phoneField.text?.trim().toString()
+        val password = binding.passwordField.text?.trim().toString()
+        when {
+            username.isEmpty() ->{
+                binding.tilUsername.error = getString(R.string.enter_username)
+                valid = java.lang.Boolean.FALSE
+            }
+            email.isEmpty() -> {
+                binding.tilEmail.error = getString(R.string.enter_email)
+                valid = java.lang.Boolean.FALSE
+            }
+            phone.isEmpty() -> {
+                binding.tilPhone.error = getString(R.string.enter_your_phone_number)
+                valid = java.lang.Boolean.FALSE
+            }
+            password.isEmpty() -> {
+                binding.tilPassword.error = getString(R.string.enter_your_password)
+                valid = java.lang.Boolean.FALSE
+            }
+            else -> {
+                valid = java.lang.Boolean.TRUE
+                binding.tilUsername.error = null
+                binding.tilEmail.error = null
+                binding.tilPhone.error = null
+                binding.tilPassword.error = null
+            }
+        }
+        return valid
+    }
+
+    @SuppressLint("CheckResult")
+    private fun processingSignup() {
+
+        val usernameStream = RxTextView.textChanges(binding.usernameField)
+            .skipInitialValue()
+            .map {
+                binding.usernameField.error != null
+            }
+        val emailStream = RxTextView.textChanges(binding.emailField)
+            .skipInitialValue()
+            .map {
+                binding.emailField.error != null
+            }
+
+        val phoneStream = RxTextView.textChanges(binding.phoneField)
+            .skipInitialValue()
+            .map {
+                binding.phoneField.error != null
+            }
+
+        val passwordStream = RxTextView.textChanges(binding.passwordField)
+            .skipInitialValue()
+            .map {
+                binding.passwordField.error != null
+            }
+
+        val invalidFieldStream = Observable.combineLatest(
+            usernameStream,
+            emailStream,
+            phoneStream,
+            passwordStream
+        ) { usernameInvalid, emailInvalid, phoneInvalid, passwordInvalid ->
+            !usernameInvalid && !emailInvalid && !phoneInvalid && !passwordInvalid
+        }
+
+        invalidFieldStream.subscribe { isValid ->
+            if (isValid) binding.btnSignUp.enable() else binding.btnSignUp.disable()
+        }
+
+        binding.tvSigninHere.setOnClickListener{
+            navigateToSignInActivity()
+        }
+
+        binding.btnSignUp.setOnClickListener {
+            if (confirmAccount()) {
+                val email = binding.emailField.text.toString()
+                val name = binding.usernameField.text.toString()
+                val phone = binding.phoneField.text.toString()
+                val pass = binding.passwordField.text.toString()
+
+                val title = getString(R.string.head_notif)
+                val message = getString(R.string.register_succes_notif)
+                val next = getString(R.string.next_notif)
+
+                viewModel.register(email = email, name = name, phone = phone, password = pass)
+                    .observe(this) { result ->
+                        when (result) {
+                            is Result.Loading -> {
+                                showLoading(true)
+                            }
+
+                            is Result.Success -> {
+                                showLoading(false)
+                                showSuccessDialog(title, message, next)
+                            }
+
+                            is Result.Error -> {
+                                showLoading(false)
+                                showToast(result.error)
+                            }
+                        }
+                    }
+            }
+        }
+    }
 }
+
+
+//@SuppressLint("CheckResult")
+//private fun processingSignup() {
+//    binding.apply {
+//        val usernameStream = RxTextView.textChanges(usernameField)
+//            .skipInitialValue()
+//            .map {
+//                usernameField.error != null
+//            }
+//
+//        val emailStream = RxTextView.textChanges(emailField)
+//            .skipInitialValue()
+//            .map {
+//                emailField.error != null
+//            }
+//
+//        val phoneStream = RxTextView.textChanges(passwordField)
+//            .skipInitialValue()
+//            .map {
+//                passwordField.error != null
+//            }
+//
+//        val passwordStream = RxTextView.textChanges(passwordField)
+//            .skipInitialValue()
+//            .map {
+//                passwordField.error != null
+//            }
+//
+//        val invalidFieldStream = Observable.combineLatest(
+//            usernameStream,
+//            emailStream,
+//            phoneStream,
+//            passwordStream
+//        ) { nameInvalid, emailInvalid, phoneInvalid, passwordInvalid ->
+//            !nameInvalid && !emailInvalid && !phoneInvalid && !passwordInvalid
+//        }
+//        invalidFieldStream.subscribe { isValid ->
+//            btnSignUp.isEnabled = isValid
+//        }
+//        btnSignUp.setOnClickListener { signupAccount() }
+//    }
+//}
+
+
+//private fun signupAccount() {
+//    binding.apply {
+//        softkeyboard(this@SignUpActivity, binding.root)
+//        val name = usernameField.text?.trim().toString()
+//        val email = emailField.text?.trim().toString()
+//        val phone = phoneField.text?.trim().toString()
+//        val password = passwordField.text?.trim().toString()
+//        when {
+//            name.isEmpty() -> {
+//                tilUsername.error = getString(R.string.enter_username)
+//            }
+//            email.isEmpty() -> {
+//                tilEmail.error = getString(R.string.enter_email)
+//            }
+//            email.isEmpty() -> {
+//                tilPhone.error = getString(R.string.enter_your_phone_number)
+//            }
+//            password.isEmpty() -> {
+//                tilPassword.error = getString(R.string.enter_your_password)
+//            }
+//            else -> {
+//                showLoading(true)
+//                binding.tvSigninHere.setOnClickListener{
+//                    navigateToSignInActivity()
+//                }
+//
+//                binding.btnSignUp.setOnClickListener {
+//                    val email = binding.emailField.text.toString()
+//                    val name = binding.usernameField.text.toString()
+//                    val phone = binding.phoneField.text.toString()
+//                    val pass = binding.passwordField.text.toString()
+//
+//                    val title = getString(R.string.head_notif)
+//                    val message = getString(R.string.register_succes_notif)
+//                    val next = getString(R.string.next_notif)
+//
+//                    viewModel.register(email = email, name = name, phone = phone,password = pass).observe(this){result  ->
+//                        when(result){
+//                            is Result.Loading ->{
+//                                showLoading(true)
+//                            }
+//                            is Result.Success -> {
+//                                showLoading(false)
+//                                showSuccessDialog(title, message, next)
+//                            }
+//                            is Result.Error -> {
+//                                showLoading(false)
+//                                showToast(result.error)
+//                            }
+//                        }
+//                    }
+//
+//                }
+//            }
+//        }
+//    }
+//}
+//
+
+//private fun setupAction() {
+//    binding.tvSigninHere.setOnClickListener{
+//        navigateToSignInActivity()
+//    }
+//
+//    binding.btnSignUp.setOnClickListener {
+//        val email = binding.emailField.text.toString()
+//        val name = binding.usernameField.text.toString()
+//        val phone = binding.phoneField.text.toString()
+//        val pass = binding.passwordField.text.toString()
+//
+//        val title = getString(R.string.head_notif)
+//        val message = getString(R.string.register_succes_notif)
+//        val next = getString(R.string.next_notif)
+//
+//        viewModel.register(email = email, name = name, phone = phone,password = pass).observe(this){result  ->
+//            when(result){
+//                is Result.Loading ->{
+//                    showLoading(true)
+//                }
+//                is Result.Success -> {
+//                    showLoading(false)
+//                    showSuccessDialog(title, message, next)
+//                }
+//                is Result.Error -> {
+//                    showLoading(false)
+//                    showToast(result.error)
+//                }
+//            }
+//        }
+//
+//    }
+//}

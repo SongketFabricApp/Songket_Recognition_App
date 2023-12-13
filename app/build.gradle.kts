@@ -87,4 +87,8 @@ dependencies {
     implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
     implementation ("androidx.lifecycle:lifecycle-livedata-ktx:2.6.2")
 
+    implementation ("com.jakewharton.rxbinding2:rxbinding:2.0.0")
+    implementation ("io.reactivex.rxjava2:rxjava:2.2.19")
+
+
 }

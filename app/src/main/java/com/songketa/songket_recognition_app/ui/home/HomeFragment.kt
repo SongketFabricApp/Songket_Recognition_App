@@ -1,5 +1,6 @@
 package com.songketa.songket_recognition_app.ui.home
 
+import android.app.ListActivity
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -64,7 +65,9 @@ class HomeFragment : Fragment() {
         linearLayoutManager.orientation = LinearLayoutManager.VERTICAL
         binding.rvSongket.layoutManager = linearLayoutManager
 
-
+        binding.tvExplore.setOnClickListener {
+            startActivity(Intent(requireContext(), ListSongketActivity::class.java))
+        }
 
         return view
     }

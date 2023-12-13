@@ -63,5 +63,10 @@
     <string name="greeting">Welcome %1$s</string>
     <string name="what_s_new">What\'s new?</string>
 
+    <string name="api_key" translatable="false">AIzaSyAUd7wfyNr  YmiwFcPu_oi1bNrEalQg7q98</string>
+    <string name="havent_have_account">Do not have an account yet?</string>
+    <string name="signup_here">Sign Up here</string>
+
+
 
 </resources>
