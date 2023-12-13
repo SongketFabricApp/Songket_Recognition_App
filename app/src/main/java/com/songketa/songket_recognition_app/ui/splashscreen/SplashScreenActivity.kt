@@ -1,19 +1,10 @@
 package com.songketa.songket_recognition_app.ui.splashscreen
 
-import android.animation.ObjectAnimator
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
-import android.view.View
-import androidx.arch.core.executor.DefaultTaskExecutor
-import com.songketa.songket_recognition_app.MainActivity
-import com.songketa.songket_recognition_app.R
 import com.songketa.songket_recognition_app.databinding.ActivitySplashScreenBinding
-import com.songketa.songket_recognition_app.ui.detailsongket.DetailSongketActivity
-import com.songketa.songket_recognition_app.ui.home.HomeActivity
-import com.songketa.songket_recognition_app.ui.listsongket.ListSongketActivity
-import com.songketa.songket_recognition_app.ui.signin.SignInActivity
 import com.songketa.songket_recognition_app.ui.welcome.WelcomeActivity
 import com.songketa.songket_recognition_app.utils.Constant
 
