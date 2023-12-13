@@ -1,5 +1,7 @@
 package com.songketa.songket_recognition_app.ui.profile
 
+import android.animation.AnimatorSet
+import android.animation.ObjectAnimator
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -19,7 +21,6 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.switchmaterial.SwitchMaterial
 import com.songketa.songket_recognition_app.R
-import com.songketa.songket_recognition_app.databinding.FragmentHomeBinding
 import com.songketa.songket_recognition_app.databinding.FragmentProfileBinding
 import com.songketa.songket_recognition_app.ui.ViewModelFactory
 import com.songketa.songket_recognition_app.ui.home.HomeFragment
@@ -60,6 +61,7 @@ class ProfileFragment : Fragment() {
 //        val view = inflater.inflate(R.layout.fragment_profile, container, false)
         binding = FragmentProfileBinding.inflate(inflater, container, false)
 
+        playAnimation()
 
         val pref = SettingPreferences.getInstance(requireActivity().dataStore)
 
@@ -101,6 +103,21 @@ class ProfileFragment : Fragment() {
             }
         }
     }
+    private fun playAnimation() {
+        val ivimage = ObjectAnimator.ofFloat(binding.ivImageProfile, View.ALPHA, 1f).setDuration(200)
+        val titleusername = ObjectAnimator.ofFloat(binding.tvUsername, View.ALPHA, 1f).setDuration(200)
+        val titleemail = ObjectAnimator.ofFloat(binding.tvEmail, View.ALPHA, 1f).setDuration(200)
+        val titlephone = ObjectAnimator.ofFloat(binding.tvPhone, View.ALPHA, 1f).setDuration(200)
+
+        val card1 = ObjectAnimator.ofFloat(binding.card1, View.ALPHA, 1f).setDuration(100)
+        val card2 = ObjectAnimator.ofFloat(binding.card2, View.ALPHA, 1f).setDuration(100)
+        val card3 = ObjectAnimator.ofFloat(binding.card3, View.ALPHA, 1f).setDuration(100)
+
+        AnimatorSet().apply {
+            playSequentially(ivimage,titleusername,titleemail,titlephone,card1,card2,card3)
+            start()
+        }
+    }
 
     private fun replaceFragment(fragment: Fragment) {
         requireActivity().supportFragmentManager.beginTransaction()
@@ -111,6 +128,7 @@ class ProfileFragment : Fragment() {
     private fun logout() {
         viewModel.logout()
     }
+
     companion object {
 
     }

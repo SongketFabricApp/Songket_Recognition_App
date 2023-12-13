@@ -1,5 +1,6 @@
 package com.songketa.songket_recognition_app.data
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
 import com.google.gson.Gson
@@ -9,11 +10,14 @@ import com.songketa.songket_recognition_app.data.api.ApiService
 import com.songketa.songket_recognition_app.data.model.User
 import com.songketa.songket_recognition_app.data.response.DatasetItem
 import com.songketa.songket_recognition_app.data.response.LoginResponse
+import com.songketa.songket_recognition_app.data.response.PostResponse
 import com.songketa.songket_recognition_app.data.response.RegisterResponse
 import com.songketa.songket_recognition_app.utils.UserPreferences
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.HttpException
 
 class Repository private constructor(private val userPreference: UserPreferences, private val apiService: ApiService){
@@ -85,6 +89,19 @@ class Repository private constructor(private val userPreference: UserPreferences
             emit(Result.Error("Cannot Get Stories: $errorMessage"))
         } catch (e: Exception){
             emit(Result.Error("Something Error"))
+        }
+    }
+
+    fun postImage(file: MultipartBody.Part): LiveData<Result<PostResponse>> = liveData {
+        emit(Result.Loading)
+        try {
+            val user = runBlocking { userPreference.getSession().first() }
+            val response = ApiConfig.getApiService(user.token)
+            val responsedetail = response.postImage(file)
+            emit(Result.Success(responsedetail))
+        } catch (e: Exception) {
+            Log.e("CreateStoryViewModel", "postStory: ${e.message.toString()}")
+            emit(Result.Error(e.message.toString()))
         }
     }
 

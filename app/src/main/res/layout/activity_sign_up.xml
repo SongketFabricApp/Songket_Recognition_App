@@ -20,6 +20,7 @@
     <TextView
         android:id="@+id/tv_signup"
         android:layout_width="0dp"
+        android:alpha="0"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
@@ -29,16 +30,19 @@
         app:layout_constraintBottom_toTopOf="@+id/guide_horizontal1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:alpha="100"/>
     <TextView
         android:id="@+id/tv_username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:alpha="0"
         android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
         android:text="@string/username"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_signup" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_signup"
+        tools:alpha="100"/>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_username"
@@ -47,12 +51,14 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
+        android:alpha="0"
         android:hint="@string/enter_username"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:boxStrokeColor="@color/black"
         app:layout_constraintTop_toBottomOf="@+id/tv_username"
-        app:startIconDrawable="@drawable/ic_username">
+        app:startIconDrawable="@drawable/ic_username"
+        tools:alpha="100">
 
         <com.songketa.songket_recognition_app.customview.CustomTextInput
             android:id="@+id/username_field"
@@ -67,16 +73,19 @@
         android:id="@+id/tv_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:alpha="0"
         android:layout_marginStart="32dp"
         android:layout_marginTop="10dp"
         android:text="@string/email"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/til_username" />
+        app:layout_constraintTop_toBottomOf="@+id/til_username"
+        tools:alpha="100"/>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_email"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
+        android:alpha="0"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
@@ -84,7 +93,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_email"
-        app:startIconDrawable="@drawable/ic_email">
+        app:startIconDrawable="@drawable/ic_email"
+        tools:alpha="100">
         <com.songketa.songket_recognition_app.customview.CustomEditText
             android:id="@+id/email_field"
             android:layout_width="match_parent"
@@ -97,25 +107,29 @@
     <TextView
         android:id="@+id/tv_phone"
         android:layout_width="wrap_content"
+        android:alpha="0"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="10dp"
         android:text="@string/phone"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/til_email" />
+        app:layout_constraintTop_toBottomOf="@+id/til_email"
+        tools:alpha="100"/>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_phone"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:alpha="0"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
         android:hint="@string/enter_your_phone_number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_phone"
-        app:startIconDrawable="@drawable/ic_phone">
+        app:startIconDrawable="@drawable/ic_phone"
+        tools:alpha="100">
         <com.songketa.songket_recognition_app.customview.CustomPhone
             android:id="@+id/phone_field"
             android:layout_width="match_parent"
@@ -130,17 +144,20 @@
         android:id="@+id/tv_password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:alpha="0"
         android:layout_marginStart="32dp"
         android:layout_marginTop="10dp"
         android:text="@string/password"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/til_phone"/>
+        app:layout_constraintTop_toBottomOf="@+id/til_phone"
+        tools:alpha="100"/>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_password"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:alpha="0"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
         android:hint="@string/enter_your_password"
@@ -148,7 +165,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_password"
         app:passwordToggleEnabled="false"
-        app:startIconDrawable="@drawable/ic_pass">
+        app:startIconDrawable="@drawable/ic_pass"
+        tools:alpha="100">
         <com.songketa.songket_recognition_app.customview.CustomPassword
             android:id="@+id/password_field"
             android:layout_width="match_parent"
@@ -162,17 +180,20 @@
         android:id="@+id/tv_confirm_password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:alpha="0"
         android:layout_marginStart="32dp"
         android:layout_marginTop="10dp"
         android:text="@string/confirm_password"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/til_password"/>
+        app:layout_constraintTop_toBottomOf="@+id/til_password"
+        tools:alpha="100"/>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_confirm_password"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:alpha="0"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
         android:hint="@string/confirm_your_password"
@@ -180,7 +201,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_confirm_password"
         app:passwordToggleEnabled="false"
-        app:startIconDrawable="@drawable/ic_pass">
+        app:startIconDrawable="@drawable/ic_pass"
+        tools:alpha="100">
         <com.songketa.songket_recognition_app.customview.CustomPassword
             android:id="@+id/confirm_password_field"
             android:layout_width="match_parent"
@@ -194,6 +216,7 @@
         android:id="@+id/btn_sign_up"
         android:layout_width="275dp"
         android:layout_height="wrap_content"
+        android:alpha="0"
         android:text="@string/sign_up"
         android:textAlignment="center"
         android:textSize="20sp"
@@ -201,7 +224,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/til_confirm_password"
-        app:layout_constraintVertical_bias="0.208" />
+        app:layout_constraintVertical_bias="0.208"
+        tools:alpha="100"/>
 
 
     <TextView

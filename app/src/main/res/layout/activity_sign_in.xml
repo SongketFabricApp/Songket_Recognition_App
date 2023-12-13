@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/tv_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="52dp"
@@ -34,7 +34,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/iv_logo"
         android:layout_width="247dp"
         android:layout_height="229dp"
         android:layout_marginTop="52dp"
@@ -42,7 +42,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        app:layout_constraintTop_toBottomOf="@+id/tv_login"
         android:src="@drawable/logo"
         tools:srcCompat="@drawable/logo" />
 
@@ -54,9 +54,10 @@
         android:layout_marginTop="20dp"
         android:text="@string/email"
         android:textSize="18sp"
+        android:alpha="0"
         android:fontFamily="@font/roboto_medium"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/iv_logo"
         tools:alpha="100"/>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -67,12 +68,14 @@
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="12dp"
         app:errorEnabled="true"
+        android:alpha="0"
         android:hint="@string/insert_your_email"
         app:errorTextColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/emailTextView"
-        app:startIconDrawable="@drawable/ic_email">
+        app:startIconDrawable="@drawable/ic_email"
+        tools:alpha="100">
 
         <com.songketa.songket_recognition_app.customview.CustomEditText
             android:id="@+id/emailEditText"
@@ -91,6 +94,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
         android:text="@string/password"
+        android:alpha="0"
         android:fontFamily="@font/roboto_medium"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/emailEditTextLayout"
@@ -104,11 +108,13 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="12dp"
+        android:alpha="0"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:hint="@string/insert_your_password"
         app:layout_constraintTop_toBottomOf="@+id/passwordTextView"
-        app:startIconDrawable="@drawable/ic_pass">
+        app:startIconDrawable="@drawable/ic_pass"
+        tools:alpha="100">
 
         <com.songketa.songket_recognition_app.customview.CustomPassword
             android:id="@+id/passwordEditText"
@@ -139,11 +145,13 @@
         android:text="@string/sign_in"
         android:textAlignment="center"
         android:textSize="20sp"
+        android:alpha="0"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/passwordEditTextLayout"
-        app:layout_constraintVertical_bias="0.208" />
+        app:layout_constraintVertical_bias="0.208"
+        tools:alpha="100"/>
 
     <TextView
         android:id="@+id/textView9"

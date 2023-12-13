@@ -22,9 +22,11 @@
             android:layout_marginEnd="8dp"
             app:strokeColor="@color/primary"
             android:backgroundTint="@color/white"
+            android:alpha="0"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/divider3">
+            app:layout_constraintTop_toBottomOf="@+id/divider3"
+            tools:alpha="100">
 
             <TextView
                 android:id="@+id/textView25"
@@ -62,9 +64,11 @@
             android:layout_marginEnd="8dp"
             app:strokeColor="@color/primary"
             android:backgroundTint="@color/white"
+            android:alpha="0"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/card1">
+            app:layout_constraintTop_toBottomOf="@+id/card1"
+            tools:alpha="100">
 
             <TextView
                 android:id="@+id/textView26"
@@ -103,10 +107,12 @@
             android:layout_marginTop="24dp"
             android:layout_marginEnd="8dp"
             app:strokeColor="@color/primary"
+            android:alpha="0"
             android:backgroundTint="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/card2">
+            app:layout_constraintTop_toBottomOf="@+id/card2"
+            tools:alpha="100">
 
             <TextView
                 android:id="@+id/textView27"
@@ -136,7 +142,7 @@
 
 
         <ImageView
-            android:id="@+id/imageView4"
+            android:id="@+id/iv_image_profile"
             android:layout_width="wrap_content"
             android:layout_height="135dp"
             android:layout_marginStart="24dp"
@@ -144,10 +150,13 @@
             android:layout_marginEnd="24dp"
             android:contentDescription="@string/profile_image"
             android:src="@drawable/logo"
+            android:alpha="0"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:srcCompat="@tools:sample/avatars" />
+            tools:srcCompat="@tools:sample/avatars"
+            tools:alpha="100"/>
 
         <TextView
             android:id="@+id/tv_username"
@@ -158,13 +167,15 @@
             android:layout_marginEnd="32dp"
             android:fontFamily="@font/roboto_bold"
             android:gravity="center"
+            android:alpha="0"
             android:text="@string/username"
             android:textColor="@color/primary"
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.484"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+            app:layout_constraintTop_toBottomOf="@+id/iv_image_profile"
+            tools:alpha="100"/>
 
         <TextView
             android:id="@+id/tv_email"
@@ -175,12 +186,14 @@
             android:layout_marginEnd="32dp"
             android:fontFamily="@font/roboto_medium"
             android:gravity="center"
+            android:alpha="0"
             android:text="@string/email"
             android:textColor="@color/secondary"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_username" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_username"
+            tools:alpha="100"/>
 
         <TextView
             android:id="@+id/tv_phone"
@@ -191,13 +204,15 @@
             android:layout_marginEnd="32dp"
             android:fontFamily="@font/roboto_medium"
             android:gravity="center"
+            android:alpha="0"
             android:text="@string/phone"
             android:textColor="@color/secondary"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_email" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_email"
+            tools:alpha="100"/>
 
         <View
             android:id="@+id/divider3"

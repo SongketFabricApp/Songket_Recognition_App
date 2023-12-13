@@ -1,5 +1,7 @@
 package com.songketa.songket_recognition_app.ui.signup
 
+import android.animation.AnimatorSet
+import android.animation.ObjectAnimator
 import android.content.Intent
 import android.graphics.Paint
 import android.os.Build
@@ -41,7 +43,7 @@ class SignUpActivity : AppCompatActivity() {
 //
 //        val tvSignInHere = findViewById<TextView>(R.id.tv_signin_here)
 //        tvSignInHere.paintFlags = tvSignInHere.paintFlags or Paint.UNDERLINE_TEXT_FLAG
-
+        playAnimation()
         setupView()
         setupAction()
     }
@@ -110,6 +112,27 @@ class SignUpActivity : AppCompatActivity() {
             }
             create()
             show()
+        }
+    }
+
+    private fun playAnimation() {
+        val titleregister = ObjectAnimator.ofFloat(binding.tvSignup, View.ALPHA, 1f).setDuration(200)
+        val titleusername = ObjectAnimator.ofFloat(binding.tvUsername, View.ALPHA, 1f).setDuration(200)
+        val usernameedit = ObjectAnimator.ofFloat(binding.tilUsername, View.ALPHA, 1f).setDuration(200)
+        val titlemail = ObjectAnimator.ofFloat(binding.tvEmail, View.ALPHA, 1f).setDuration(200)
+        val emailedit = ObjectAnimator.ofFloat(binding.tilEmail, View.ALPHA, 1f).setDuration(200)
+        val titlphone = ObjectAnimator.ofFloat(binding.tvPhone, View.ALPHA, 1f).setDuration(200)
+        val phoneedit = ObjectAnimator.ofFloat(binding.tilPhone, View.ALPHA, 1f).setDuration(200)
+        val titlepass = ObjectAnimator.ofFloat(binding.tvPassword, View.ALPHA, 1f).setDuration(200)
+        val passedit = ObjectAnimator.ofFloat(binding.tilPassword, View.ALPHA, 1f).setDuration(200)
+        val titlepassconfirm = ObjectAnimator.ofFloat(binding.tilConfirmPassword, View.ALPHA, 1f).setDuration(200)
+        val passeditconfirm = ObjectAnimator.ofFloat(binding.confirmPasswordField, View.ALPHA, 1f).setDuration(200)
+        val login = ObjectAnimator.ofFloat(binding.btnSignUp, View.ALPHA, 1f).setDuration(200)
+
+        AnimatorSet().apply {
+            playSequentially(titleregister,titleusername,usernameedit,titlemail,
+                emailedit,titlphone,phoneedit,titlepass,passedit,titlepassconfirm,passeditconfirm,login)
+            start()
         }
     }
 
