@@ -24,6 +24,14 @@ interface ApiService {
         @Field("password") password: String
     ): LoginResponse
 
+    @GET("users/{id}")
+    suspend fun getUser(
+        @Field("user_id") id: String,
+        @Field("email") email: String,
+        @Field("phone") phone: String,
+        @Field("username") username: String
+    )
+
     @GET("dataset")
     suspend fun getListSongket(
     ): SongketResponse

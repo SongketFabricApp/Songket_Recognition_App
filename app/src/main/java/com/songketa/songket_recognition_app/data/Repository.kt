@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
 import com.google.gson.Gson
 import com.songketa.songket_recognition_app.data.api.ApiConfig
+import com.songketa.songket_recognition_app.data.api.ApiConfig.token
 import com.songketa.songket_recognition_app.data.api.ApiService
 import com.songketa.songket_recognition_app.data.model.User
 import com.songketa.songket_recognition_app.data.response.DatasetItem
@@ -22,7 +23,9 @@ class Repository private constructor(private val userPreference: UserPreferences
             val response = apiService.login(email, password)
             if(response.error == false){
                 val user = User(
+                    name = response.loginResult.name,
                     email = email,
+                    phone = response.loginResult.phone,
                     token = response.loginResult.token,
                     isLogin = true
                 )

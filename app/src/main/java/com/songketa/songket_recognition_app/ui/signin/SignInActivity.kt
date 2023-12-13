@@ -82,8 +82,10 @@ class SignInActivity : AppCompatActivity() {
                     is Result.Success -> {
                         showLoading(false)
                         val user = User(
+                            name = hoho.data.loginResult.name,
                             token = hoho.data.loginResult.token,
                             email = email,
+                            phone = hoho.data.loginResult.phone,
                         )
                         viewModel.saveSession(user)
                         showSuccessDialog(title, message, next)

@@ -76,7 +76,7 @@ class HomeFragment : Fragment() {
                 requireActivity().finish()
             } else {
                 getStory()
-                binding.tvUsername.text = user.email
+                binding.tvUsername.text = user.name
             }
         }
     }

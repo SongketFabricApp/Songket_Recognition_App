@@ -15,12 +15,16 @@ import androidx.appcompat.widget.Toolbar
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.switchmaterial.SwitchMaterial
 import com.songketa.songket_recognition_app.R
 import com.songketa.songket_recognition_app.databinding.FragmentHomeBinding
 import com.songketa.songket_recognition_app.databinding.FragmentProfileBinding
+import com.songketa.songket_recognition_app.ui.ViewModelFactory
 import com.songketa.songket_recognition_app.ui.home.HomeFragment
+import com.songketa.songket_recognition_app.ui.home.HomeViewModel
+import com.songketa.songket_recognition_app.ui.signin.SignInActivity
 import com.songketa.songket_recognition_app.utils.SettingPreferences
 import com.songketa.songket_recognition_app.utils.ThemeModelFactory
 import com.songketa.songket_recognition_app.utils.ThemeViewModel
@@ -28,11 +32,24 @@ import com.songketa.songket_recognition_app.utils.ThemeViewModel
 
 class ProfileFragment : Fragment() {
     private lateinit var binding: FragmentProfileBinding
+    private val viewModel by viewModels<ProfileViewModel>{
+        ViewModelFactory.getInstance(requireContext())
+    }
     val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+//    override fun onCreate(savedInstanceState: Bundle?) {
+//        super.onCreate(savedInstanceState)
+//    }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        observeSession()
 
+        val callback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                replaceFragment(HomeFragment())
+            }
+        }
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
     }
 
     override fun onCreateView(
@@ -63,28 +80,36 @@ class ProfileFragment : Fragment() {
         binding.btnSwitch.setOnCheckedChangeListener { _: CompoundButton?, isChecked: Boolean ->
             themeViewModel.saveThemeSetting(isChecked)
         }
-        binding.card2.setOnClickListener {
+        binding.btnLanguage.setOnClickListener {
             startActivity(Intent(Settings.ACTION_LOCALE_SETTINGS))
+        }
+        binding.btnLogout.setOnClickListener {
+            logout()
         }
 
         return binding.root
     }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        val callback = object : OnBackPressedCallback(true) {
-            override fun handleOnBackPressed() {
-                replaceFragment(HomeFragment())
+    private fun observeSession() {
+        viewModel.getSession().observe(viewLifecycleOwner) { user ->
+            if (!user.isLogin) {
+                startActivity(Intent(requireContext(), SignInActivity::class.java))
+                requireActivity().finish()
+            } else {
+                binding.tvUsername.text = user.name
+                binding.tvEmail.text = user.email
+                binding.tvPhone.text = user.phone
             }
         }
-        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
     }
 
     private fun replaceFragment(fragment: Fragment) {
         requireActivity().supportFragmentManager.beginTransaction()
             .replace(R.id.frame_layout, fragment)
             .commit()
+    }
+
+    private fun logout() {
+        viewModel.logout()
     }
     companion object {
 

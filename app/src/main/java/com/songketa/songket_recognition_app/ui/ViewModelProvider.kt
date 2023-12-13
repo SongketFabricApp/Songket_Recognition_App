@@ -8,6 +8,7 @@ import com.songketa.songket_recognition_app.data.Repository
 import com.songketa.songket_recognition_app.di.Injection
 import com.songketa.songket_recognition_app.ui.home.HomeViewModel
 import com.songketa.songket_recognition_app.ui.listsongket.ListSongketViewModel
+import com.songketa.songket_recognition_app.ui.profile.ProfileViewModel
 import com.songketa.songket_recognition_app.ui.signin.SignInViewModel
 import com.songketa.songket_recognition_app.ui.signup.SignUpViewModel
 import com.songketa.songket_recognition_app.ui.welcome.WelcomeViewModel
@@ -29,6 +30,9 @@ class ViewModelFactory(private val repository: Repository) : ViewModelProvider.F
         }
         else if (modelClass.isAssignableFrom(SignUpViewModel::class.java)) {
             return SignUpViewModel(repository) as T
+        }
+        else if (modelClass.isAssignableFrom(ProfileViewModel::class.java)) {
+            return ProfileViewModel(repository) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
     }
