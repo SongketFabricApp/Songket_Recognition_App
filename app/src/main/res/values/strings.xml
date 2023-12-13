@@ -61,6 +61,7 @@
     <string name="register_succes_notif">Register Succes</string>
     <string name="next_notif">Next</string>
     <string name="greeting">Welcome %1$s</string>
+    <string name="what_s_new">What\'s new?</string>
 
 
 </resources>

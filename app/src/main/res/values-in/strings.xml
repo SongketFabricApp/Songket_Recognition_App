@@ -61,4 +61,5 @@
     <string name="register_succes_notif">Register berhasil</string>
     <string name="next_notif">Selanjutnya</string>
     <string name="greeting">Selamat datang %1$s</string>
+    <string name="what_s_new">What\'s new?</string>
 </resources>
