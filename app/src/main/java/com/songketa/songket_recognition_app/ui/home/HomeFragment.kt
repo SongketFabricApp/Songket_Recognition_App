@@ -6,10 +6,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.viewpager.widget.ViewPager.OnPageChangeListener
+import androidx.viewpager2.widget.ViewPager2
+import com.google.android.material.slider.Slider.OnChangeListener
 import com.songketa.songket_recognition_app.R
 import com.songketa.songket_recognition_app.adapter.HomeSongketAdapter
 import com.songketa.songket_recognition_app.databinding.FragmentHomeBinding
@@ -20,14 +25,28 @@ import com.songketa.songket_recognition_app.ui.maps.MapsActivity
 import com.songketa.songket_recognition_app.data.Result
 import com.songketa.songket_recognition_app.data.response.DatasetItem
 import com.songketa.songket_recognition_app.ui.signin.SignInActivity
+import com.synnapps.carouselview.CarouselView
+import com.synnapps.carouselview.ImageListener
 
 
 class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
 
+    private lateinit var viewPager2: ViewPager2
+    private lateinit var pageChangeListener: ViewPager2.OnPageChangeCallback
+
+    private val params = LinearLayout.LayoutParams(
+        LinearLayout.LayoutParams.WRAP_CONTENT,
+        LinearLayout.LayoutParams.WRAP_CONTENT
+    ).apply {
+        setMargins(8,0,8,0)
+    }
+
     private val viewModel by viewModels<HomeViewModel>{
         ViewModelFactory.getInstance(requireContext())
     }
+
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         observeSession()
@@ -44,6 +63,8 @@ class HomeFragment : Fragment() {
         val linearLayoutManager = LinearLayoutManager(requireContext())
         linearLayoutManager.orientation = LinearLayoutManager.VERTICAL
         binding.rvSongket.layoutManager = linearLayoutManager
+
+
 
         return view
     }
@@ -90,6 +111,7 @@ class HomeFragment : Fragment() {
             }
         }
     }
+
 
     private fun songketAdapter(listStory: List<DatasetItem>) {
         val adapter = HomeSongketAdapter(requireContext())
