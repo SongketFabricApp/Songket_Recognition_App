@@ -1,9 +1,12 @@
 package com.songketa.songket_recognition_app.ui.welcome
 
+import android.animation.AnimatorSet
+import android.animation.ObjectAnimator
 import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
 import androidx.activity.viewModels
@@ -29,6 +32,7 @@ class WelcomeActivity : AppCompatActivity() {
 
         viewModel.getSession().observe(this) { user ->
             if (!user.isLogin) {
+                playAnimation()
                 setupView()
                 setupAction()
             } else {
@@ -63,6 +67,24 @@ class WelcomeActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
 
+        }
+    }
+
+    private fun playAnimation() {
+        ObjectAnimator.ofFloat(binding.ivLogo, View.TRANSLATION_X, -30f, 30f).apply {
+            duration = 6000
+            repeatCount = ObjectAnimator.INFINITE
+            repeatMode = ObjectAnimator.REVERSE
+        }.start()
+
+        val title = ObjectAnimator.ofFloat(binding.tvTitle, View.ALPHA, 1f).setDuration(300)
+        val subtitle = ObjectAnimator.ofFloat(binding.tvSubtitle, View.ALPHA, 1f).setDuration(300)
+        val btnsignin = ObjectAnimator.ofFloat(binding.signInButton, View.ALPHA, 1f).setDuration(300)
+        val btnsignup = ObjectAnimator.ofFloat(binding.signUpButton, View.ALPHA, 1f).setDuration(300)
+
+        AnimatorSet().apply {
+            playSequentially(title,subtitle,btnsignin,btnsignup)
+            start()
         }
     }
 }

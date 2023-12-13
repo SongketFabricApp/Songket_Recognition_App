@@ -60,8 +60,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
-            android:autoStart="true"
-            android:flipInterval="4000"
+            android:autoStart="false"
             android:inAnimation="@android:anim/slide_out_right"
             android:outAnimation="@android:anim/slide_in_left"
             app:layout_constraintEnd_toEndOf="parent"
@@ -70,33 +69,17 @@
             app:layout_constraintHorizontal_bias="0.5">
 
             <ImageView
-                android:id="@+id/iv_slide1"
-                android:scaleType="centerCrop"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/bg_gradient">
-            </ImageView>
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:scaleType="fitCenter"
+                android:src="@drawable/circle"/>
             <ImageView
-                android:id="@+id/iv_slide2"
-                android:scaleType="centerCrop"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/bg_gradient">
-            </ImageView>
-            <ImageView
-                android:id="@+id/iv_slide3"
-                android:scaleType="centerCrop"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/logo">
-            </ImageView>
-            <ImageView
-                android:id="@+id/iv_slide4"
-                android:scaleType="centerCrop"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/icon_home_maps">
-            </ImageView>
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:scaleType="fitCenter"
+                android:src="@drawable/logo"/>
 
         </ViewFlipper>
 
@@ -187,7 +170,7 @@
             android:scaleType="fitCenter"
             android:background="@android:color/transparent"
             android:src="@drawable/icon_home_list"
-            app:layout_constraintEnd_toStartOf="@+id/imageButton8"
+            app:layout_constraintEnd_toStartOf="@+id/menu_artikel"
             app:layout_constraintStart_toEndOf="@+id/menu_scan"
             app:layout_constraintTop_toBottomOf="@+id/tv_menu" />
 
@@ -204,7 +187,7 @@
             app:layout_constraintTop_toBottomOf="@+id/menu_list" />
 
         <ImageButton
-            android:id="@+id/imageButton8"
+            android:id="@+id/menu_artikel"
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_marginTop="16dp"
@@ -228,29 +211,39 @@
             app:layout_constraintTop_toBottomOf="@+id/menu_list" />
 
 
-<!--        <com.synnapps.carouselview.CarouselView-->
-<!--            android:id="@+id/adView"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="200dp"-->
-<!--            android:layout_marginStart="16dp"-->
-<!--            android:layout_marginTop="24dp"-->
-<!--            android:layout_marginEnd="16dp"-->
-<!--            app:slideInterval="3000"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/menu_maps" />-->
-
-        <ImageView
+        <ViewFlipper
             android:id="@+id/adView"
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="42dp"
             android:layout_marginEnd="16dp"
+            android:autoStart="true"
+            android:flipInterval="6000"
+            android:inAnimation="@android:anim/slide_out_right"
+            android:outAnimation="@android:anim/slide_in_left"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/menu_maps"/>
+            app:layout_constraintTop_toBottomOf="@+id/menu_maps">
 
+            <ImageView
+                android:id="@+id/iv_slide1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:scaleType="centerCrop"
+                android:src="@drawable/bg_gradient" />
+
+            <ImageView
+                android:id="@+id/iv_slide2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:scaleType="centerCrop"
+                android:src="@drawable/bg_gradient" />
+
+        </ViewFlipper>
 
         <TextView
             android:id="@+id/textView12"
@@ -267,7 +260,7 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_songket"
-            android:layout_width="403dp"
+            android:layout_width="match_parent"
             android:layout_height="184dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"

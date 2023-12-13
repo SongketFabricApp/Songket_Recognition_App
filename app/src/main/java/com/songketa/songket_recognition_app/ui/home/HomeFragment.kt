@@ -90,6 +90,9 @@ class HomeFragment : Fragment() {
         binding.menuList.setOnClickListener {
             startActivity(Intent(requireContext(), ListSongketActivity::class.java))
         }
+        binding.menuArtikel.setOnClickListener {
+            showToast("Features not available yet")
+        }
     }
 
     private fun getStory(){
