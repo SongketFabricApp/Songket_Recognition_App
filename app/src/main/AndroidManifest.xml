@@ -36,7 +36,7 @@
         -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyAUd7wfyNrYmiwFcPu_oi1bNrEalQg7q98" />
+            android:value="AIzaSyAUd7wfyNr  YmiwFcPu_oi1bNrEalQg7q98" />
 
         <activity
             android:name=".ui.maps.MapsActivity"
@@ -46,22 +46,13 @@
             android:name=".ui.listsongket.ListSongketActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.camera.CameraActivity"
-            android:exported="false" />
-        <activity
             android:name=".MainActivity"
             android:exported="false" />
         <activity
             android:name=".ui.bookmark.BookmarkActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.home.HomeActivity"
-            android:exported="false" />
-        <activity
             android:name=".ui.detailsongket.DetailSongketActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.profile.ProfileActivity"
             android:exported="false" />
         <activity
             android:name=".ui.signup.SignUpActivity"

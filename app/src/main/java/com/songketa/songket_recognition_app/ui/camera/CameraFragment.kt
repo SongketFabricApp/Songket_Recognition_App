@@ -19,6 +19,7 @@ import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.motion.widget.Debug.getLocation
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
@@ -29,16 +30,13 @@ import com.songketa.songket_recognition_app.utils.CameraUtils
 import java.io.File
 
 
-class CameraFragment : Fragment(), View.OnClickListener, LocationListener {
+class CameraFragment : Fragment(), View.OnClickListener{
 
     private var _binding: FragmentCameraBinding? = null
     private val binding get() = _binding!!
-    private lateinit var locationManager: LocationManager
     private lateinit var currentPhotoPath: String
     private var getFile: File? = null
     private var CameraUtils = CameraUtils()
-    private var lat: Float = -7.482145F
-    private var lon: Float = 110.77294F
 
 
 
@@ -50,37 +48,15 @@ class CameraFragment : Fragment(), View.OnClickListener, LocationListener {
             getFile = myFile
             val result = BitmapFactory.decodeFile(myFile.path)
             binding.ivInputImage.setImageBitmap(result)
-
-            updateImageViewColor()
+//            updateImageViewColor()
         }
-    }
-
-    // Fungsi untuk mengupdate warna ImageView
-    private fun updateImageViewColor() {
-        val themeColor: Int
-
-        // Tentukan warna berdasarkan tema atau state tertentu
-        if (isDarkTheme()) {
-            themeColor = ContextCompat.getColor(requireContext(), R.color.secondary)
-        } else {
-            themeColor = ContextCompat.getColor(requireContext(), R.color.secondary)
-        }
-
-        // Set warna ke ImageView
-        binding.ivInputImage.setColorFilter(themeColor)
-    }
-
-    // Fungsi untuk mengecek apakah tema yang sedang berjalan adalah tema gelap
-    private fun isDarkTheme(): Boolean {
-        val currentNightMode = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
-        return currentNightMode == Configuration.UI_MODE_NIGHT_YES
     }
 
     private val launcherIntentGallery = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
-    ) { result ->
-        if (result.resultCode == AppCompatActivity.RESULT_OK) {
-            val selectedImg: Uri = result.data?.data as Uri
+    ) {
+        if (it.resultCode == AppCompatActivity.RESULT_OK) {
+            val selectedImg: Uri = it.data?.data as Uri
             val myFile = CameraUtils.uriToFile(selectedImg, requireContext())
             getFile = myFile
             binding.ivInputImage.setImageURI(selectedImg)
@@ -102,7 +78,6 @@ class CameraFragment : Fragment(), View.OnClickListener, LocationListener {
         binding.btnGallery.setOnClickListener(this)
         binding.btnCheckOut.setOnClickListener(this)
 
-        getLocation()
         val callback = object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
                 replaceFragment(HomeFragment())
@@ -119,7 +94,7 @@ class CameraFragment : Fragment(), View.OnClickListener, LocationListener {
     override fun onClick(v: View) {
         when (v.id) {
             binding.btnCamera.id -> {
-//                openCamera()
+                openCamera()
             }
             binding.btnGallery.id -> {
                 openGallery()
@@ -136,41 +111,55 @@ class CameraFragment : Fragment(), View.OnClickListener, LocationListener {
     }
 
     private fun openCamera() {
-        val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-        intent.resolveActivity(requireActivity().packageManager)
-
-        CameraUtils.createTempFile(requireActivity().application).also { tempFile ->
-            val photoURI: Uri = FileProvider.getUriForFile(
+        if (ContextCompat.checkSelfPermission(
                 requireContext(),
-                "${requireContext().packageName}.provider",
-                tempFile
-            )
+                Manifest.permission.CAMERA
+            ) == PackageManager.PERMISSION_GRANTED
+        ) {
+            val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+            intent.resolveActivity(requireActivity().packageManager)
 
-            currentPhotoPath = tempFile.absolutePath
-            intent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI)
-            launcherIntentCamera.launch(intent)
+            CameraUtils.createTempFile(requireActivity().application).also { tempFile ->
+                val photoURI: Uri = FileProvider.getUriForFile(
+                    requireContext(),
+                    "${requireContext().packageName}.provider",
+                    tempFile
+                )
+
+                currentPhotoPath = tempFile.absolutePath
+                intent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI)
+                launcherIntentCamera.launch(intent)
+            }
+        }
+        else{
+            requestCameraPermission()
         }
     }
 
-    private fun openGallery() {
-        val intent = Intent()
-        intent.action = Intent.ACTION_GET_CONTENT
-        intent.type = "image/*"
-        val chooser = Intent.createChooser(intent, "Choose a Picture")
-        launcherIntentGallery.launch(chooser)
+    private fun requestCameraPermission() {
+        requestPermissions(arrayOf(Manifest.permission.CAMERA), CAMERA_PERMISSION_REQUEST_CODE)
     }
-
-
-    private fun getLocation() {
-        locationManager = requireContext().getSystemService(Context.LOCATION_SERVICE) as LocationManager
-        if ((ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED)) {
-            ActivityCompat.requestPermissions(requireActivity(), arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), 2)
+        private fun openGallery() {
+            val intent = Intent()
+            intent.action = Intent.ACTION_GET_CONTENT
+            intent.type = "image/*"
+            val chooser = Intent.createChooser(intent, "Choose a Picture")
+            launcherIntentGallery.launch(chooser)
         }
-        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000, 5f, this, requireActivity().mainLooper)
+//    private fun updateImageViewColor() {
+//        val themeColor: Int
+//        if (isDarkTheme()) {
+//            themeColor = ContextCompat.getColor(requireContext(), R.color.secondary)
+//        } else {
+//            themeColor = ContextCompat.getColor(requireContext(), R.color.secondary)
+//        }
+//        binding.ivInputImage.setColorFilter(themeColor)
+//    }
+    private fun isDarkTheme(): Boolean {
+        val currentNightMode = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
+        return currentNightMode == Configuration.UI_MODE_NIGHT_YES
     }
-
-    override fun onLocationChanged(location: Location) {
-        lon = location.longitude.toFloat()
-        lat = location.latitude.toFloat()
+    companion object {
+        private const val CAMERA_PERMISSION_REQUEST_CODE = 123
     }
 }
