@@ -5,7 +5,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
 import com.google.gson.Gson
 import com.songketa.songket_recognition_app.data.api.ApiConfig
-import com.songketa.songket_recognition_app.data.api.ApiConfig.token
 import com.songketa.songket_recognition_app.data.api.ApiService
 import com.songketa.songket_recognition_app.data.model.User
 import com.songketa.songket_recognition_app.data.response.DatasetItem
@@ -17,7 +16,6 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 import okhttp3.MultipartBody
-import okhttp3.RequestBody
 import retrofit2.HttpException
 
 class Repository private constructor(private val userPreference: UserPreferences, private val apiService: ApiService){
@@ -28,7 +26,7 @@ class Repository private constructor(private val userPreference: UserPreferences
             if(response.error == false){
                 val user = User(
                     name = response.loginResult.name,
-                    email = email,
+                    email = response.loginResult.email,
                     phone = response.loginResult.phone,
                     token = response.loginResult.token,
                     isLogin = true
@@ -71,11 +69,11 @@ class Repository private constructor(private val userPreference: UserPreferences
     fun getSongket(): LiveData<Result<List<DatasetItem>>> = liveData {
         emit(Result.Loading)
         try {
-            var songketList: List<DatasetItem>
+            val songketList: List<DatasetItem>
             val user = runBlocking { userPreference.getSession().first() }
-            val response = ApiConfig.getApiService(user.token)
+            val response = ApiConfig.getApiService()
             val songketResponse =response.getListSongket()
-            songketList = songketResponse.listStory
+            songketList = songketResponse.dataset
 
             if (songketResponse.error == false) {
                 emit(Result.Success(songketList))
@@ -96,7 +94,7 @@ class Repository private constructor(private val userPreference: UserPreferences
         emit(Result.Loading)
         try {
             val user = runBlocking { userPreference.getSession().first() }
-            val response = ApiConfig.getApiService(user.token)
+            val response = ApiConfig.getApiService()
             val responsedetail = response.postImage(file)
             emit(Result.Success(responsedetail))
         } catch (e: Exception) {

@@ -9,7 +9,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object ApiConfig {
     var token = ""
-    fun getApiService(token: String): ApiService {
+    fun getApiService(): ApiService {
         val loggingInterceptor = if(BuildConfig.DEBUG) {
             HttpLoggingInterceptor()
                 .setLevel(HttpLoggingInterceptor.Level.BODY)
@@ -20,7 +20,8 @@ object ApiConfig {
         val authInterceptor = Interceptor { chain ->
             val req = chain.request()
             val requestHeaders = req.newBuilder()
-                .addHeader("Authorization", "Bearer $token")
+//                .addHeader("Authorization", "Bearer $token")
+                .addHeader("x-api-key", BuildConfig.API_KEY)
                 .build()
             chain.proceed(requestHeaders)
         }

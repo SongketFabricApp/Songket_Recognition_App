@@ -13,28 +13,31 @@ import com.songketa.songket_recognition_app.ui.signin.SignInViewModel
 import com.songketa.songket_recognition_app.ui.signup.SignUpViewModel
 import com.songketa.songket_recognition_app.ui.welcome.WelcomeViewModel
 
-class ViewModelFactory(private val repository: Repository) : ViewModelProvider.Factory {
+class ViewModelFactory(private val repository: Repository) : ViewModelProvider.NewInstanceFactory() {
 
+    @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(ListSongketViewModel::class.java)) {
-            return ListSongketViewModel(repository) as T
+        return when {
+            modelClass.isAssignableFrom(ListSongketViewModel::class.java) -> {
+                ListSongketViewModel(repository) as T
+            }
+            modelClass.isAssignableFrom(HomeViewModel::class.java) -> {
+                HomeViewModel(repository) as T
+            }
+            modelClass.isAssignableFrom(SignInViewModel::class.java) -> {
+                SignInViewModel(repository) as T
+            }
+            modelClass.isAssignableFrom(WelcomeViewModel::class.java) -> {
+                WelcomeViewModel(repository) as T
+            }
+            modelClass.isAssignableFrom(SignUpViewModel::class.java) -> {
+                SignUpViewModel(repository) as T
+            }
+            modelClass.isAssignableFrom(ProfileViewModel::class.java) -> {
+                ProfileViewModel(repository) as T
+            }
+            else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }
-        else if (modelClass.isAssignableFrom(HomeViewModel::class.java)) {
-            return HomeViewModel(repository) as T
-        }
-        else if (modelClass.isAssignableFrom(SignInViewModel::class.java)) {
-            return SignInViewModel(repository) as T
-        }
-        else if (modelClass.isAssignableFrom(WelcomeViewModel::class.java)) {
-            return WelcomeViewModel(repository) as T
-        }
-        else if (modelClass.isAssignableFrom(SignUpViewModel::class.java)) {
-            return SignUpViewModel(repository) as T
-        }
-        else if (modelClass.isAssignableFrom(ProfileViewModel::class.java)) {
-            return ProfileViewModel(repository) as T
-        }
-        throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
     }
 
     companion object {
@@ -49,10 +52,6 @@ class ViewModelFactory(private val repository: Repository) : ViewModelProvider.F
             }
             return instance as ViewModelFactory
         }
-//        fun getInstance(requireActivity: FragmentActivity): ViewModelFactory =
-//            instance ?: synchronized(this) {
-//                instance ?: ViewModelFactory(Injection.provideRepository(context))
-//            }.also { instance = it }
     }
 
 }

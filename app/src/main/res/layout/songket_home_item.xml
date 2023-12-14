@@ -10,6 +10,8 @@
     android:layout_marginTop="4dp"
     android:layout_marginEnd="8dp"
     android:layout_marginBottom="4dp"
+    android:background="@drawable/bg_stroke"
+    card_view:circularflow_radiusInDP="15dp"
     card_view:cardCornerRadius="4dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -17,29 +19,30 @@
         android:layout_height="wrap_content"
         android:padding="4dp">
 
-
         <ImageView
             android:id="@+id/iv_item_songket_picture"
-            android:layout_width="122dp"
+            android:layout_width="144dp"
             android:layout_height="144dp"
             android:layout_margin="0dp"
             android:contentDescription="@string/image_songket"
+            android:scaleType="fitXY"
             android:src="@color/black"
             card_view:layout_constraintBottom_toBottomOf="parent"
             card_view:layout_constraintStart_toStartOf="parent"
             card_view:layout_constraintTop_toTopOf="parent"
-            card_view:layout_constraintVertical_bias="1.0"
-            tools:src="@tools:sample/avatars"/>
+            card_view:layout_constraintVertical_bias="0.0"
+            tools:src="@tools:sample/avatars" />
 
         <TextView
             android:id="@+id/tv_item_songket"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
             android:fontFamily="@font/roboto_bold"
+            android:textColor="@color/primary"
             android:textSize="20sp"
             android:textStyle="normal"
-            android:textColor="@color/primary"
             card_view:layout_constraintBottom_toBottomOf="parent"
             card_view:layout_constraintEnd_toEndOf="parent"
             card_view:layout_constraintHorizontal_bias="0.0"
@@ -50,29 +53,33 @@
 
         <TextView
             android:id="@+id/tv_item_desc"
-            android:layout_width="259dp"
+            android:layout_width="wrap_content"
             android:layout_height="67dp"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
             android:fontFamily="@font/roboto_light"
             card_view:layout_constraintBottom_toBottomOf="parent"
-            card_view:layout_constraintEnd_toEndOf="@+id/tv_item_origin"
+            card_view:layout_constraintEnd_toEndOf="parent"
             card_view:layout_constraintHorizontal_bias="0.0"
-            card_view:layout_constraintStart_toStartOf="@+id/tv_item_origin"
+            card_view:layout_constraintStart_toEndOf="@+id/iv_item_songket_picture"
             card_view:layout_constraintTop_toBottomOf="@+id/tv_item_origin"
-            card_view:layout_constraintVertical_bias="1.0"
+            card_view:layout_constraintVertical_bias="0.0"
             tools:text="lorem ipsum dolor sit amet" />
 
         <TextView
             android:id="@+id/tv_item_origin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="12dp"
+            android:layout_marginEnd="8dp"
             android:fontFamily="@font/roboto_medium"
             android:text="@string/province"
             android:textColor="@color/primary"
-            card_view:layout_constraintEnd_toEndOf="@+id/tv_item_songket"
+            card_view:layout_constraintEnd_toEndOf="parent"
             card_view:layout_constraintHorizontal_bias="0.0"
-            card_view:layout_constraintStart_toStartOf="@+id/tv_item_songket"
+            card_view:layout_constraintStart_toEndOf="@+id/iv_item_songket_picture"
             card_view:layout_constraintTop_toBottomOf="@+id/tv_item_songket" />
 
 

@@ -3,10 +3,8 @@ package com.songketa.songket_recognition_app.data.api
 import com.songketa.songket_recognition_app.data.response.LoginResponse
 import com.songketa.songket_recognition_app.data.response.PostResponse
 import com.songketa.songket_recognition_app.data.response.RegisterResponse
-import com.songketa.songket_recognition_app.data.response.SongketResponse
+import com.songketa.songket_recognition_app.data.response.SongketDataResponse
 import okhttp3.MultipartBody
-import okhttp3.RequestBody
-import retrofit2.Call
 import retrofit2.http.*
 
 interface ApiService {
@@ -35,7 +33,7 @@ interface ApiService {
     )
     @GET("dataset")
     suspend fun getListSongket(
-    ): SongketResponse
+    ): SongketDataResponse
 
     @Multipart
     @POST("dataset")
