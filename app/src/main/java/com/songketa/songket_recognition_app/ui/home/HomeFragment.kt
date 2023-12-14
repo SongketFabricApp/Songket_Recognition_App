@@ -1,6 +1,8 @@
 package com.songketa.songket_recognition_app.ui.home
 
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,10 +10,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.widget.ViewPager2
+import android.Manifest
 import com.songketa.songket_recognition_app.R
 import com.songketa.songket_recognition_app.adapter.HomeSongketAdapter
 import com.songketa.songket_recognition_app.databinding.FragmentHomeBinding
@@ -23,8 +27,10 @@ import com.songketa.songket_recognition_app.data.Result
 import com.songketa.songket_recognition_app.data.response.DatasetItem
 import com.songketa.songket_recognition_app.ui.signin.SignInActivity
 
+
 class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
+    private val LOCATION_PERMISSION_REQUEST_CODE = 123
 
     private lateinit var viewPager2: ViewPager2
     private lateinit var pageChangeListener: ViewPager2.OnPageChangeCallback
@@ -33,10 +39,10 @@ class HomeFragment : Fragment() {
         LinearLayout.LayoutParams.WRAP_CONTENT,
         LinearLayout.LayoutParams.WRAP_CONTENT
     ).apply {
-        setMargins(8,0,8,0)
+        setMargins(8, 0, 8, 0)
     }
 
-    private val viewModel by viewModels<HomeViewModel>{
+    private val viewModel by viewModels<HomeViewModel> {
         ViewModelFactory.getInstance(requireContext())
     }
 
@@ -76,10 +82,31 @@ class HomeFragment : Fragment() {
             }
         }
     }
+
     private fun setupMenuClickListeners() {
         binding.menuMaps.setOnClickListener {
-            startActivity(Intent(requireContext(), MapsActivity::class.java))
+            if (checkLocationPermission()) {
+                val keyword = "toko kain"
+                val gmmIntentUri = Uri.parse("geo:0,0?q=$keyword")
+
+                val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
+                mapIntent.setPackage("com.google.android.apps.maps")
+
+                if (mapIntent.resolveActivity(requireContext().packageManager) != null) {
+                    startActivity(mapIntent)
+                } else {
+                    showToast("Aplikasi Google Maps tidak terinstall.")
+                }
+            } else {
+                requestLocationPermission()
+            }
         }
+
+
+        binding.menuScan.setOnClickListener {
+            onButtonClicked()
+        }
+
         binding.menuScan.setOnClickListener {
             onButtonClicked()
         }
@@ -91,17 +118,19 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun getStory(){
-        viewModel.getSongket().observe(viewLifecycleOwner){ story ->
-            if(story != null){
-                when(story){
-                    is Result.Loading ->{
+    private fun getStory() {
+        viewModel.getSongket().observe(viewLifecycleOwner) { story ->
+            if (story != null) {
+                when (story) {
+                    is Result.Loading -> {
                         showLoading(true)
                     }
+
                     is Result.Success -> {
                         val listStory = story.data
                         songketAdapter(listStory)
                     }
+
                     is Result.Error -> {
                         showLoading(false)
                         showToast(story.error)
@@ -133,6 +162,35 @@ class HomeFragment : Fragment() {
         fragmentTransaction.replace(R.id.frame_layout, tfFragment)
         fragmentTransaction.addToBackStack(null)
         fragmentTransaction.commit()
+    }
+
+    private fun checkLocationPermission(): Boolean {
+        return ContextCompat.checkSelfPermission(
+            requireContext(),
+            Manifest.permission.ACCESS_FINE_LOCATION
+        ) == PackageManager.PERMISSION_GRANTED
+    }
+
+    private fun requestLocationPermission() {
+        requestPermissions(
+            arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
+            LOCATION_PERMISSION_REQUEST_CODE
+        )
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode == LOCATION_PERMISSION_REQUEST_CODE) {
+            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                showToast("Izin lokasi diberikan. Coba lagi.")
+            } else {
+                showToast("Izin lokasi ditolak.")
+            }
+        }
     }
 
     companion object {
