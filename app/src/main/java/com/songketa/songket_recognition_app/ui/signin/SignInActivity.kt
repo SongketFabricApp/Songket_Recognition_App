@@ -89,20 +89,20 @@ class SignInActivity : AppCompatActivity() {
     }
 
 
-    private fun showSuccessDialog(title: String, message: String, next: String) {
-        AlertDialog.Builder(this).apply {
-            setTitle(title)
-            setMessage(message)
-            setPositiveButton(next) { _, _ ->
-                val intent = Intent(context, MainActivity::class.java)
-                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-                startActivity(intent)
-                finish()
-            }
-            create()
-            show()
-        }
-    }
+//    private fun showSuccessDialog(title: String, message: String, next: String) {
+//        AlertDialog.Builder(this).apply {
+//            setTitle(title)
+//            setMessage(message)
+//            setPositiveButton(next) { _, _ ->
+//                val intent = Intent(context, MainActivity::class.java)
+//                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+//                startActivity(intent)
+//                finish()
+//            }
+//            create()
+//            show()
+//        }
+//    }
 
     private fun showLoading(isLoading: Boolean) {
         binding.progressIndicator.visibility = if (isLoading) View.VISIBLE else View.GONE
@@ -112,44 +112,6 @@ class SignInActivity : AppCompatActivity() {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 
-    private fun login(){
-        binding.signInButton.setOnClickListener {
-            if (confirmAccount()) {
-                showLoading(true)
-                val email = binding.emailEditText.text.toString()
-                val pass = binding.passwordEditText.text.toString()
-
-                viewModel.login(email = email, password = pass).observe(this) { hoho ->
-
-                    when (hoho) {
-                        is Result.Loading -> {
-                            showLoading(true)
-                        }
-                        is Result.Success -> {
-                            showLoading(false)
-                            val user = User(
-                                name = hoho.data.loginResult.name,
-                                token = hoho.data.loginResult.token,
-                                email = hoho.data.loginResult.email,
-                                phone = hoho.data.loginResult.phone,
-                            )
-                            viewModel.saveSession(user)
-                            // Show success dialog
-                            val title = getString(R.string.head_notif)
-                            val message = getString(R.string.login_succes_notif)
-                            val next = getString(R.string.next_notif)
-                            showSuccessDialogWithIntent(title, message, next)
-                        }
-                        is Result.Error -> {
-                            showLoading(false)
-                            showToast(hoho.error)
-                        }
-                    }
-                }
-            }
-        }
-
-    }
     @SuppressLint("CheckResult")
     private fun processingLogin() {
         val emailStream = RxTextView.textChanges(binding.emailEditText)
@@ -179,17 +141,50 @@ class SignInActivity : AppCompatActivity() {
         }
 
         binding.seePassword.setOnCheckedChangeListener { _, isChecked ->
-        binding.passwordEditText.transformationMethod = if (isChecked) {
-            HideReturnsTransformationMethod.getInstance()
-        } else {
-            PasswordTransformationMethod.getInstance()
+            binding.passwordEditText.transformationMethod = if (isChecked) {
+                HideReturnsTransformationMethod.getInstance()
+            } else {
+                PasswordTransformationMethod.getInstance()
+            }
+            binding.passwordEditText.text?.let { binding.passwordEditText.setSelection(it.length) }
         }
-        binding.passwordEditText.text?.let { binding.passwordEditText.setSelection(it.length) }
+
+        binding.signInButton.setOnClickListener {
+            if (confirmAccount()) {
+                showLoading(true)
+                val email = binding.emailEditText.text.toString()
+                val pass = binding.passwordEditText.text.toString()
+
+                viewModel.login(email = email, password = pass).observe(this) { hoho ->
+                    when (hoho) {
+                        is Result.Loading -> {
+                            showLoading(true)
+                        }
+                        is Result.Success -> {
+                            // Logic for a successful login (e.g., save session, show success dialog)
+                            showLoading(false)
+                            val user = User(
+                                name = hoho.data.loginResult.name,
+                                token = hoho.data.loginResult.token,
+                                email = email,
+                                phone = hoho.data.loginResult.phone,
+                            )
+                            viewModel.saveSession(user)
+                            // Show success dialog
+                            val title = getString(R.string.head_notif)
+                            val message = getString(R.string.login_succes_notif)
+                            val next = getString(R.string.next_notif)
+                            showSuccessDialogWithIntent(title, message, next)
+                        }
+                        is Result.Error -> {
+                            showLoading(false)
+                            showToast(hoho.error)
+                        }
+                    }
+                }
+            }
         }
-        login()
     }
-
-
 
     private fun showSuccessDialogWithIntent(title: String, message: String, next: String) {
         AlertDialog.Builder(this).apply {
