@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/accent"
+    android:background="@color/bgcolor"
     tools:context=".ui.signin.SignInActivity">
 
     <com.google.android.material.progressindicator.LinearProgressIndicator
@@ -23,9 +23,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="52dp"
         android:fontFamily="@font/roboto_bold"
-        android:text="@string/login_to_your_account"
+        android:text="@string/signin_to_your_account"
         android:textAlignment="center"
-        android:textColor="@color/black"
+        android:textColor="@color/bgTextColor"
         android:textSize="22sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -37,7 +37,7 @@
         android:id="@+id/iv_logo"
         android:layout_width="247dp"
         android:layout_height="229dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="45dp"
         android:contentDescription="@string/songketa_logo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
@@ -52,7 +52,9 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="20dp"
+        android:layout_marginStart="35dp"
         android:text="@string/email"
+        android:textColor="@color/bgTextColor"
         android:textSize="18sp"
         android:alpha="0"
         android:fontFamily="@font/roboto_medium"
@@ -65,27 +67,22 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="12dp"
-        app:errorEnabled="true"
-        android:alpha="0"
-        android:hint="@string/insert_your_email"
-        app:errorTextColor="@color/black"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/emailTextView"
         app:startIconDrawable="@drawable/ic_email"
-        tools:alpha="100">
+        android:alpha="1">
 
         <com.songketa.songket_recognition_app.customview.CustomEditText
             android:id="@+id/emailEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/white"
             android:ems="10"
-            android:fontFamily="@font/roboto_regular"
+            android:hint="@string/enter_your_email"
             android:inputType="textEmailAddress"
-            tools:alpha="100" />
+            tools:ignore="SpeakableTextPresentCheck" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
@@ -94,6 +91,9 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
         android:text="@string/password"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="35dp"
+        android:textColor="@color/bgTextColor"
         android:alpha="0"
         android:fontFamily="@font/roboto_medium"
         app:layout_constraintStart_toStartOf="parent"
@@ -106,25 +106,22 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="12dp"
-        android:alpha="0"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:hint="@string/insert_your_password"
         app:layout_constraintTop_toBottomOf="@+id/passwordTextView"
         app:startIconDrawable="@drawable/ic_pass"
-        tools:alpha="100">
+        android:alpha="1">
 
         <com.songketa.songket_recognition_app.customview.CustomPassword
             android:id="@+id/passwordEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/white"
             android:ems="10"
-            android:fontFamily="@font/roboto_regular"
             android:inputType="textPassword"
-            tools:alpha="100" />
+            tools:ignore="SpeakableTextPresentCheck"
+            android:hint="@string/enter_your_password"/>
 
         <com.google.android.material.checkbox.MaterialCheckBox
             android:id="@+id/seePassword"
@@ -133,8 +130,8 @@
             android:fontFamily="@font/roboto_medium"
             android:paddingStart="9dp"
             android:text="@string/show_password"
+            android:textColor="@color/bgTextColor"
             android:textSize="15sp"
-            app:passwordToggleEnabled="true"
             tools:ignore="RtlSymmetry" />
     </com.google.android.material.textfield.TextInputLayout>
 

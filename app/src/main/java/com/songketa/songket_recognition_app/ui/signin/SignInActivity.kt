@@ -191,6 +191,7 @@ class SignInActivity : AppCompatActivity() {
             setTitle(title)
             setMessage(message)
             setPositiveButton(next) { _, _ ->
+                // Intent ke MainActivity
                 val intent = Intent(this@SignInActivity, MainActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
                 startActivity(intent)
@@ -200,6 +201,7 @@ class SignInActivity : AppCompatActivity() {
             show()
         }
     }
+
 
     private fun confirmAccount(): Boolean {
         val valid: Boolean?
