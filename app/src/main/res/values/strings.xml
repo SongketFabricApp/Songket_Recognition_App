@@ -44,7 +44,7 @@
     <string name="galery">Galery</string>
     <string name="check_out">Check Out</string>
     <string name="button_language">Button Language</string>
-    <string name="eye_friendly_mode">Eye Friendly Mode</string>
+    <string name="eye_friendly_mode">Dark Mode</string>
     <string name="title_activity_maps">MapsActivity</string>
     <string name="normal">Normal</string>
     <string name="satellite">Satellite</string>

@@ -46,7 +46,6 @@ android {
 }
 
 dependencies {
-
     implementation ("com.synnapps:carouselview:0.1.5")
 
     implementation("androidx.datastore:datastore-preferences:1.0.0")
