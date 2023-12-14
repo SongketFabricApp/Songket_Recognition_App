@@ -16,6 +16,7 @@ import android.view.WindowManager
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
+import androidx.core.content.ContextCompat.startActivity
 import com.songketa.songket_recognition_app.MainActivity
 import com.songketa.songket_recognition_app.R
 import com.songketa.songket_recognition_app.data.model.User
@@ -119,12 +120,12 @@ class SignInActivity : AppCompatActivity() {
                 val pass = binding.passwordEditText.text.toString()
 
                 viewModel.login(email = email, password = pass).observe(this) { hoho ->
+
                     when (hoho) {
                         is Result.Loading -> {
                             showLoading(true)
                         }
                         is Result.Success -> {
-                            // Logic for a successful login (e.g., save session, show success dialog)
                             showLoading(false)
                             val user = User(
                                 name = hoho.data.loginResult.name,
