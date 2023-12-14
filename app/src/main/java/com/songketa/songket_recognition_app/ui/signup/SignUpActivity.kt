@@ -31,6 +31,7 @@ import com.songketa.songket_recognition_app.utils.enable
 import io.reactivex.Observable
 import com.songketa.songket_recognition_app.utils.softkeyboard
 
+
 class SignUpActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySignUpBinding
     private val viewModel by viewModels<SignUpViewModel>{
@@ -71,8 +72,21 @@ class SignUpActivity : AppCompatActivity() {
             )
         }
         supportActionBar?.hide()
+        showPassword()
 
     }
+    private fun showPassword() {
+        binding.showPassword.setOnCheckedChangeListener { _, isChecked ->
+            val editText = binding.passwordField // Assuming password_field is the id of your EditText inside TextInputLayout
+            editText.transformationMethod = if (isChecked) {
+                HideReturnsTransformationMethod.getInstance()
+            } else {
+                PasswordTransformationMethod.getInstance()
+            }
+            editText.text?.let { editText.setSelection(it.length) }
+        }
+    }
+
 
     private fun showSuccessDialog(title: String, message: String, next: String) {
         AlertDialog.Builder(this).apply {
@@ -158,44 +172,40 @@ class SignUpActivity : AppCompatActivity() {
 
     @SuppressLint("CheckResult")
     private fun processingSignup() {
-
         val usernameStream = RxTextView.textChanges(binding.usernameField)
             .skipInitialValue()
-            .map {
-                binding.usernameField.error != null
-            }
+            .map { it.isNotEmpty() && binding.tilUsername.error == null }
+
         val emailStream = RxTextView.textChanges(binding.emailField)
             .skipInitialValue()
-            .map {
-                binding.emailField.error != null
-            }
+            .map { it.isNotEmpty() && binding.tilEmail.error == null }
 
         val phoneStream = RxTextView.textChanges(binding.phoneField)
             .skipInitialValue()
-            .map {
-                binding.phoneField.error != null
-            }
+            .map { it.isNotEmpty() && binding.tilPhone.error == null }
 
         val passwordStream = RxTextView.textChanges(binding.passwordField)
             .skipInitialValue()
-            .map {
-                binding.passwordField.error != null
-            }
+            .map { it.isNotEmpty() && isValidPassword(it.toString()) && binding.tilPassword.error == null }
 
         val invalidFieldStream = Observable.combineLatest(
             usernameStream,
             emailStream,
             phoneStream,
             passwordStream
-        ) { usernameInvalid, emailInvalid, phoneInvalid, passwordInvalid ->
-            !usernameInvalid && !emailInvalid && !phoneInvalid && !passwordInvalid
+        ) { usernameValid, emailValid, phoneValid, passwordValid ->
+            usernameValid && emailValid && phoneValid && passwordValid
         }
 
         invalidFieldStream.subscribe { isValid ->
-            if (isValid) binding.btnSignUp.enable() else binding.btnSignUp.disable()
+            if (isValid) {
+                binding.btnSignUp.enable()
+            } else {
+                binding.btnSignUp.disable()
+            }
         }
 
-        binding.tvSigninHere.setOnClickListener{
+        binding.tvSigninHere.setOnClickListener {
             navigateToSignInActivity()
         }
 
@@ -231,6 +241,14 @@ class SignUpActivity : AppCompatActivity() {
             }
         }
     }
+
+    // Add this function to validate the password
+    private fun isValidPassword(password: String): Boolean {
+        // Implement your password validation logic here
+        // For example, you can check if the password meets certain criteria (e.g., length, special characters)
+        return password.length >= 8 // Modify this condition based on your requirements
+    }
+
 }
 
 

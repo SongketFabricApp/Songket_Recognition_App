@@ -1,21 +1,17 @@
 package com.songketa.songket_recognition_app.ui.home
 
-import android.app.ListActivity
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.viewpager.widget.ViewPager.OnPageChangeListener
 import androidx.viewpager2.widget.ViewPager2
-import com.google.android.material.slider.Slider.OnChangeListener
 import com.songketa.songket_recognition_app.R
 import com.songketa.songket_recognition_app.adapter.HomeSongketAdapter
 import com.songketa.songket_recognition_app.databinding.FragmentHomeBinding
@@ -26,9 +22,6 @@ import com.songketa.songket_recognition_app.ui.maps.MapsActivity
 import com.songketa.songket_recognition_app.data.Result
 import com.songketa.songket_recognition_app.data.response.DatasetItem
 import com.songketa.songket_recognition_app.ui.signin.SignInActivity
-import com.synnapps.carouselview.CarouselView
-import com.synnapps.carouselview.ImageListener
-
 
 class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
