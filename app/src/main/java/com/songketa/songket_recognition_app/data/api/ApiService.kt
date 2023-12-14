@@ -1,5 +1,6 @@
 package com.songketa.songket_recognition_app.data.api
 
+import com.songketa.songket_recognition_app.data.response.DetailSongketResponse
 import com.songketa.songket_recognition_app.data.response.LoginResponse
 import com.songketa.songket_recognition_app.data.response.PostResponse
 import com.songketa.songket_recognition_app.data.response.RegisterResponse
@@ -34,6 +35,11 @@ interface ApiService {
     @GET("dataset")
     suspend fun getListSongket(
     ): SongketDataResponse
+
+    @GET("dataset/{id}")
+    suspend fun getDetailStory(
+        @Path("id") id: String
+    ): DetailSongketResponse
 
     @Multipart
     @POST("dataset")

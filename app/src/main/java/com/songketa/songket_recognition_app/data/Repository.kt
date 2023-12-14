@@ -8,6 +8,7 @@ import com.songketa.songket_recognition_app.data.api.ApiConfig
 import com.songketa.songket_recognition_app.data.api.ApiService
 import com.songketa.songket_recognition_app.data.model.User
 import com.songketa.songket_recognition_app.data.response.DatasetItem
+import com.songketa.songket_recognition_app.data.response.DetailSongketResponse
 import com.songketa.songket_recognition_app.data.response.LoginResponse
 import com.songketa.songket_recognition_app.data.response.PostResponse
 import com.songketa.songket_recognition_app.data.response.RegisterResponse
@@ -85,6 +86,28 @@ class Repository private constructor(private val userPreference: UserPreferences
             val errorBody = Gson().fromJson(jsonInString, LoginResponse::class.java)
             val errorMessage = errorBody.message
             emit(Result.Error("Cannot Get Stories: $errorMessage"))
+        } catch (e: Exception){
+            emit(Result.Error("Something Error"))
+        }
+    }
+
+    fun getDetailStory(id : String): LiveData<Result<DetailSongketResponse>> = liveData {
+        emit(Result.Loading)
+        try {
+            val user = runBlocking { userPreference.getSession().first() }
+            val response = ApiConfig.getApiService()
+            val detailStoryResponse =response.getDetailStory(id)
+
+            if (detailStoryResponse !=null) {
+                emit(Result.Success(detailStoryResponse))
+            } else {
+                emit(Result.Error(detailStoryResponse.message))
+            }
+        }catch (e: HttpException) {
+            val jsonInString = e.response()?.errorBody()?.string()
+            val errorBody = Gson().fromJson(jsonInString, LoginResponse::class.java)
+            val errorMessage = errorBody.message
+            emit(Result.Error("Can't Get Stories: $errorMessage"))
         } catch (e: Exception){
             emit(Result.Error("Something Error"))
         }
