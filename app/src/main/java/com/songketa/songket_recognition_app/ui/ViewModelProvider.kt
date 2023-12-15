@@ -1,7 +1,6 @@
 package com.songketa.songket_recognition_app.ui
 
 import android.content.Context
-import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.songketa.songket_recognition_app.data.Repository
@@ -12,7 +11,7 @@ import com.songketa.songket_recognition_app.ui.listsongket.ListSongketViewModel
 import com.songketa.songket_recognition_app.ui.profile.ProfileViewModel
 import com.songketa.songket_recognition_app.ui.signin.SignInViewModel
 import com.songketa.songket_recognition_app.ui.signup.SignUpViewModel
-import com.songketa.songket_recognition_app.ui.welcome.WelcomeViewModel
+import com.songketa.songket_recognition_app.ui.splashscreen.SplashViewModel
 
 class ViewModelFactory(private val repository: Repository) : ViewModelProvider.NewInstanceFactory() {
 
@@ -28,8 +27,8 @@ class ViewModelFactory(private val repository: Repository) : ViewModelProvider.N
             modelClass.isAssignableFrom(SignInViewModel::class.java) -> {
                 SignInViewModel(repository) as T
             }
-            modelClass.isAssignableFrom(WelcomeViewModel::class.java) -> {
-                WelcomeViewModel(repository) as T
+            modelClass.isAssignableFrom(SplashViewModel::class.java) -> {
+                SplashViewModel(repository) as T
             }
             modelClass.isAssignableFrom(SignUpViewModel::class.java) -> {
                 SignUpViewModel(repository) as T

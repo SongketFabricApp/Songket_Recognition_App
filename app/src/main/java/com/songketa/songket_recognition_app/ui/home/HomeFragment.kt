@@ -142,8 +142,10 @@ class HomeFragment : Fragment() {
 
 
     private fun songketAdapter(listStory: List<DatasetItem>) {
+        val randomList = listStory.shuffled()
+        val limitedList = randomList.take(5)
         val adapter = HomeSongketAdapter(requireContext())
-        adapter.submitList(listStory)
+        adapter.submitList(limitedList)
         binding.rvSongket.adapter = adapter
     }
 

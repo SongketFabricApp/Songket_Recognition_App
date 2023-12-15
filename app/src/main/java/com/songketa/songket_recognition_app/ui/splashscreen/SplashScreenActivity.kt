@@ -1,6 +1,5 @@
 package com.songketa.songket_recognition_app.ui.splashscreen
 
-import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.content.Context
 import android.content.Intent
@@ -8,41 +7,56 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.view.View
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.ViewModelProvider
+import com.songketa.songket_recognition_app.MainActivity
 import com.songketa.songket_recognition_app.databinding.ActivitySplashScreenBinding
+import com.songketa.songket_recognition_app.ui.ViewModelFactory
 import com.songketa.songket_recognition_app.ui.welcome.WelcomeActivity
 import com.songketa.songket_recognition_app.utils.Constant
 import com.songketa.songket_recognition_app.utils.SettingPreferences
 import com.songketa.songket_recognition_app.utils.ThemeModelFactory
 import com.songketa.songket_recognition_app.utils.ThemeViewModel
-import com.songketa.songket_recognition_app.utils.dataStore
 
 class SplashScreenActivity : AppCompatActivity() {
     val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
 
     private lateinit var binding: ActivitySplashScreenBinding
+    private val viewModel by viewModels<SplashViewModel>{
+        ViewModelFactory.getInstance(this)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySplashScreenBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         supportActionBar?.hide()
-        playAnimation()
 
-        val countdownTimer = object : CountDownTimer(Constant.TIMER_1, Constant.TIMER_2) {
-            override fun onTick(millisUntilFinished: Long) {
-            }
+        viewModel.getSession().observe(this) { user ->
+            if (!user.isLogin) {
+                playAnimation()
+                val countdownTimer = object : CountDownTimer(Constant.TIMER_1, Constant.TIMER_2) {
+                    override fun onTick(millisUntilFinished: Long) {
+                    }
 
-            override fun onFinish() {
-                navigateToActivity()
+                    override fun onFinish() {
+                        navigateToActivity()
+                    }
+                }
+                countdownTimer.start()
+            } else {
+                startActivity(Intent(this, MainActivity::class.java))
+                finish()
             }
         }
-        countdownTimer.start()
+
+
+
+
 
         val pref = SettingPreferences.getInstance(application.dataStore)
 

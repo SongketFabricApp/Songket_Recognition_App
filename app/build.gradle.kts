@@ -55,6 +55,11 @@ dependencies {
 
     implementation("androidx.fragment:fragment-ktx:1.6.2")
 
+    //room
+    implementation("androidx.room:room-ktx:2.6.1")
+    implementation("androidx.room:room-paging:2.6.1")
+    implementation("androidx.room:room-runtime:2.6.1")
+
     //navigation
     implementation ("androidx.navigation:navigation-fragment-ktx:2.7.5")
     implementation ("androidx.navigation:navigation-ui-ktx:2.7.5")

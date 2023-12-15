@@ -21,25 +21,14 @@ import com.songketa.songket_recognition_app.ui.splashscreen.SplashScreenActivity
 
 class WelcomeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityWelcomeBinding
-    private val viewModel by viewModels<WelcomeViewModel>{
-        ViewModelFactory.getInstance(this)
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityWelcomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        viewModel.getSession().observe(this) { user ->
-            if (!user.isLogin) {
-                playAnimation()
-                setupView()
-                setupAction()
-            } else {
-                startActivity(Intent(this, MainActivity::class.java))
-                finish()
-            }
-        }
+        playAnimation()
+        setupView()
+        setupAction()
 
     }
 
