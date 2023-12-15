@@ -7,9 +7,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.Toast
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.viewModels
 import com.songketa.songket_recognition_app.R
 import com.songketa.songket_recognition_app.databinding.FragmentCameraBinding
@@ -88,6 +90,7 @@ class CameraFragment : Fragment(), View.OnClickListener{
                         }
                         is Result.Success -> {
                             showLoading(false)
+                            AlertCustom()
                             showToast(title)
                         }
                         is Result.Error -> {
@@ -98,6 +101,20 @@ class CameraFragment : Fragment(), View.OnClickListener{
                 }
             }
         } ?: showToast(getString(R.string.error))
+    }
+
+    private fun AlertCustom(){
+        val alertDialogBuilder = AlertDialog.Builder(requireContext()).create()
+        val view = layoutInflater.inflate(R.layout.dialog_songket, null)
+        alertDialogBuilder.setView(view)
+        val btnCheck = view.findViewById<Button>(R.id.btn_check)
+        alertDialogBuilder.setCanceledOnTouchOutside(false)
+
+        btnCheck.setOnClickListener {
+            alertDialogBuilder.dismiss()
+
+        }
+        alertDialogBuilder.show()
     }
 
     private fun showImage() {
