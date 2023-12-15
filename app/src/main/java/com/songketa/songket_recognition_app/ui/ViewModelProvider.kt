@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.songketa.songket_recognition_app.data.Repository
 import com.songketa.songket_recognition_app.di.Injection
+import com.songketa.songket_recognition_app.ui.camera.CameraViewModel
 import com.songketa.songket_recognition_app.ui.detailsongket.DetailSongketViewModel
 import com.songketa.songket_recognition_app.ui.home.HomeViewModel
 import com.songketa.songket_recognition_app.ui.listsongket.ListSongketViewModel
@@ -38,6 +39,9 @@ class ViewModelFactory(private val repository: Repository) : ViewModelProvider.N
             }
             modelClass.isAssignableFrom(DetailSongketViewModel::class.java) -> {
                 DetailSongketViewModel(repository) as T
+            }
+            modelClass.isAssignableFrom(CameraViewModel::class.java) -> {
+                CameraViewModel(repository) as T
             }
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }

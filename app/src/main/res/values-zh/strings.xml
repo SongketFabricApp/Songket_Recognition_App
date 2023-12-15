@@ -62,8 +62,10 @@
     <string name="next_notif">下一个</string>
     <string name="greeting">欢迎 %1$s</string>
     <string name="what_s_new">有什么新的？</string>
-
-    <string name="api_key" translatable="false">AIzaSyAUd7wfyNr  YmiwFcPu_oi1bNrEalQg7q98</string>
     <string name="havent_have_account">还没有帐户吗？</string>
     <string name="signup_here">在这里注册</string>
+    <string name="error_o">Unknown Error</string>
+
+    <!--    <string name="api_key" translatable="false">AIzaSyAUd7wfyNr  YmiwFcPu_oi1bNrEalQg7q98</string>-->
+
 </resources>

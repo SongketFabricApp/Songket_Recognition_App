@@ -64,4 +64,7 @@
     <string name="what_s_new">What\'s new?</string>
     <string name="havent_have_account">Belum punya akun?</string>
     <string name="signup_here">Register disini</string>
+    <string name="error_o">Error Tidak diketahui</string>
+
+
 </resources>

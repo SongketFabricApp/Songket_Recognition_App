@@ -6,10 +6,13 @@ import androidx.lifecycle.liveData
 import com.google.gson.Gson
 import com.songketa.songket_recognition_app.data.api.ApiConfig
 import com.songketa.songket_recognition_app.data.api.ApiService
+import com.songketa.songket_recognition_app.data.api.ml.ApiMlConfig
+import com.songketa.songket_recognition_app.data.api.ml.ApiMlService
 import com.songketa.songket_recognition_app.data.model.User
 import com.songketa.songket_recognition_app.data.response.DatasetItem
 import com.songketa.songket_recognition_app.data.response.DetailSongketResponse
 import com.songketa.songket_recognition_app.data.response.LoginResponse
+import com.songketa.songket_recognition_app.data.response.MachineLearningResponse
 import com.songketa.songket_recognition_app.data.response.PostResponse
 import com.songketa.songket_recognition_app.data.response.RegisterResponse
 import com.songketa.songket_recognition_app.utils.UserPreferences
@@ -18,8 +21,10 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 import okhttp3.MultipartBody
 import retrofit2.HttpException
+import java.io.IOException
 
-class Repository private constructor(private val userPreference: UserPreferences, private val apiService: ApiService){
+class Repository private constructor(private val userPreference: UserPreferences, private val apiService: ApiService,
+    private val apiMlService: ApiMlService){
     fun login(email: String, password: String): LiveData<Result<LoginResponse>> = liveData {
         emit(Result.Loading)
         try {
@@ -67,6 +72,23 @@ class Repository private constructor(private val userPreference: UserPreferences
         }
     }
 
+    fun postImage(file: MultipartBody.Part): LiveData<Result<MachineLearningResponse>> = liveData {
+        emit(Result.Loading)
+        try {
+            val response = apiMlService.postImage(file)
+            emit(Result.Success(response))
+        } catch (e: IOException) {
+            Log.d("postImage", "IOException: ${e.message}")
+            emit(Result.Error("Network error: ${e.message}"))
+        } catch (e: HttpException) {
+            Log.d("postImage", "HttpException: ${e.message}")
+            emit(Result.Error("HTTP error: ${e.message}"))
+        } catch (e: Exception) {
+            Log.d("postImage", "Unknown error: ${e.message}")
+            emit(Result.Error("An unknown error occurred"))
+        }
+    }
+
     fun getSongket(): LiveData<Result<List<DatasetItem>>> = liveData {
         emit(Result.Loading)
         try {
@@ -108,21 +130,8 @@ class Repository private constructor(private val userPreference: UserPreferences
             val errorBody = Gson().fromJson(jsonInString, LoginResponse::class.java)
             val errorMessage = errorBody.message
             emit(Result.Error("Can't Get Stories: $errorMessage"))
-        } catch (e: Exception){
+        }catch (e: Exception){
             emit(Result.Error("Something Error"))
-        }
-    }
-
-    fun postImage(file: MultipartBody.Part): LiveData<Result<PostResponse>> = liveData {
-        emit(Result.Loading)
-        try {
-            val user = runBlocking { userPreference.getSession().first() }
-            val response = ApiConfig.getApiService()
-            val responsedetail = response.postImage(file)
-            emit(Result.Success(responsedetail))
-        } catch (e: Exception) {
-            Log.e("CreateStoryViewModel", "postStory: ${e.message.toString()}")
-            emit(Result.Error(e.message.toString()))
         }
     }
 
@@ -142,9 +151,9 @@ class Repository private constructor(private val userPreference: UserPreferences
         @Volatile
         private var instance: Repository? = null
 
-        fun getInstance(userPreference: UserPreferences,apiService: ApiService): Repository =
+        fun getInstance(userPreference: UserPreferences,apiService: ApiService, apiMlService: ApiMlService): Repository =
             instance ?: synchronized(this) {
-                instance ?: Repository(userPreference, apiService)
+                instance ?: Repository(userPreference, apiService, apiMlService)
             }.also { instance = it }
     }
 }

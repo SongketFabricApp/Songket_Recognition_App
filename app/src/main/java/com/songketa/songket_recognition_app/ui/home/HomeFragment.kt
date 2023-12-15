@@ -25,6 +25,7 @@ import com.songketa.songket_recognition_app.ui.listsongket.ListSongketActivity
 import com.songketa.songket_recognition_app.ui.maps.MapsActivity
 import com.songketa.songket_recognition_app.data.Result
 import com.songketa.songket_recognition_app.data.response.DatasetItem
+import com.songketa.songket_recognition_app.databinding.ActivityMainBinding
 import com.songketa.songket_recognition_app.ui.signin.SignInActivity
 
 
@@ -32,8 +33,6 @@ class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
     private val LOCATION_PERMISSION_REQUEST_CODE = 123
 
-    private lateinit var viewPager2: ViewPager2
-    private lateinit var pageChangeListener: ViewPager2.OnPageChangeCallback
 
     private val params = LinearLayout.LayoutParams(
         LinearLayout.LayoutParams.WRAP_CONTENT,
@@ -45,7 +44,6 @@ class HomeFragment : Fragment() {
     private val viewModel by viewModels<HomeViewModel> {
         ViewModelFactory.getInstance(requireContext())
     }
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -129,6 +127,7 @@ class HomeFragment : Fragment() {
                     is Result.Success -> {
                         val listStory = story.data
                         songketAdapter(listStory)
+                        showLoading(false)
                     }
 
                     is Result.Error -> {

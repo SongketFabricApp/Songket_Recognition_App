@@ -2,6 +2,7 @@ package com.songketa.songket_recognition_app.data.api
 
 import com.songketa.songket_recognition_app.data.response.DetailSongketResponse
 import com.songketa.songket_recognition_app.data.response.LoginResponse
+import com.songketa.songket_recognition_app.data.response.MachineLearningResponse
 import com.songketa.songket_recognition_app.data.response.PostResponse
 import com.songketa.songket_recognition_app.data.response.RegisterResponse
 import com.songketa.songket_recognition_app.data.response.SongketDataResponse
@@ -25,13 +26,6 @@ interface ApiService {
         @Field("password") password: String
     ): LoginResponse
 
-//    @GET("users/{id}")
-//    suspend fun getUser(
-//        @Field("user_id") id: String,
-//        @Field("email") email: String,
-//        @Field("phone") phone: String,
-//        @Field("username") username: String
-//    )
     @GET("dataset")
     suspend fun getListSongket(
     ): SongketDataResponse
@@ -41,9 +35,9 @@ interface ApiService {
         @Path("id") id: String
     ): DetailSongketResponse
 
-    @Multipart
-    @POST("dataset")
-    suspend fun postImage(
-        @Part file: MultipartBody.Part,
-    ): PostResponse
+//    @Multipart
+//    @POST("predict")
+//    suspend fun postImage(
+//        @Part file: MultipartBody.Part,
+//    ): MachineLearningResponse
 }
