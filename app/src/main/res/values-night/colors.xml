@@ -13,4 +13,7 @@
     <color name="highlight">#CC66D4</color> //blue5
     <color name="textColor">#434242</color>
     <color name="backgroundSplash">#DFC6FA</color>
+
+    <color name="bgcolor">#FF000000</color>
+    <color name="bgTextColor">#937DC2</color>
 </resources>

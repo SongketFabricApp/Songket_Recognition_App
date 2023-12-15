@@ -13,7 +13,7 @@
     <string name="password">Password</string>
     <string name="insert_your_email">Insert Your Email</string>
     <string name="email">Email</string>
-    <string name="login_to_your_account">Login To Your Account</string>
+    <string name="signin_to_your_account">Sign In to Your Account</string>
 
     <string name="required_field">Please fill this field</string>
     <string name="invalid_phone_number">Invalid phone number</string>
