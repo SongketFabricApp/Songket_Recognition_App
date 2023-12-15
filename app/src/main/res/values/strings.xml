@@ -65,6 +65,8 @@
     <string name="havent_have_account">Do not have an account yet?</string>
     <string name="signup_here">Sign Up here</string>
     <string name="error_o">Unknown Error</string>
+    <string name="upload_succes_notif">Sukses</string>
+    <string name="error">Error</string>
 
 
     <!--    <string name="api_key" translatable="false">AIzaSyAUd7wfyNr  YmiwFcPu_oi1bNrEalQg7q98</string>-->

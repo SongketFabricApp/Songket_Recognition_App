@@ -135,6 +135,7 @@
             android:layout_marginTop="8dp"
             android:text="Market Finder"
             android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="@+id/menu_maps"
             app:layout_constraintStart_toStartOf="@+id/menu_maps"
             app:layout_constraintTop_toBottomOf="@+id/menu_maps" />
 
@@ -156,11 +157,11 @@
             android:id="@+id/tv_scanner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="116dp"
             android:layout_marginTop="8dp"
             android:text="Scanner"
             android:textColor="@color/black"
-            app:layout_constraintStart_toStartOf="@+id/tv_maps"
+            app:layout_constraintEnd_toEndOf="@+id/menu_scan"
+            app:layout_constraintStart_toStartOf="@+id/menu_scan"
             app:layout_constraintTop_toBottomOf="@+id/menu_scan" />
 
         <ImageButton
@@ -181,11 +182,11 @@
             android:id="@+id/tv_list"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="88dp"
             android:layout_marginTop="8dp"
             android:text="List Songket"
             android:textColor="@color/black"
-            app:layout_constraintStart_toStartOf="@+id/tv_scanner"
+            app:layout_constraintEnd_toEndOf="@+id/menu_list"
+            app:layout_constraintStart_toStartOf="@+id/menu_list"
             app:layout_constraintTop_toBottomOf="@+id/menu_list" />
 
         <ImageButton
@@ -205,12 +206,13 @@
             android:id="@+id/tv_article"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="96dp"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="8dp"
             android:text="@string/what_s_new"
             android:textColor="@color/black"
-            app:layout_constraintStart_toStartOf="@+id/tv_list"
-            app:layout_constraintTop_toBottomOf="@+id/menu_list" />
+            app:layout_constraintEnd_toEndOf="@+id/menu_artikel"
+            app:layout_constraintHorizontal_bias="0.857"
+            app:layout_constraintStart_toStartOf="@+id/menu_artikel"
+            app:layout_constraintTop_toBottomOf="@+id/menu_artikel" />
 
         <TextView
             android:id="@+id/textView12"

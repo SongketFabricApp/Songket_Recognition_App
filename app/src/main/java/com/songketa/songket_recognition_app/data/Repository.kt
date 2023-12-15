@@ -16,11 +16,16 @@ import com.songketa.songket_recognition_app.data.response.MachineLearningRespons
 import com.songketa.songket_recognition_app.data.response.PostResponse
 import com.songketa.songket_recognition_app.data.response.RegisterResponse
 import com.songketa.songket_recognition_app.utils.UserPreferences
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.withContext
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
+import okhttp3.RequestBody.Companion.asRequestBody
 import retrofit2.HttpException
+import java.io.File
 import java.io.IOException
 
 class Repository private constructor(private val userPreference: UserPreferences, private val apiService: ApiService,
