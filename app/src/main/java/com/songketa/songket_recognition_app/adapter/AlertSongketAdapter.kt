@@ -26,7 +26,7 @@ class AlertSongketAdapter(private val context: Context) : ListAdapter<DatasetInf
         holder.bind(songket)
         holder.binding.btnCheck.setOnClickListener {
             val moveDataUserIntent = Intent(holder.binding.btnCheck.context, DetailSongketActivity::class.java)
-            moveDataUserIntent.putExtra(DetailSongketActivity.ID, songket.fabricname)
+            moveDataUserIntent.putExtra(DetailSongketActivity.ID, songket.idfabric)
             holder.binding.btnCheck.context.startActivity(moveDataUserIntent)
         }
 
@@ -34,8 +34,8 @@ class AlertSongketAdapter(private val context: Context) : ListAdapter<DatasetInf
     class MyViewHolder(val binding: DialogSongketBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(songket: DatasetInfo){
             binding.tvFabricname.text = songket.fabricname
-            Glide.with(binding.root.context).load(songket.pattern)
-                .into(binding.ivItemSongketPicture)
+            Glide.with(binding.root.context).load(songket.imgUrl)
+                .into(binding.ivItemDialogSongketPicture)
         }
     }
     companion object {

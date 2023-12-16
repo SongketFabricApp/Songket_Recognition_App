@@ -26,6 +26,14 @@ data class DatasetInfo(
 	@field:SerializedName("description")
 	val description: String,
 
+	@field:SerializedName("idfabric")
+	val idfabric: String,
+
+	@field:SerializedName("img_url")
+	val imgUrl: String,
+
 	@field:SerializedName("fabricname")
 	val fabricname: String
+
+
 ) : Parcelable
