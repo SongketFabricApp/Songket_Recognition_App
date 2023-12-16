@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bgcolor"
     tools:context=".ui.signin.SignInActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="20dp">
 
     <com.google.android.material.progressindicator.LinearProgressIndicator
         android:id="@+id/progressIndicator"
@@ -43,8 +49,9 @@
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_login"
-        android:src="@drawable/logo"
-        tools:srcCompat="@drawable/logo" />
+        android:src="@drawable/loginlogo"
+        android:scaleType="fitXY"
+        tools:srcCompat="@drawable/loginlogo" />
 
     <TextView
         android:id="@+id/emailTextView"
@@ -73,7 +80,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/emailTextView"
         app:startIconDrawable="@drawable/ic_email"
-        android:alpha="1">
+        android:alpha="0"
+        tools:alpha="100">
 
         <com.songketa.songket_recognition_app.customview.CustomEditText
             android:id="@+id/emailEditText"
@@ -112,7 +120,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/passwordTextView"
         app:startIconDrawable="@drawable/ic_pass"
-        android:alpha="1">
+        android:alpha="0"
+        tools:alpha="100">
 
         <com.songketa.songket_recognition_app.customview.CustomPassword
             android:id="@+id/passwordEditText"
@@ -172,4 +181,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_signup"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

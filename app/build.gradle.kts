@@ -19,6 +19,8 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
+        buildConfigField("String", "API_POINT", "\"https://songket-fab-backend-server-z4uvonfz2q-et.a.run.app/\"")
+        buildConfigField("String", "API_POINT_ML", "\"https://songket-fab-ml-server-z4uvonfz2q-et.a.run.app/\"")
         buildConfigField("String", "API_KEY", "\"bangkitbersamasongketa\"")
         buildConfigField("String", "API_KEY_ML", "\"jalan\"")
     }

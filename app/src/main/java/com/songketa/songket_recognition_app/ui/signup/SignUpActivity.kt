@@ -104,16 +104,22 @@ class SignUpActivity : AppCompatActivity() {
     }
 
     private fun playAnimation() {
+        ObjectAnimator.ofFloat(binding.ivLogo, View.TRANSLATION_X, -30f, 30f).apply {
+            duration = 6000
+            repeatCount = ObjectAnimator.INFINITE
+            repeatMode = ObjectAnimator.REVERSE
+        }.start()
+
         val titleregister = ObjectAnimator.ofFloat(binding.tvSignup, View.ALPHA, 1f).setDuration(200)
         val titleusername = ObjectAnimator.ofFloat(binding.tvUsername, View.ALPHA, 1f).setDuration(200)
-        val usernameedit = ObjectAnimator.ofFloat(binding.tilUsername, View.ALPHA, 1f).setDuration(200)
+        val usernameedit = ObjectAnimator.ofFloat(binding.tilUsername, View.ALPHA, 1f).setDuration(300)
         val titlemail = ObjectAnimator.ofFloat(binding.tvEmail, View.ALPHA, 1f).setDuration(200)
-        val emailedit = ObjectAnimator.ofFloat(binding.tilEmail, View.ALPHA, 1f).setDuration(200)
+        val emailedit = ObjectAnimator.ofFloat(binding.tilEmail, View.ALPHA, 1f).setDuration(300)
         val titlphone = ObjectAnimator.ofFloat(binding.tvPhone, View.ALPHA, 1f).setDuration(200)
-        val phoneedit = ObjectAnimator.ofFloat(binding.tilPhone, View.ALPHA, 1f).setDuration(200)
+        val phoneedit = ObjectAnimator.ofFloat(binding.tilPhone, View.ALPHA, 1f).setDuration(300)
         val titlepass = ObjectAnimator.ofFloat(binding.tvPassword, View.ALPHA, 1f).setDuration(200)
-        val passedit = ObjectAnimator.ofFloat(binding.tilPassword, View.ALPHA, 1f).setDuration(200)
-        val login = ObjectAnimator.ofFloat(binding.btnSignUp, View.ALPHA, 1f).setDuration(200)
+        val passedit = ObjectAnimator.ofFloat(binding.tilPassword, View.ALPHA, 1f).setDuration(300)
+        val login = ObjectAnimator.ofFloat(binding.btnSignUp, View.ALPHA, 1f).setDuration(300)
 
         AnimatorSet().apply {
             playSequentially(titleregister,titleusername,usernameedit,titlemail,

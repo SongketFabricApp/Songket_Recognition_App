@@ -14,6 +14,7 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.ViewModelProvider
 import com.songketa.songket_recognition_app.MainActivity
+import com.songketa.songket_recognition_app.R
 import com.songketa.songket_recognition_app.databinding.ActivitySplashScreenBinding
 import com.songketa.songket_recognition_app.ui.ViewModelFactory
 import com.songketa.songket_recognition_app.ui.welcome.WelcomeActivity
@@ -49,6 +50,7 @@ class SplashScreenActivity : AppCompatActivity() {
                 }
                 countdownTimer.start()
             } else {
+                playAnimation()
                 val countdownTimer = object : CountDownTimer(Constant.TIMER_1, Constant.TIMER_2) {
                     override fun onTick(millisUntilFinished: Long) {
                     }
@@ -61,7 +63,6 @@ class SplashScreenActivity : AppCompatActivity() {
 
             }
         }
-
 
         val pref = SettingPreferences.getInstance(application.dataStore)
 

@@ -34,7 +34,7 @@ class Repository private constructor(private val userPreference: UserPreferences
                     token = response.loginResult.token,
                     isLogin = true
                 )
-                ApiConfig.token = response.message
+//                ApiConfig.token = response.message
                 userPreference.saveSession(user)
                 emit(Result.Success(response))
             }else{

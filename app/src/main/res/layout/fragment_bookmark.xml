@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
+    android:background="@color/bgcolor"
     tools:context=".ui.bookmark.BookmarkFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -36,27 +36,19 @@
 
         </com.google.android.material.card.MaterialCardView>
 
-        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-            android:id="@+id/swipe_fresh"
-            android:layout_width="0dp"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_list_songket"
+            android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/card_view"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/card_view"
             app:layout_constraintVertical_bias="0.0"
-            android:layout_marginTop="10dp">
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_list_songket"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0"
-                tools:layout_editor_absoluteX="-40dp"
-                tools:listitem="@layout/songket_list_item" />
-        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+            tools:listitem="@layout/songket_list_item" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>

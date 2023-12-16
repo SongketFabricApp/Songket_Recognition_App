@@ -44,8 +44,8 @@ class SignInActivity : AppCompatActivity() {
         val tvSignUpHere = binding.tvSignupHere
         tvSignUpHere.paintFlags = tvSignUpHere.paintFlags or Paint.UNDERLINE_TEXT_FLAG
 
-        setupView()
         playAnimation()
+        setupView()
         processingLogin()
     }
 
@@ -89,20 +89,6 @@ class SignInActivity : AppCompatActivity() {
     }
 
 
-//    private fun showSuccessDialog(title: String, message: String, next: String) {
-//        AlertDialog.Builder(this).apply {
-//            setTitle(title)
-//            setMessage(message)
-//            setPositiveButton(next) { _, _ ->
-//                val intent = Intent(context, MainActivity::class.java)
-//                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-//                startActivity(intent)
-//                finish()
-//            }
-//            create()
-//            show()
-//        }
-//    }
 
     private fun showLoading(isLoading: Boolean) {
         binding.progressIndicator.visibility = if (isLoading) View.VISIBLE else View.GONE
@@ -230,50 +216,4 @@ class SignInActivity : AppCompatActivity() {
         startActivity(intent)
         finish()
     }
-
-
 }
-
-
-//private fun setupAction(){
-//    binding.seePassword.setOnCheckedChangeListener { _, isChecked ->
-//        binding.passwordEditText.transformationMethod = if (isChecked) {
-//            HideReturnsTransformationMethod.getInstance()
-//        } else {
-//            PasswordTransformationMethod.getInstance()
-//        }
-//        binding.passwordEditText.text?.let { binding.passwordEditText.setSelection(it.length) }
-//    }
-//
-//    binding.signInButton.setOnClickListener {
-//        val email = binding.emailEditText.text.toString()
-//        val pass = binding.passwordEditText.text.toString()
-//
-//        val title = getString(R.string.head_notif)
-//        val message = getString(R.string.login_succes_notif)
-//        val next = getString(R.string.next_notif)
-//
-//        viewModel.login(email = email, password = pass).observe(this){hoho ->
-//            when(hoho){
-//                is Result.Loading ->{
-//                    showLoading(true)
-//                }
-//                is Result.Success -> {
-//                    showLoading(false)
-//                    val user = User(
-//                        name = hoho.data.loginResult.name,
-//                        token = hoho.data.loginResult.token,
-//                        email = email,
-//                        phone = hoho.data.loginResult.phone,
-//                    )
-//                    viewModel.saveSession(user)
-//                    showSuccessDialog(title, message, next)
-//                }
-//                is Result.Error -> {
-//                    showLoading(false)
-//                    showToast(hoho.error)
-//                }
-//            }
-//        }
-//    }
-//}

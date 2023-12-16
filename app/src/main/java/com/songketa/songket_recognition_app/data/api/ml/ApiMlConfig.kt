@@ -29,7 +29,7 @@ object ApiMlConfig {
             .addInterceptor(authInterceptor)
             .build()
         val retrofit = Retrofit.Builder()
-            .baseUrl("https://songket-fab-ml-server-z4uvonfz2q-et.a.run.app/")
+            .baseUrl(BuildConfig.API_POINT_ML)
             .addConverterFactory(GsonConverterFactory.create())
             .client(client)
             .build()

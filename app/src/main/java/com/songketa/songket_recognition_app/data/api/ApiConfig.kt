@@ -8,7 +8,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object ApiConfig {
-    var token = ""
+//    var token = ""
     fun getApiService(): ApiService {
         val loggingInterceptor = if(BuildConfig.DEBUG) {
             HttpLoggingInterceptor()
@@ -20,7 +20,6 @@ object ApiConfig {
         val authInterceptor = Interceptor { chain ->
             val req = chain.request()
             val requestHeaders = req.newBuilder()
-//                .addHeader("Authorization", "Bearer $token")
                 .addHeader("x-api-key", BuildConfig.API_KEY)
                 .build()
             chain.proceed(requestHeaders)
@@ -30,7 +29,7 @@ object ApiConfig {
             .addInterceptor(authInterceptor)
             .build()
         val retrofit = Retrofit.Builder()
-            .baseUrl("https://songket-fab-backend-server-z4uvonfz2q-et.a.run.app/")
+            .baseUrl(BuildConfig.API_POINT)
             .addConverterFactory(GsonConverterFactory.create())
             .client(client)
             .build()
