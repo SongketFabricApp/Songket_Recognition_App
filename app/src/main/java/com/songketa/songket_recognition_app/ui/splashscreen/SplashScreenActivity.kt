@@ -49,13 +49,18 @@ class SplashScreenActivity : AppCompatActivity() {
                 }
                 countdownTimer.start()
             } else {
-                startActivity(Intent(this, MainActivity::class.java))
-                finish()
+                val countdownTimer = object : CountDownTimer(Constant.TIMER_1, Constant.TIMER_2) {
+                    override fun onTick(millisUntilFinished: Long) {
+                    }
+
+                    override fun onFinish() {
+                        navigateToMainActivity()
+                    }
+                }
+                countdownTimer.start()
+
             }
         }
-
-
-
 
 
         val pref = SettingPreferences.getInstance(application.dataStore)
@@ -70,6 +75,12 @@ class SplashScreenActivity : AppCompatActivity() {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
             }
         }
+    }
+
+    private fun navigateToMainActivity() {
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 
     private fun navigateToActivity() {

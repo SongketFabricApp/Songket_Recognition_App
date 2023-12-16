@@ -9,7 +9,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object ApiMlConfig {
-    fun getApiMlService(): ApiMlService {
+    fun getApiMlService(): ApiService {
         val loggingInterceptor = if(BuildConfig.DEBUG) {
             HttpLoggingInterceptor()
                 .setLevel(HttpLoggingInterceptor.Level.BODY)
@@ -33,6 +33,6 @@ object ApiMlConfig {
             .addConverterFactory(GsonConverterFactory.create())
             .client(client)
             .build()
-        return retrofit.create(ApiMlService::class.java)
+        return retrofit.create(ApiService::class.java)
     }
 }

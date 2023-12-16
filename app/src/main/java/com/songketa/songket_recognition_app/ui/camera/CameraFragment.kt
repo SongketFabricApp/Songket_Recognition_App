@@ -10,20 +10,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
-import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.viewModels
-import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
 import com.songketa.songket_recognition_app.R
-import com.songketa.songket_recognition_app.adapter.AlertSongketAdapter
-import com.songketa.songket_recognition_app.adapter.HomeSongketAdapter
-import com.songketa.songket_recognition_app.adapter.ListSongketAdapter
 import com.songketa.songket_recognition_app.databinding.FragmentCameraBinding
 import com.songketa.songket_recognition_app.ui.ViewModelFactory
 import com.songketa.songket_recognition_app.utils.getImageUri
@@ -34,9 +28,6 @@ import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.asRequestBody
 import com.songketa.songket_recognition_app.data.Result
 import com.songketa.songket_recognition_app.data.model.Songket
-import com.songketa.songket_recognition_app.data.response.DatasetInfo
-import com.songketa.songket_recognition_app.data.response.DatasetItem
-import com.songketa.songket_recognition_app.databinding.DialogSongketBinding
 import com.songketa.songket_recognition_app.ui.detailsongket.DetailSongketActivity
 
 

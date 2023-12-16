@@ -35,9 +35,9 @@ interface ApiService {
         @Path("id") id: String
     ): DetailSongketResponse
 
-//    @Multipart
-//    @POST("predict")
-//    suspend fun postImage(
-//        @Part file: MultipartBody.Part,
-//    ): MachineLearningResponse
+    @Multipart
+    @POST("predict")
+    suspend fun postImage(
+        @Part filePart: MultipartBody.Part
+    ): MachineLearningResponse
 }

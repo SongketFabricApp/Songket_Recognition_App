@@ -6,31 +6,22 @@ import androidx.lifecycle.liveData
 import com.google.gson.Gson
 import com.songketa.songket_recognition_app.data.api.ApiConfig
 import com.songketa.songket_recognition_app.data.api.ApiService
-import com.songketa.songket_recognition_app.data.api.ml.ApiMlConfig
-import com.songketa.songket_recognition_app.data.api.ml.ApiMlService
 import com.songketa.songket_recognition_app.data.model.User
-import com.songketa.songket_recognition_app.data.response.DatasetInfo
 import com.songketa.songket_recognition_app.data.response.DatasetItem
 import com.songketa.songket_recognition_app.data.response.DetailSongketResponse
 import com.songketa.songket_recognition_app.data.response.LoginResponse
 import com.songketa.songket_recognition_app.data.response.MachineLearningResponse
-import com.songketa.songket_recognition_app.data.response.PostResponse
 import com.songketa.songket_recognition_app.data.response.RegisterResponse
 import com.songketa.songket_recognition_app.utils.UserPreferences
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
-import kotlinx.coroutines.withContext
-import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
-import okhttp3.RequestBody.Companion.asRequestBody
 import retrofit2.HttpException
-import java.io.File
 import java.io.IOException
 
 class Repository private constructor(private val userPreference: UserPreferences, private val apiService: ApiService,
-    private val apiMlService: ApiMlService){
+    private val apiMlService: ApiService){
     fun login(email: String, password: String): LiveData<Result<LoginResponse>> = liveData {
         emit(Result.Loading)
         try {
@@ -157,7 +148,7 @@ class Repository private constructor(private val userPreference: UserPreferences
         @Volatile
         private var instance: Repository? = null
 
-        fun getInstance(userPreference: UserPreferences,apiService: ApiService, apiMlService: ApiMlService): Repository =
+        fun getInstance(userPreference: UserPreferences,apiService: ApiService, apiMlService: ApiService): Repository =
             instance ?: synchronized(this) {
                 instance ?: Repository(userPreference, apiService, apiMlService)
             }.also { instance = it }
