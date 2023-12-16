@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
+    android:background="@color/bgcolor"
     tools:context=".ui.detailsongket.DetailSongketActivity">
 
     <com.google.android.material.progressindicator.LinearProgressIndicator
@@ -30,7 +30,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/backgrounds/scenic" />
-
 
     <TextView
         android:id="@+id/tv_songket"
@@ -90,7 +89,6 @@
             android:textSize="20sp"
             tools:layout_editor_absoluteX="20dp"
             tools:layout_editor_absoluteY="326dp" />
-
     </com.google.android.material.appbar.MaterialToolbar>
 
     <ScrollView
@@ -220,12 +218,12 @@
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="10dp"
+        android:background="@color/primary"
         android:clickable="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/ic_home" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

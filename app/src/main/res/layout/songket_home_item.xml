@@ -10,13 +10,14 @@
     android:layout_marginTop="4dp"
     android:layout_marginEnd="8dp"
     android:layout_marginBottom="4dp"
-    android:background="@drawable/bg_stroke"
+    android:background="@color/secondary2"
     card_view:circularflow_radiusInDP="15dp"
     card_view:cardCornerRadius="4dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/secondary2"
         android:padding="4dp">
 
         <ImageView
@@ -27,6 +28,7 @@
             android:contentDescription="@string/image_songket"
             android:scaleType="fitXY"
             android:src="@color/black"
+            android:background="@android:color/transparent"
             card_view:layout_constraintBottom_toBottomOf="parent"
             card_view:layout_constraintStart_toStartOf="parent"
             card_view:layout_constraintTop_toTopOf="parent"
