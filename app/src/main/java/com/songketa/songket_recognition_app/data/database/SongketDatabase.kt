@@ -21,8 +21,7 @@ abstract class SongketDatabase : RoomDatabase(){
                     instance = Room.databaseBuilder(
                         context.applicationContext,
                         SongketDatabase::class.java, "favorite_user_database"
-                    )
-                        .build()
+                    ).build()
                 }
             }
             return instance as SongketDatabase

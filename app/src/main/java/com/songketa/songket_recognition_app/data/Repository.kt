@@ -19,6 +19,8 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 import android.content.Context
 import androidx.lifecycle.liveData
+import com.songketa.songket_recognition_app.data.database.SongketDao
+import com.songketa.songket_recognition_app.data.database.SongketEntity
 import okhttp3.MultipartBody
 import retrofit2.HttpException
 import java.io.IOException
@@ -27,7 +29,9 @@ class Repository private constructor(
     private val context: Context,
     private val userPreference: UserPreferences,
     private val apiService: ApiService,
-    private val apiMlService: ApiService){
+    private val apiMlService: ApiService,
+    private val songketDao : SongketDao,
+    ){
     fun getApplication(): Application {
         return context.applicationContext as Application
     }
@@ -43,7 +47,6 @@ class Repository private constructor(
                     token = response.loginResult.token,
                     isLogin = true
                 )
-//                ApiConfig.token = response.message
                 userPreference.saveSession(user)
                 emit(Result.Success(response))
             }else{
@@ -122,7 +125,6 @@ class Repository private constructor(
     fun getDetailStory(id : String): LiveData<Result<DetailSongketResponse>> = liveData {
         emit(Result.Loading)
         try {
-            val user = runBlocking { userPreference.getSession().first() }
             val response = ApiConfig.getApiService()
             val detailStoryResponse =response.getDetailStory(id)
 
@@ -153,17 +155,31 @@ class Repository private constructor(
         userPreference.logout()
     }
 
+    //Database Local
+    suspend fun saveBookmark(favoriteUserEntity: SongketEntity) {
+        songketDao.insert(favoriteUserEntity)
+    }
+    suspend fun delete(favoriteUserEntity: SongketEntity) {
+        songketDao.delete(favoriteUserEntity)
+    }
+    fun getBookmarkSongket(): LiveData<List<SongketEntity>> = songketDao.getSongket()
+
+    fun isFavorite(songket : String): LiveData<SongketEntity>{
+        return songketDao.isFavorite(songket)
+    }
+
     companion object {
         @Volatile
         private var instance: Repository? = null
-
         fun getInstance(
             context: Context,
             userPreference: UserPreferences,
             apiService: ApiService,
-            apiMlService: ApiService): Repository =
+            apiMlService: ApiService,
+            songketDao: SongketDao
+        ): Repository =
             instance ?: synchronized(this) {
-                instance ?: Repository(context,userPreference, apiService, apiMlService)
+                instance ?: Repository(context,userPreference, apiService, apiMlService,songketDao)
             }.also { instance = it }
     }
 }

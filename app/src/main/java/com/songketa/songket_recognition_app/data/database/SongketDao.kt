@@ -22,4 +22,13 @@ interface SongketDao {
     @Delete
     fun deleteSongket(news: SongketEntity)
 
+
+    /////////////////////////////////
+    @Query("SELECT * FROM songket WHERE idfabric = :idfabric")
+    fun isFavorite(idfabric: String):LiveData<SongketEntity>
+
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun insert(favoriteSongket: SongketEntity)
+    @Delete
+    suspend fun delete(favoriteSongket: SongketEntity)
 }

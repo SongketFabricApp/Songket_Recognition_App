@@ -32,7 +32,6 @@ class MainActivity : AppCompatActivity() {
 
         setupBottomNavigation()
     }
-
     private fun setupBottomNavigation() {
         binding.bottomNavigationView.setOnItemSelectedListener { item ->
             when (item.itemId) {

@@ -6,11 +6,14 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 import com.songketa.songket_recognition_app.MainActivity
+import com.songketa.songket_recognition_app.R
 import com.songketa.songket_recognition_app.databinding.ActivityDetailSongketBinding
 import com.songketa.songket_recognition_app.ui.ViewModelFactory
 import com.songketa.songket_recognition_app.data.Result
+import com.songketa.songket_recognition_app.data.database.SongketEntity
 import com.songketa.songket_recognition_app.data.response.DetailSongketResponse
 
 class DetailSongketActivity : AppCompatActivity() {
@@ -19,12 +22,19 @@ class DetailSongketActivity : AppCompatActivity() {
         ViewModelFactory.getInstance(applicationContext)
     }
 
+    private var isFavorite: Boolean = false
+    private lateinit var name: String
+    private lateinit var avtimg:String
+
     private var id: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailSongketBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        name = intent.getStringExtra(USER_NAME).toString()
+        avtimg = intent.getStringExtra(avatarUrl).toString()
 
         id = intent.getStringExtra(ID)
 
@@ -38,6 +48,39 @@ class DetailSongketActivity : AppCompatActivity() {
                         showLoading(false)
                         val detailStory = item.data
                         setDetailStory(detailStory)
+
+                        viewModel.isFavorite(item.data.datasetItem.idfabric).observe(this){
+                            if (it == null){
+                                isFavorite=false
+                                binding.btnBookmark.setImageDrawable(
+                                    ContextCompat.getDrawable(binding.btnBookmark.context,
+                                        R.drawable.ic_bookmark)
+                                )
+
+                            }else{
+                                isFavorite=true
+                                binding.btnBookmark.setImageDrawable(
+                                    ContextCompat.getDrawable(binding.btnBookmark.context,
+                                        R.drawable.ic_bookmark_red)
+                                )
+                            }
+                        }
+                        binding.btnBookmark.setOnClickListener {
+                            val favSongket = SongketEntity(
+                                item.data.datasetItem.idfabric,
+                                item.data.datasetItem.fabricname,
+                                item.data.datasetItem.imgUrl,
+                                item.data.datasetItem.origin,
+                                )
+                            if (isFavorite){
+                                viewModel.deleteFavorite(favSongket)
+                                Toast.makeText(this, "Deleted", Toast.LENGTH_SHORT).show()
+                            }
+                            else{
+                                viewModel.saveFavorite(favSongket)
+                                Toast.makeText(this, "Favorit <3", Toast.LENGTH_SHORT).show()
+                            }
+                        }
                     }
                     is Result.Error -> {
                         showLoading(false)
@@ -82,6 +125,8 @@ class DetailSongketActivity : AppCompatActivity() {
 
     companion object{
         const val ID = ""
+        const val USER_NAME = ""
+        const val avatarUrl = "EXTRA_AVATAR"
     }
 
 }
