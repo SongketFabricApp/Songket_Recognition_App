@@ -52,11 +52,11 @@
 
     //Home stuff
     <string name="what_s_new">What\'s new?</string>
-    <string name="menus">Menu</string>
+    <string name="menus">Find out more</string>
     <string name="welcome">Welcome</string>
     <string name="advertisement">Advertisement</string>
     <string name="you_may_be_interested">You may be Interested</string>
-    <string name="explore_more">Explore more</string>
+    <string name="explore_more">Explore more >> </string>
     <string name="market_finder">Market Finder</string>
     <string name="scanner">Scanner</string>
     <string name="list_songket">List Songket</string>

@@ -14,6 +14,7 @@
     <color name="textColor">#434242</color>
     <color name="backgroundSplash">#DFC6FA</color>
 
-    <color name="bgcolor">#131313</color>
+    <color name="bgcolor">#272626</color>
     <color name="bgTextColor">#937DC2</color>
+    <color name="bgmenu">#803A3535</color>
 </resources>

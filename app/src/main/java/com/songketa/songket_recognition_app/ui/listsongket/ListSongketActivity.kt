@@ -27,7 +27,6 @@ class ListSongketActivity : AppCompatActivity() {
         binding = ActivityListSongketBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        getStory()
 
         val layoutManager = LinearLayoutManager(this)
         binding.rvListSongket.layoutManager = layoutManager
@@ -36,6 +35,7 @@ class ListSongketActivity : AppCompatActivity() {
         listSongketAdapter = ListSongketAdapter(context = this)
 
         binding.rvListSongket.adapter = listSongketAdapter
+        getStory()
     }
 
     private fun setupSearchView() {

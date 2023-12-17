@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,6 +8,7 @@
     android:background="@color/bgcolor"
     tools:context=".ui.detailsongket.DetailSongketActivity">
 
+    <!-- Progress Indicator -->
     <com.google.android.material.progressindicator.LinearProgressIndicator
         android:id="@+id/progressIndicator"
         android:layout_width="match_parent"
@@ -17,6 +19,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!-- Image View -->
     <ImageView
         android:id="@+id/iv_songket"
         android:layout_width="match_parent"
@@ -26,12 +29,13 @@
         android:layout_marginEnd="24dp"
         android:scaleType="fitXY"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.545"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/backgrounds/scenic"
         android:contentDescription="@string/image_songket" />
 
+    <!-- Text View for Songket -->
     <TextView
         android:id="@+id/tv_songket"
         android:layout_width="wrap_content"
@@ -45,19 +49,22 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iv_songket" />
 
+
+    <!-- Material Toolbar -->
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btn_bookmark"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:clickable="true"
+        android:layout_marginTop="12dp"
+        android:contentDescription="@string/bookmark_button"
+        android:focusable="true"
+        android:tint="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.903"
+        app:layout_constraintHorizontal_bias="0.685"
         app:layout_constraintStart_toEndOf="@+id/tv_songket"
         app:layout_constraintTop_toBottomOf="@+id/iv_songket"
-        app:srcCompat="@drawable/ic_bookmark"
-        android:contentDescription="@string/bookmark_button"
-        android:focusable="true" />
+        tools:ignore="MissingConstraints" />
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/materialToolbar"
@@ -73,15 +80,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_songket">
 
+        <!-- Icon in Toolbar -->
         <ImageView
             android:id="@+id/imageView7"
             android:layout_width="28dp"
             android:layout_height="28dp"
             app:srcCompat="@drawable/file"
-            tools:layout_editor_absoluteX="35dp"
-            tools:layout_editor_absoluteY="289dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             android:contentDescription="@string/detail_icon" />
 
+        <!-- Title in Toolbar -->
         <TextView
             android:id="@+id/textView14"
             android:layout_width="wrap_content"
@@ -91,10 +100,11 @@
             android:paddingEnd="0dp"
             android:text="@string/details"
             android:textSize="20sp"
-            tools:layout_editor_absoluteX="20dp"
-            tools:layout_editor_absoluteY="326dp" />
+            app:layout_constraintStart_toEndOf="@+id/imageView7"
+            app:layout_constraintTop_toTopOf="parent" />
     </com.google.android.material.appbar.MaterialToolbar>
 
+    <!-- Scroll View -->
     <ScrollView
         android:id="@+id/scrollview"
         android:layout_width="match_parent"
@@ -106,12 +116,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/materialToolbar">
 
+        <!-- Constraint Layout Inside Scroll View -->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraint"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <!-- Origin Section -->
             <TextView
                 android:id="@+id/textView15"
                 android:layout_width="wrap_content"
@@ -128,23 +140,24 @@
                 android:id="@+id/tv_origin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="12dp"
                 android:fontFamily="@font/roboto_regular"
                 android:text="@string/province_dummy"
-                android:textSize="15sp"
+                android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="@+id/textView15"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/textView15"
                 app:layout_constraintTop_toBottomOf="@+id/textView15" />
 
+            <!-- Motif Section -->
             <View
                 android:id="@+id/divider"
-                android:layout_width="380dp"
+                android:layout_width="350dp"
                 android:layout_height="3dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="5dp"
                 android:background="@color/primary"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.689"
+                app:layout_constraintHorizontal_bias="0.491"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_origin" />
 
@@ -165,21 +178,22 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="12dp"
                 android:fontFamily="@font/roboto_regular"
                 android:text="@string/pattern_dummy"
-                android:textSize="15sp"
+                android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView17" />
 
+            <!-- Description Section -->
             <View
                 android:id="@+id/divider2"
-                android:layout_width="380dp"
+                android:layout_width="350dp"
                 android:layout_height="3dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="5dp"
                 android:background="@color/primary"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.645"
+                app:layout_constraintHorizontal_bias="0.491"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_motif" />
 
@@ -200,21 +214,23 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="12dp"
                 android:layout_marginEnd="32dp"
                 android:fontFamily="@font/roboto_regular"
                 android:paddingStart="5dp"
                 android:paddingEnd="32dp"
                 android:text="@string/desc_dummy"
-                android:textSize="15sp"
+                android:textSize="16sp"
+                android:gravity="start"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView19" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
 
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 
+    <!-- Home Button -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/homebutton"
         android:layout_width="wrap_content"
@@ -226,7 +242,7 @@
         android:clickable="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/ic_home"
         android:contentDescription="@string/home_button"

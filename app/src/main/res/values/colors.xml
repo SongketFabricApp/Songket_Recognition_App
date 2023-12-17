@@ -16,4 +16,5 @@
 
     <color name="bgcolor">#A0E9FF</color>
     <color name="bgTextColor">#FF000000</color>
+    <color name="bgmenu">#80FFFFFF</color>
 </resources>

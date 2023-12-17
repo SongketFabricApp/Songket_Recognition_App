@@ -95,7 +95,7 @@
             android:id="@+id/tv_explore"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="28dp"
             android:layout_marginEnd="16dp"
             android:fontFamily="@font/roboto_medium"
             android:text="@string/explore_more"
@@ -104,7 +104,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toEndOf="@+id/textView12"
-            app:layout_constraintTop_toBottomOf="@+id/tv_article" />
+            app:layout_constraintTop_toBottomOf="@+id/cardview_menu" />
 
         <TextView
             android:id="@+id/tv_menu"
@@ -120,127 +120,136 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/img_banner" />
 
-        <ImageButton
-            android:id="@+id/menu_maps"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:background="@android:color/transparent"
-            android:src="@drawable/icon_home_maps2"
-            android:scaleType="fitCenter"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_menu"
-            android:contentDescription="@string/market_finder_button" />
-
-        <TextView
-            android:id="@+id/tv_maps"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cardview_menu"
+            android:layout_width="390dp"
+            android:layout_height="117dp"
             android:layout_marginTop="8dp"
-            android:text="@string/market_finder"
-            android:textColor="@color/black"
-            app:layout_constraintEnd_toEndOf="@+id/menu_maps"
-            app:layout_constraintStart_toStartOf="@+id/menu_maps"
-            app:layout_constraintTop_toBottomOf="@+id/menu_maps" />
-
-        <ImageButton
-            android:id="@+id/menu_scan"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:scaleType="fitCenter"
-            android:background="@android:color/transparent"
-            android:src="@drawable/icon_home_scanner2"
-            app:layout_constraintEnd_toStartOf="@+id/menu_list"
-            app:layout_constraintStart_toEndOf="@+id/menu_maps"
+            android:background="@color/bgmenu"
             app:layout_constraintTop_toBottomOf="@+id/tv_menu"
-            android:contentDescription="@string/scanner_button" />
+            tools:layout_editor_absoluteX="11dp">
 
-        <TextView
-            android:id="@+id/tv_scanner"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="@string/scanner"
-            android:textColor="@color/black"
-            app:layout_constraintEnd_toEndOf="@+id/menu_scan"
-            app:layout_constraintStart_toStartOf="@+id/menu_scan"
-            app:layout_constraintTop_toBottomOf="@+id/menu_scan" />
+            <!-- Menu 1: Maps -->
+            <ImageButton
+                android:id="@+id/menu_maps"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="18dp"
+                android:layout_marginTop="16dp"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/market_finder_button"
+                android:scaleType="fitCenter"
+                android:src="@drawable/icon_home_maps2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageButton
-            android:id="@+id/menu_list"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:scaleType="fitCenter"
-            android:background="@android:color/transparent"
-            android:src="@drawable/icon_home_list"
-            app:layout_constraintEnd_toStartOf="@+id/menu_artikel"
-            app:layout_constraintStart_toEndOf="@+id/menu_scan"
-            app:layout_constraintTop_toBottomOf="@+id/tv_menu"
-            android:contentDescription="@string/list_songket_button" />
+            <TextView
+                android:id="@+id/tv_maps"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="1dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/market_finder"
+                android:textColor="@color/black"
+                app:layout_constraintStart_toStartOf="@+id/menu_maps"
+                app:layout_constraintTop_toBottomOf="@+id/menu_maps" />
 
+            <!-- Menu 2: Scanner -->
 
-        <TextView
-            android:id="@+id/tv_list"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="@string/list_songket"
-            android:textColor="@color/black"
-            app:layout_constraintEnd_toEndOf="@+id/menu_list"
-            app:layout_constraintStart_toStartOf="@+id/menu_list"
-            app:layout_constraintTop_toBottomOf="@+id/menu_list" />
+            <ImageButton
+                android:id="@+id/menu_scan"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="216dp"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/scanner_button"
+                android:scaleType="fitCenter"
+                android:src="@drawable/icon_home_scanner2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageButton
-            android:id="@+id/menu_artikel"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:scaleType="fitCenter"
-            android:background="@android:color/transparent"
-            android:src="@drawable/icon_home_article"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_menu"
-            android:contentDescription="@string/article_button" />
+            <TextView
+                android:id="@+id/tv_scanner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/scanner"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="@+id/menu_scan"
+                app:layout_constraintTop_toBottomOf="@+id/menu_scan" />
 
+            <!-- Menu 3: List -->
 
-        <TextView
-            android:id="@+id/tv_article"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="@string/what_s_new"
-            android:textColor="@color/black"
-            app:layout_constraintEnd_toEndOf="@+id/menu_artikel"
-            app:layout_constraintHorizontal_bias="0.857"
-            app:layout_constraintStart_toStartOf="@+id/menu_artikel"
-            app:layout_constraintTop_toBottomOf="@+id/menu_artikel" />
+            <ImageButton
+                android:id="@+id/menu_list"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="116dp"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/list_songket_button"
+                android:scaleType="fitCenter"
+                android:src="@drawable/icon_home_list"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_list"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/list_songket"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="@+id/menu_list"
+                app:layout_constraintTop_toBottomOf="@+id/menu_list" />
+
+            <!-- Menu 4: Article -->
+
+            <ImageButton
+                android:id="@+id/menu_artikel"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/article_button"
+                android:scaleType="fitCenter"
+                android:src="@drawable/icon_home_article"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_article"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/what_s_new"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="@+id/menu_artikel"
+                app:layout_constraintTop_toBottomOf="@+id/menu_artikel" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
             android:id="@+id/textView12"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="25dp"
             android:fontFamily="@font/roboto_medium"
             android:text="@string/you_may_be_interested"
             android:textColor="@color/black"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_maps" />
+            app:layout_constraintTop_toBottomOf="@+id/cardview_menu" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_songket"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="12dp"
             android:layout_marginEnd="16dp"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
