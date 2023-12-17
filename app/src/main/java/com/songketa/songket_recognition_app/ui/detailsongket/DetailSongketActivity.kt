@@ -54,7 +54,8 @@ class DetailSongketActivity : AppCompatActivity() {
                                 isFavorite=false
                                 binding.btnBookmark.setImageDrawable(
                                     ContextCompat.getDrawable(binding.btnBookmark.context,
-                                        R.drawable.ic_bookmark)
+                                        R.drawable.ic_bookmark
+                                    )
                                 )
 
                             }else{

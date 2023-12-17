@@ -13,6 +13,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.snackbar.Snackbar
 import com.songketa.songket_recognition_app.R
 import com.songketa.songket_recognition_app.adapter.BookmarkAdapter
 import com.songketa.songket_recognition_app.data.Result
@@ -94,22 +95,30 @@ class BookmarkFragment : Fragment() {
     }
 
     private fun performSearch(query: String) {
-        viewModel.searchSongket(query).observe(viewLifecycleOwner) { result ->
+        viewModel.searchSongket(query).observe(this@BookmarkFragment) { result ->
             when (result) {
                 is Result.Loading -> {
                     // Tampilkan indikator loading jika diperlukan
                 }
                 is Result.Success -> {
-                    // Convert DatasetItem to SongketEntity
-                    val songketEntities = result.data.map { datasetItem ->
-                        SongketEntity(
-                            idfabric = datasetItem.idfabric,
-                            fabricname = datasetItem.fabricname,
-                            origin = datasetItem.origin,
-                            imgUrl = datasetItem.imgUrl
-                        )
+                    val filteredList = result.data.filter { it.fabricname.contains(query, true) }
+
+                    if (filteredList.isEmpty()) {
+                        // Tampilkan pemberitahuan jika hasil pencarian kosong
+                        showEmptySearchNotification()
+                        bookmarkAdapter.submitList(emptyList()) // Clear the list
+                    } else {
+                        // Convert DatasetItem to SongketEntity
+                        val songketEntities = filteredList.map { datasetItem ->
+                            SongketEntity(
+                                idfabric = datasetItem.idfabric,
+                                fabricname = datasetItem.fabricname,
+                                origin = datasetItem.origin,
+                                imgUrl = datasetItem.imgUrl
+                            )
+                        }
+                        bookmarkAdaptergit .submitList(songketEntities)
                     }
-                    bookmarkAdapter.submitList(songketEntities)
                 }
                 is Result.Error -> {
                     showToast(result.error)
@@ -118,6 +127,13 @@ class BookmarkFragment : Fragment() {
         }
     }
 
+    private fun showEmptySearchNotification() {
+        Snackbar.make(
+            binding.root,
+            "No items found for the given search query.",
+            Snackbar.LENGTH_SHORT
+        ).show()
+    }
     private fun FragmentManager.replaceFragment(fragment: Fragment, containerId: Int) {
         beginTransaction()
             .replace(containerId, fragment)

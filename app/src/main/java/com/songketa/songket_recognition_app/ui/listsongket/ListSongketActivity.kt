@@ -7,6 +7,7 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.snackbar.Snackbar
 import com.songketa.songket_recognition_app.adapter.ListSongketAdapter
 import com.songketa.songket_recognition_app.databinding.ActivityListSongketBinding
 import com.songketa.songket_recognition_app.ui.ViewModelFactory
@@ -59,22 +60,38 @@ class ListSongketActivity : AppCompatActivity() {
                     // Tampilkan indikator loading jika diperlukan
                 }
                 is Result.Success -> {
-                    // Convert DatasetItem to SongketEntity
-                    val songketEntities = result.data.map { datasetItem ->
-                        SongketEntity(
-                            idfabric = datasetItem.idfabric,
-                            fabricname = datasetItem.fabricname,
-                            origin = datasetItem.origin,
-                            imgUrl = datasetItem.imgUrl
-                        )
+                    val filteredList = result.data.filter { it.fabricname.contains(query, true) }
+
+                    if (filteredList.isEmpty()) {
+                        // Tampilkan pemberitahuan jika hasil pencarian kosong
+                        showEmptySearchNotification()
+                        listSongketAdapter.submitList(emptyList()) // Clear the list
+                    } else {
+                        // Convert DatasetItem to SongketEntity
+                        val songketEntities = filteredList.map { datasetItem ->
+                            SongketEntity(
+                                idfabric = datasetItem.idfabric,
+                                fabricname = datasetItem.fabricname,
+                                origin = datasetItem.origin,
+                                imgUrl = datasetItem.imgUrl
+                            )
+                        }
+                        listSongketAdapter.submitList(songketEntities)
                     }
-                    listSongketAdapter.submitList(songketEntities)
                 }
                 is Result.Error -> {
                     showToast(result.error)
                 }
             }
         }
+    }
+
+    private fun showEmptySearchNotification() {
+        Snackbar.make(
+            binding.root,
+            "No items found for the given search query.",
+            Snackbar.LENGTH_SHORT
+        ).show()
     }
 
     private fun getStory() {
