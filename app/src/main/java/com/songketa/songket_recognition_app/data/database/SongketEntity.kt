@@ -11,7 +11,16 @@ import kotlinx.parcelize.Parcelize
 class SongketEntity (
 
     @PrimaryKey(autoGenerate = false)
-    @ColumnInfo(name = "fabricname")
-    var fabricname: String = "",
+    @ColumnInfo(name = "idfabric")
+    val idfabric: String = "",
 
-): Parcelable
+    @ColumnInfo(name="fabricname")
+    val fabricname: String? = null,
+
+    @ColumnInfo(name="imgUrl")
+    val imgUrl: String? = null,
+
+    @ColumnInfo(name="origin")
+    val origin: String? = null,
+
+    ): Parcelable

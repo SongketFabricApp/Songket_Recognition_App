@@ -1,5 +1,6 @@
 package com.songketa.songket_recognition_app.data
 
+import android.app.Application
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
@@ -16,12 +17,20 @@ import com.songketa.songket_recognition_app.utils.UserPreferences
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
+import android.content.Context
+import androidx.lifecycle.liveData
 import okhttp3.MultipartBody
 import retrofit2.HttpException
 import java.io.IOException
 
-class Repository private constructor(private val userPreference: UserPreferences, private val apiService: ApiService,
+class Repository private constructor(
+    private val context: Context,
+    private val userPreference: UserPreferences,
+    private val apiService: ApiService,
     private val apiMlService: ApiService){
+    fun getApplication(): Application {
+        return context.applicationContext as Application
+    }
     fun login(email: String, password: String): LiveData<Result<LoginResponse>> = liveData {
         emit(Result.Loading)
         try {
@@ -148,9 +157,13 @@ class Repository private constructor(private val userPreference: UserPreferences
         @Volatile
         private var instance: Repository? = null
 
-        fun getInstance(userPreference: UserPreferences,apiService: ApiService, apiMlService: ApiService): Repository =
+        fun getInstance(
+            context: Context,
+            userPreference: UserPreferences,
+            apiService: ApiService,
+            apiMlService: ApiService): Repository =
             instance ?: synchronized(this) {
-                instance ?: Repository(userPreference, apiService, apiMlService)
+                instance ?: Repository(context,userPreference, apiService, apiMlService)
             }.also { instance = it }
     }
 }

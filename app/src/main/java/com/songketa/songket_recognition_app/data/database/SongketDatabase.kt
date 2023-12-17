@@ -8,6 +8,8 @@ import androidx.room.RoomDatabase
 @Database(entities = [SongketEntity::class], version = 1, exportSchema = false)
 abstract class SongketDatabase : RoomDatabase(){
 
+    abstract fun songketDao():SongketDao
+
     companion object {
         @Volatile
         private var instance: SongketDatabase? = null
