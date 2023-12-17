@@ -45,13 +45,14 @@
             android:textColor="@color/primary"
             android:textSize="20sp"
             android:textStyle="normal"
+            android:text="@string/songket_dummy"
             card_view:layout_constraintBottom_toBottomOf="parent"
             card_view:layout_constraintEnd_toEndOf="parent"
             card_view:layout_constraintHorizontal_bias="0.0"
             card_view:layout_constraintStart_toEndOf="@+id/iv_item_songket_picture"
             card_view:layout_constraintTop_toTopOf="parent"
             card_view:layout_constraintVertical_bias="0.102"
-            tools:text="Songket Bulan Bintang" />
+            tools:text="@string/songket_dummy" />
 
         <TextView
             android:id="@+id/tv_item_desc"
@@ -62,13 +63,14 @@
             android:layout_marginEnd="8dp"
             android:maxLines="3"
             android:fontFamily="@font/roboto_light"
+            android:text="@string/desc_dummy"
             card_view:layout_constraintBottom_toBottomOf="parent"
             card_view:layout_constraintEnd_toEndOf="parent"
             card_view:layout_constraintHorizontal_bias="0.0"
             card_view:layout_constraintStart_toEndOf="@+id/iv_item_songket_picture"
             card_view:layout_constraintTop_toBottomOf="@+id/tv_item_origin"
             card_view:layout_constraintVertical_bias="0.0"
-            tools:text="lorem ipsum dolor sit amet" />
+            tools:text="@string/desc_dummy" />
 
         <TextView
             android:id="@+id/tv_item_origin"
@@ -78,12 +80,13 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:fontFamily="@font/roboto_medium"
-            android:text="@string/province"
             android:textColor="@color/primary"
+            android:text="@string/province_dummy"
             card_view:layout_constraintEnd_toEndOf="parent"
             card_view:layout_constraintHorizontal_bias="0.0"
             card_view:layout_constraintStart_toEndOf="@+id/iv_item_songket_picture"
-            card_view:layout_constraintTop_toBottomOf="@+id/tv_item_songket" />
+            card_view:layout_constraintTop_toBottomOf="@+id/tv_item_songket"
+            tools:text="@string/province_dummy"/>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

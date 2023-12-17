@@ -30,7 +30,7 @@
             android:layout_marginTop="20dp"
             app:iconifiedByDefault="false"
             app:queryBackground="@android:color/transparent"
-            app:queryHint="search here.." />
+            app:queryHint="@string/search_here" />
 
 
     </com.google.android.material.appbar.AppBarLayout>

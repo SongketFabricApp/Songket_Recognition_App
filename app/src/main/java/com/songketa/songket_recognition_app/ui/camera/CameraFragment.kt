@@ -112,7 +112,7 @@ class CameraFragment : Fragment(), View.OnClickListener{
                     }
                 }
             }
-        } ?: showToast(getString(R.string.error))
+        } ?: showToast(getString(R.string.error_upload))
     }
 
     private fun AlertCustom(image: String, name: String, id: String){

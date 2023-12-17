@@ -13,10 +13,15 @@ import android.text.method.PasswordTransformationMethod
 import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
+import android.widget.Button
+import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.content.ContextCompat.startActivity
+import com.bumptech.glide.Glide
 import com.songketa.songket_recognition_app.MainActivity
 import com.songketa.songket_recognition_app.R
 import com.songketa.songket_recognition_app.data.model.User
@@ -27,6 +32,7 @@ import com.songketa.songket_recognition_app.ui.welcome.WelcomeActivity
 import com.songketa.songket_recognition_app.utils.disable
 import com.songketa.songket_recognition_app.utils.enable
 import com.jakewharton.rxbinding2.widget.RxTextView
+import com.songketa.songket_recognition_app.ui.detailsongket.DetailSongketActivity
 import com.songketa.songket_recognition_app.ui.signup.SignUpActivity
 import io.reactivex.Observable
 
@@ -147,7 +153,6 @@ class SignInActivity : AppCompatActivity() {
                             showLoading(true)
                         }
                         is Result.Success -> {
-                            // Logic for a successful login (e.g., save session, show success dialog)
                             showLoading(false)
                             val user = User(
                                 name = hoho.data.loginResult.name,
@@ -156,15 +161,17 @@ class SignInActivity : AppCompatActivity() {
                                 phone = hoho.data.loginResult.phone,
                             )
                             viewModel.saveSession(user)
-                            // Show success dialog
-                            val title = getString(R.string.head_notif)
+                            val title = getString(R.string.head_notif_succes)
                             val message = getString(R.string.login_succes_notif)
                             val next = getString(R.string.next_notif)
                             showSuccessDialogWithIntent(title, message, next)
                         }
                         is Result.Error -> {
                             showLoading(false)
-                            showToast(hoho.error)
+                            val title = getString(R.string.head_notif_failed)
+                            val message = hoho.error
+                            val next = getString(R.string.failed_notif)
+                            showSuccessDialogWithIntent(title, message, next)
                         }
                     }
                 }
@@ -177,7 +184,6 @@ class SignInActivity : AppCompatActivity() {
             setTitle(title)
             setMessage(message)
             setPositiveButton(next) { _, _ ->
-                // Intent ke MainActivity
                 val intent = Intent(this@SignInActivity, MainActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
                 startActivity(intent)

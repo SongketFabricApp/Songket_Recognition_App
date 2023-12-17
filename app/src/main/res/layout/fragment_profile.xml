@@ -8,14 +8,19 @@
     android:background="@color/bgcolor"
     tools:context=".ui.profile.ProfileFragment">
 
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:paddingBottom="5dp">
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/card1"
             android:layout_width="match_parent"
-            android:layout_height="70dp"
+            android:layout_height="0dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="68dp"
             android:layout_marginEnd="8dp"
@@ -33,7 +38,7 @@
                 android:layout_height="match_parent"
                 android:layout_margin="20dp"
                 android:fontFamily="@font/roboto_bold"
-                android:text="@string/eye_friendly_mode"
+                android:text="@string/dark_mode"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:layout_gravity="start"
@@ -57,7 +62,7 @@
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/card2"
             android:layout_width="match_parent"
-            android:layout_height="70dp"
+            android:layout_height="0dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="8dp"
@@ -76,7 +81,7 @@
                 android:layout_gravity="start"
                 android:layout_margin="20dp"
                 android:fontFamily="@font/roboto_bold"
-                android:text="Language"
+                android:text="@string/language"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -101,7 +106,7 @@
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/card3"
             android:layout_width="match_parent"
-            android:layout_height="70dp"
+            android:layout_height="0dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="8dp"
@@ -120,7 +125,7 @@
                 android:layout_gravity="start"
                 android:layout_margin="20dp"
                 android:fontFamily="@font/roboto_bold"
-                android:text="Sign Out"
+                android:text="@string/sign_out"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -135,7 +140,8 @@
                 android:layout_margin="20dp"
                 android:background="@color/white"
                 android:scaleType="fitCenter"
-                app:srcCompat="@drawable/logout" />
+                app:srcCompat="@drawable/logout"
+                android:contentDescription="@string/log_out_button" />
 
         </com.google.android.material.card.MaterialCardView>
 
@@ -145,7 +151,8 @@
             android:src="@drawable/half_circle"
             app:layout_constraintBottom_toBottomOf="@+id/divider3"
             app:layout_constraintTop_toTopOf="parent"
-            tools:src="@drawable/half_circle" />
+            tools:src="@drawable/half_circle"
+            android:contentDescription="@string/background_image" />
 
         <ImageView
             android:id="@+id/iv_image_profile"
@@ -174,14 +181,15 @@
             android:fontFamily="@font/roboto_bold"
             android:gravity="center"
             android:alpha="0"
-            android:text="@string/username"
             android:textColor="@color/white"
             android:textSize="24sp"
+            android:text="@string/username"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.484"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/iv_image_profile"
-            tools:alpha="100"/>
+            tools:alpha="100"
+            tools:text="@string/username"/>
 
         <TextView
             android:id="@+id/tv_email"
@@ -193,13 +201,14 @@
             android:fontFamily="@font/roboto_medium"
             android:gravity="center"
             android:alpha="0"
-            android:text="@string/email"
             android:textColor="@color/white"
             android:textSize="16sp"
+            android:text="@string/email"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_username"
-            tools:alpha="100"/>
+            tools:alpha="100"
+            tools:text="@string/email"/>
 
         <TextView
             android:id="@+id/tv_phone"
@@ -211,15 +220,15 @@
             android:fontFamily="@font/roboto_medium"
             android:gravity="center"
             android:alpha="0"
-            android:text="@string/phone"
             android:textColor="@color/white"
             android:textSize="16sp"
+            android:text="@string/phone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_email"
-            tools:alpha="100"/>
-
+            tools:alpha="100"
+            tools:text="@string/phone"/>
 
         <View
             android:id="@+id/divider3"
@@ -236,5 +245,7 @@
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
 
 </FrameLayout>

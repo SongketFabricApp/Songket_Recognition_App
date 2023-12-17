@@ -10,7 +10,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:paddingBottom="5dp">
 
         <com.google.android.material.progressindicator.LinearProgressIndicator
             android:id="@+id/progressIndicator"
@@ -44,13 +45,14 @@
             android:layout_marginTop="32dp"
             android:layout_marginEnd="8dp"
             android:fontFamily="@font/roboto_bold"
-            android:text="@string/username"
             android:textColor="@color/primary"
             android:textSize="25sp"
+            android:text="@string/username"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.041"
             app:layout_constraintStart_toEndOf="@+id/tv_welcome"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@string/username"/>
 
         <ViewFlipper
             android:id="@+id/img_banner"
@@ -75,7 +77,8 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:scaleType="fitXY"
-                android:src="@drawable/iklan3" />
+                android:src="@drawable/iklan3"
+                android:contentDescription="@string/advertisement" />
 
             <ImageView
                 android:id="@+id/iv_slide2"
@@ -83,7 +86,8 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:scaleType="fitXY"
-                android:src="@drawable/iklan2" />
+                android:src="@drawable/iklan2"
+                android:contentDescription="@string/advertisement"/>
 
         </ViewFlipper>
 
@@ -91,12 +95,12 @@
             android:id="@+id/tv_explore"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="32dp"
             android:layout_marginEnd="16dp"
             android:fontFamily="@font/roboto_medium"
             android:text="@string/explore_more"
             android:textColor="@color/primary"
-            android:textSize="16sp"
+            android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toEndOf="@+id/textView12"
@@ -110,7 +114,7 @@
             android:fontFamily="@font/roboto_medium"
             android:text="@string/menus"
             android:textColor="@color/black"
-            android:textSize="19sp"
+            android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.044"
             app:layout_constraintStart_toStartOf="parent"
@@ -126,14 +130,15 @@
             android:src="@drawable/icon_home_maps2"
             android:scaleType="fitCenter"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_menu" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_menu"
+            android:contentDescription="@string/market_finder_button" />
 
         <TextView
             android:id="@+id/tv_maps"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="Market Finder"
+            android:text="@string/market_finder"
             android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="@+id/menu_maps"
             app:layout_constraintStart_toStartOf="@+id/menu_maps"
@@ -151,14 +156,15 @@
             android:src="@drawable/icon_home_scanner2"
             app:layout_constraintEnd_toStartOf="@+id/menu_list"
             app:layout_constraintStart_toEndOf="@+id/menu_maps"
-            app:layout_constraintTop_toBottomOf="@+id/tv_menu" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_menu"
+            android:contentDescription="@string/scanner_button" />
 
         <TextView
             android:id="@+id/tv_scanner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="Scanner"
+            android:text="@string/scanner"
             android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="@+id/menu_scan"
             app:layout_constraintStart_toStartOf="@+id/menu_scan"
@@ -175,7 +181,8 @@
             android:src="@drawable/icon_home_list"
             app:layout_constraintEnd_toStartOf="@+id/menu_artikel"
             app:layout_constraintStart_toEndOf="@+id/menu_scan"
-            app:layout_constraintTop_toBottomOf="@+id/tv_menu" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_menu"
+            android:contentDescription="@string/list_songket_button" />
 
 
         <TextView
@@ -183,7 +190,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="List Songket"
+            android:text="@string/list_songket"
             android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="@+id/menu_list"
             app:layout_constraintStart_toStartOf="@+id/menu_list"
@@ -199,7 +206,8 @@
             android:background="@android:color/transparent"
             android:src="@drawable/icon_home_article"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_menu" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_menu"
+            android:contentDescription="@string/article_button" />
 
 
         <TextView
@@ -223,8 +231,7 @@
             android:fontFamily="@font/roboto_medium"
             android:text="@string/you_may_be_interested"
             android:textColor="@color/black"
-            android:textSize="19sp"
-
+            android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_maps" />
 

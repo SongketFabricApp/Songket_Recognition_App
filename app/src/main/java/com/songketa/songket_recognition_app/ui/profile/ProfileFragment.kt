@@ -11,6 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.CompoundButton
 import androidx.activity.OnBackPressedCallback
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
@@ -18,6 +19,7 @@ import androidx.datastore.preferences.preferencesDataStore
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
+import com.songketa.songket_recognition_app.MainActivity
 import com.songketa.songket_recognition_app.R
 import com.songketa.songket_recognition_app.databinding.FragmentProfileBinding
 import com.songketa.songket_recognition_app.ui.ViewModelFactory
@@ -36,9 +38,6 @@ class ProfileFragment : Fragment() {
     }
     val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
 
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//        super.onCreate(savedInstanceState)
-//    }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         observeSession()
@@ -78,10 +77,28 @@ class ProfileFragment : Fragment() {
             startActivity(Intent(Settings.ACTION_LOCALE_SETTINGS))
         }
         binding.btnLogout.setOnClickListener {
-            logout()
+            val title = getString(R.string.warning_notif)
+            val message = getString(R.string.question_notif)
+            val next = getString(R.string.logout_notif)
+            val back = getString(R.string.return_notif)
+            showOptionDialogWithIntent(title,message,next,back)
         }
 
         return binding.root
+    }
+    private fun showOptionDialogWithIntent(title: String, message: String, next: String, back: String) {
+        AlertDialog.Builder(requireContext()).apply {
+            setTitle(title)
+            setMessage(message)
+            setPositiveButton(next) { _, _ ->
+                logout()
+            }
+            setNegativeButton(back){ _, _ ->
+                requireActivity().supportFragmentManager.popBackStack()
+            }
+            create()
+            show()
+        }
     }
 
     private fun setTheme(isDarkModeActive: Boolean) {

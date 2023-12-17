@@ -5,8 +5,4 @@ object Constant {
     const val MIN_LENGTH_PASSWORD = 8
     const val TIMER_1: Long = 3000
     const val TIMER_2: Long = 1000
-    const val location :Int = 1
-    const val PaddingBound: Int = 200
-    var Email: String = "songketa@gmail.com"
-    var Password: String = "songketahebat"
 }
