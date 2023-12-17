@@ -38,23 +38,11 @@
             android:textStyle="normal"
             android:maxLines="2"
             card_view:layout_constraintBottom_toBottomOf="parent"
-            card_view:layout_constraintEnd_toStartOf="@+id/iv_vector_drawable"
             card_view:layout_constraintHorizontal_bias="0.03"
             card_view:layout_constraintStart_toEndOf="@+id/iv_songket_image"
             card_view:layout_constraintTop_toTopOf="parent"
             card_view:layout_constraintVertical_bias="0.245"
             tools:text="Songket Bulan Bintang" />
-
-        <ImageView
-            android:id="@+id/iv_vector_drawable"
-            android:layout_width="37dp"
-            android:layout_height="43dp"
-            android:layout_marginEnd="12dp"
-            android:src="@drawable/ic_bookmark"
-            card_view:layout_constraintBottom_toBottomOf="parent"
-            card_view:layout_constraintEnd_toEndOf="parent"
-            card_view:layout_constraintTop_toTopOf="parent"
-            card_view:layout_constraintVertical_bias="0.514" />
 
         <TextView
             android:id="@+id/tv_asal_sogket"

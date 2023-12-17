@@ -5,7 +5,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Observer
@@ -13,6 +15,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.songketa.songket_recognition_app.R
 import com.songketa.songket_recognition_app.adapter.BookmarkAdapter
+import com.songketa.songket_recognition_app.data.Result
+import com.songketa.songket_recognition_app.data.database.SongketEntity
 import com.songketa.songket_recognition_app.databinding.FragmentBookmarkBinding
 import com.songketa.songket_recognition_app.ui.ViewModelFactory
 import com.songketa.songket_recognition_app.ui.detailsongket.DetailSongketActivity
@@ -40,6 +44,8 @@ class BookmarkFragment : Fragment() {
             LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         binding.rvListSongket.layoutManager = linearLayoutManager
         binding.rvListSongket.adapter = bookmarkAdapter
+
+        setupSearchView()
 
         return view
     }
@@ -73,9 +79,52 @@ class BookmarkFragment : Fragment() {
         }
     }
 
+    private fun setupSearchView() {
+        val searchView = binding.searchView
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                newText?.let { performSearch(it) }
+                return false
+            }
+        })
+    }
+
+    private fun performSearch(query: String) {
+        viewModel.searchSongket(query).observe(viewLifecycleOwner) { result ->
+            when (result) {
+                is Result.Loading -> {
+                    // Tampilkan indikator loading jika diperlukan
+                }
+                is Result.Success -> {
+                    // Convert DatasetItem to SongketEntity
+                    val songketEntities = result.data.map { datasetItem ->
+                        SongketEntity(
+                            idfabric = datasetItem.idfabric,
+                            fabricname = datasetItem.fabricname,
+                            origin = datasetItem.origin,
+                            imgUrl = datasetItem.imgUrl
+                        )
+                    }
+                    bookmarkAdapter.submitList(songketEntities)
+                }
+                is Result.Error -> {
+                    showToast(result.error)
+                }
+            }
+        }
+    }
+
     private fun FragmentManager.replaceFragment(fragment: Fragment, containerId: Int) {
         beginTransaction()
             .replace(containerId, fragment)
             .commit()
+    }
+
+    private fun showToast(message: String) {
+        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
     }
 }

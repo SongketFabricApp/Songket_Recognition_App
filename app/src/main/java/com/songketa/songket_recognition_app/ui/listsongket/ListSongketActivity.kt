@@ -12,7 +12,6 @@ import com.songketa.songket_recognition_app.databinding.ActivityListSongketBindi
 import com.songketa.songket_recognition_app.ui.ViewModelFactory
 import com.songketa.songket_recognition_app.data.Result
 import com.songketa.songket_recognition_app.data.database.SongketEntity
-import com.songketa.songket_recognition_app.ui.bookmark.BookmarkViewModel
 
 class ListSongketActivity : AppCompatActivity() {
     private lateinit var binding: ActivityListSongketBinding
@@ -34,16 +33,7 @@ class ListSongketActivity : AppCompatActivity() {
         binding.rvListSongket.layoutManager = layoutManager
         setupSearchView()
 
-        listSongketAdapter = ListSongketAdapter(
-            context = this,
-            onBookmarkClick = { songket ->
-                // Implement the logic you want to perform on bookmark click
-            },
-            onItemClickListener = { songket ->
-                // Implement the logic you want to perform on item click
-            },
-            bookmarkViewModel = BookmarkViewModel(application)
-        )
+        listSongketAdapter = ListSongketAdapter(context = this)
 
         binding.rvListSongket.adapter = listSongketAdapter
     }
