@@ -16,7 +16,8 @@ import de.hdodenhof.circleimageview.CircleImageView
 class MenuAdapter (
     private val context: Context?,
     private val names: ArrayList<String>,
-    private val imageUrls: ArrayList<String>
+    private val imageUrls: ArrayList<String>,
+    private val itemClickListener: OnMenuItemClickListener
 ) : RecyclerView.Adapter<MenuAdapter.ViewHolder>() {
 
     private val TAG = "RecyclerViewAdapter"
@@ -34,8 +35,7 @@ class MenuAdapter (
             .into(holder.image)
         holder.name.text = names[position]
         holder.image.setOnClickListener {
-            Log.d(TAG, "onClick: clicked on an image: ${names[position]}")
-            Toast.makeText(context, names[position], Toast.LENGTH_SHORT).show()
+            itemClickListener.onItemClick(position)
         }
     }
 
@@ -47,5 +47,10 @@ class MenuAdapter (
         var image: ImageView = itemView.findViewById(R.id.image_view)
         var name: TextView = itemView.findViewById(R.id.name)
     }
+
+    interface OnMenuItemClickListener {
+        fun onItemClick(position: Int)
+    }
+
 
 }

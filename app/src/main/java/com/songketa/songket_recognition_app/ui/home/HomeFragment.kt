@@ -4,41 +4,35 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.Toast
+import android.Manifest
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.viewpager2.widget.ViewPager2
-import android.Manifest
-import android.util.Log
 import androidx.recyclerview.widget.RecyclerView
 import com.songketa.songket_recognition_app.R
 import com.songketa.songket_recognition_app.adapter.HomeSongketAdapter
 import com.songketa.songket_recognition_app.adapter.MenuAdapter
+import com.songketa.songket_recognition_app.data.Result
+import com.songketa.songket_recognition_app.data.response.DatasetItem
 import com.songketa.songket_recognition_app.databinding.FragmentHomeBinding
 import com.songketa.songket_recognition_app.ui.ViewModelFactory
 import com.songketa.songket_recognition_app.ui.camera.CameraFragment
 import com.songketa.songket_recognition_app.ui.listsongket.ListSongketActivity
-import com.songketa.songket_recognition_app.ui.maps.MapsActivity
-import com.songketa.songket_recognition_app.data.Result
-import com.songketa.songket_recognition_app.data.response.DatasetItem
-import com.songketa.songket_recognition_app.databinding.ActivityMainBinding
 import com.songketa.songket_recognition_app.ui.signin.SignInActivity
 
+class HomeFragment : Fragment(), MenuAdapter.OnMenuItemClickListener {
 
-class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
     private val LOCATION_PERMISSION_REQUEST_CODE = 123
-
     private val TAG = "YourFragment"
-
-    //vars
     private val mNames = ArrayList<String>()
     private val mImageUrls = ArrayList<String>()
 
@@ -65,7 +59,6 @@ class HomeFragment : Fragment() {
     ): View {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
         val view = binding.root
-//        setupMenuClickListeners()
 
         val linearLayoutManager = LinearLayoutManager(requireContext())
         linearLayoutManager.orientation = LinearLayoutManager.VERTICAL
@@ -93,6 +86,9 @@ class HomeFragment : Fragment() {
     private fun getImages() {
         Log.d(TAG, "initImageBitmaps: preparing bitmaps.")
 
+        mImageUrls.clear()
+        mNames.clear()
+
         mImageUrls.add("android.resource://${requireContext().packageName}/${R.drawable.icon_home_maps2}")
         mNames.add("Market Finder")
 
@@ -108,52 +104,16 @@ class HomeFragment : Fragment() {
         initRecyclerView()
     }
 
-
     private fun initRecyclerView() {
         Log.d(TAG, "initRecyclerView: init recyclerview")
 
-        val layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        val layoutManager =
+            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         val recyclerView: RecyclerView = binding.root.findViewById(R.id.cardview_menu)
         recyclerView.layoutManager = layoutManager
-        val adapter = MenuAdapter(requireContext(), mNames, mImageUrls)
+        val adapter = MenuAdapter(requireContext(), mNames, mImageUrls, this)
         recyclerView.adapter = adapter
     }
-
-
-//    private fun setupMenuClickListeners() {
-//        binding.menuMaps.setOnClickListener {
-//            if (checkLocationPermission()) {
-//                val keyword = "toko kain"
-//                val gmmIntentUri = Uri.parse("geo:0,0?q=$keyword")
-//
-//                val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
-//                mapIntent.setPackage("com.google.android.apps.maps")
-//
-//                if (mapIntent.resolveActivity(requireContext().packageManager) != null) {
-//                    startActivity(mapIntent)
-//                } else {
-//                    showToast("Aplikasi Google Maps tidak terinstall.")
-//                }
-//            } else {
-//                requestLocationPermission()
-//            }
-//        }
-//
-//
-//        binding.menuScan.setOnClickListener {
-//            onButtonClicked()
-//        }
-//
-//        binding.menuScan.setOnClickListener {
-//            onButtonClicked()
-//        }
-//        binding.menuList.setOnClickListener {
-//            startActivity(Intent(requireContext(), ListSongketActivity::class.java))
-//        }
-//        binding.menuArtikel.setOnClickListener {
-//            showToast("Features not available yet")
-//        }
-//    }
 
     private fun getStory() {
         viewModel.getSongket().observe(viewLifecycleOwner) { story ->
@@ -177,7 +137,6 @@ class HomeFragment : Fragment() {
             }
         }
     }
-
 
     private fun songketAdapter(listStory: List<DatasetItem>) {
         val randomList = listStory.shuffled()
@@ -229,6 +188,37 @@ class HomeFragment : Fragment() {
                 showToast("Izin lokasi diberikan. Coba lagi.")
             } else {
                 showToast("Izin lokasi ditolak.")
+            }
+        }
+    }
+
+    override fun onItemClick(position: Int) {
+        when (position) {
+            0 -> {
+                if (checkLocationPermission()) {
+                    val keyword = "toko kain"
+                    val gmmIntentUri = Uri.parse("geo:0,0?q=$keyword")
+
+                    val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
+                    mapIntent.setPackage("com.google.android.apps.maps")
+
+                    if (mapIntent.resolveActivity(requireContext().packageManager) != null) {
+                        startActivity(mapIntent)
+                    } else {
+                        showToast("Aplikasi Google Maps tidak terinstall.")
+                    }
+                } else {
+                    requestLocationPermission()
+                }
+            }
+            1 -> {
+                onButtonClicked()
+            }
+            2 -> {
+                startActivity(Intent(requireContext(), ListSongketActivity::class.java))
+            }
+            3 -> {
+                showToast("Features not available yet")
             }
         }
     }
