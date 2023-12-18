@@ -5,6 +5,8 @@ import android.animation.ObjectAnimator
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.method.HideReturnsTransformationMethod
+import android.text.method.PasswordTransformationMethod
 import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
@@ -39,6 +41,7 @@ class ProfileChangeActivity : AppCompatActivity() {
         playAnimation()
 
         setupEditButton()
+        showPassword()
     }
 
     private fun setupEditButton() {
@@ -136,6 +139,18 @@ class ProfileChangeActivity : AppCompatActivity() {
             playSequentially(titleusername,usernameedit,
                 titlphone,phoneedit,titlepass,passedit,edit)
             start()
+        }
+    }
+
+    private fun showPassword() {
+        binding.showPassword.setOnCheckedChangeListener { _, isChecked ->
+            val editText = binding.passwordField // Assuming password_field is the id of your EditText inside TextInputLayout
+            editText.transformationMethod = if (isChecked) {
+                HideReturnsTransformationMethod.getInstance()
+            } else {
+                PasswordTransformationMethod.getInstance()
+            }
+            editText.text?.let { editText.setSelection(it.length) }
         }
     }
 

@@ -34,6 +34,8 @@
     <string name="signin_to_your_account">Masuk ke Akun Anda</string>
     <string name="havent_have_account">Belum punya akun?</string>
     <string name="signup_here">Daftar di sini</string>
+    <string name="new_password">Password Baru</string>
+    <string name="enter_new_password">Masukkan password baru</string>
 
     <!-- Welcome -->
     <string name="opening1">Mari kita temukan\nkain Songket Indonesia</string>

@@ -11,7 +11,7 @@ import com.songketa.songket_recognition_app.R
 
 class CustomPhone : AppCompatEditText {
 
-    private val phoneRegex = Regex("^\\d{3}\\d{4}\\d{4}\$")
+    private val phoneRegex = Regex("^\\d{11,12}\$")
 
     constructor(context: Context) : super(context) {
         initialize()

@@ -34,6 +34,8 @@
     <string name="signin_to_your_account">登录到您的帐户</string>
     <string name="havent_have_account">还没有帐户？</string>
     <string name="signup_here">在这里注册</string>
+    <string name="new_password">新密码</string>
+    <string name="enter_new_password">请输入新密码</string>
 
     <!-- 欢迎 -->
     <string name="opening1">让我们发现\n印度尼西亚宋凯布料</string>

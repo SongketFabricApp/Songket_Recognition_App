@@ -16,7 +16,6 @@ import com.songketa.songket_recognition_app.utils.isValidEmail
 class CustomEditText : AppCompatEditText, View.OnTouchListener {
     private lateinit var clearButtonImage: Drawable
 
-
     constructor(context: Context) : super(context) {
         init()
     }
@@ -42,15 +41,20 @@ class CustomEditText : AppCompatEditText, View.OnTouchListener {
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
                 // Do nothing.
             }
+
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-                if (s.toString().isNotEmpty()) showClearButton() else hideClearButton()
-            }
-            override fun afterTextChanged(s: Editable) {
-                if (isValidEmail(text.toString())) {
+                // Validasi setiap perubahan teks, termasuk ketika karakter baru ditambahkan
+                if (isValidEmail(s.toString())) {
                     this@CustomEditText.error = null
                 } else {
                     this@CustomEditText.error = context.getString(R.string.invalid_email)
                 }
+
+                if (s.toString().isNotEmpty()) showClearButton() else hideClearButton()
+            }
+
+            override fun afterTextChanged(s: Editable) {
+                // Tidak perlu melakukan validasi di sini
             }
         })
     }
@@ -58,6 +62,7 @@ class CustomEditText : AppCompatEditText, View.OnTouchListener {
     private fun showClearButton() {
         setButtonDrawables(endOfTheText = clearButtonImage)
     }
+
     private fun hideClearButton() {
         setButtonDrawables()
     }
@@ -67,7 +72,7 @@ class CustomEditText : AppCompatEditText, View.OnTouchListener {
         topOfTheText: Drawable? = null,
         endOfTheText: Drawable? = null,
         bottomOfTheText: Drawable? = null
-    ){
+    ) {
         setCompoundDrawablesWithIntrinsicBounds(
             startOfTheText,
             topOfTheText,

@@ -35,6 +35,8 @@
     <string name="signin_to_your_account">Sign In to Your Account</string>
     <string name="havent_have_account">Do not have an account yet?</string>
     <string name="signup_here">Sign Up here</string>
+    <string name="new_password">New Password</string>
+    <string name="enter_new_password">Enter new password</string>
 
     //Welcome stuff
     <string name="opening1">Let\'s discover\nIndonesia Songket fabric</string>
