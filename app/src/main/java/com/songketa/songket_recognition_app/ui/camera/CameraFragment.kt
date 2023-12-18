@@ -134,7 +134,7 @@ class CameraFragment : Fragment(), View.OnClickListener{
 
             alertDialogBuilder.dismiss()
         }
-        alertDialogBuilder.setCanceledOnTouchOutside(false)
+        alertDialogBuilder.setCanceledOnTouchOutside(true)
         alertDialogBuilder.show()
     }
 

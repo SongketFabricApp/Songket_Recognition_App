@@ -72,7 +72,7 @@ class DetailSongketActivity : AppCompatActivity() {
                                 item.data.datasetItem.fabricname,
                                 item.data.datasetItem.imgUrl,
                                 item.data.datasetItem.origin,
-                                )
+                            )
                             if (isFavorite){
                                 viewModel.deleteFavorite(favSongket)
                                 Toast.makeText(this, "Deleted", Toast.LENGTH_SHORT).show()

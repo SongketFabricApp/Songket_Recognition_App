@@ -43,12 +43,10 @@
     //List and Bookmark stuff
     <string name="search_here">Search Here…</string>
 
-
     //Camera stuff
     <string name="galery">Galery</string>
     <string name="camera">Camera</string>
     <string name="check_out">Check Out</string>
-
 
     //Home stuff
     <string name="what_s_new">What\'s new?</string>

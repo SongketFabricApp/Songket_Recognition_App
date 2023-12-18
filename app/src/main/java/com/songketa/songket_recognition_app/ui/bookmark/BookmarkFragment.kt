@@ -117,7 +117,7 @@ class BookmarkFragment : Fragment() {
                                 imgUrl = datasetItem.imgUrl
                             )
                         }
-                        bookmarkAdaptergit .submitList(songketEntities)
+                        bookmarkAdapter.submitList(songketEntities)
                     }
                 }
                 is Result.Error -> {

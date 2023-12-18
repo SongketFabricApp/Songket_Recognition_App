@@ -104,18 +104,60 @@
         </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card4"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="8dp"
+            android:alpha="0"
+            android:backgroundTint="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/card2"
+            app:strokeColor="@color/primary"
+            tools:alpha="100">
+
+            <TextView
+                android:id="@+id/textView28"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_margin="20dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="Edit Password"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:layout_editor_absoluteX="26dp"
+                tools:layout_editor_absoluteY="441dp" />
+
+            <ImageButton
+                android:id="@+id/btn_logout3"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_gravity="end"
+                android:layout_margin="20dp"
+                android:background="@color/white"
+                android:contentDescription="@string/log_out_button"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/logout" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
             android:id="@+id/card3"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="8dp"
-            app:strokeColor="@color/primary"
             android:alpha="0"
             android:backgroundTint="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/card2"
+            app:layout_constraintTop_toBottomOf="@+id/card4"
+            app:strokeColor="@color/primary"
             tools:alpha="100">
 
             <TextView
@@ -139,9 +181,9 @@
                 android:layout_gravity="end"
                 android:layout_margin="20dp"
                 android:background="@color/white"
+                android:contentDescription="@string/log_out_button"
                 android:scaleType="fitCenter"
-                app:srcCompat="@drawable/logout"
-                android:contentDescription="@string/log_out_button" />
+                app:srcCompat="@drawable/logout" />
 
         </com.google.android.material.card.MaterialCardView>
 
