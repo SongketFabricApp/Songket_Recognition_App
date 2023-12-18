@@ -127,4 +127,7 @@
     <string name="required_field">请填写此字段</string>
     <string name="invalid_phone_number">无效的电话号码</string>
     <string name="enter_email">输入电子邮件</string>
+
+    <string name="access_granted">授予访问权限</string>
+    <string name="access_denied">相机权限被拒绝。此功能将无法使用</string>
 </resources>

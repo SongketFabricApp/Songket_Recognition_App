@@ -121,4 +121,7 @@
     <string name="required_field">Mohon isi kolom ini</string>
     <string name="invalid_phone_number">Nomor telepon tidak valid</string>
     <string name="enter_email">Masukkan email</string>
+
+    <string name="access_granted">Akses diberikan</string>
+    <string name="access_denied">Izin kamera ditolak. Fitur ini tidak akan berfungsi</string>
 </resources>

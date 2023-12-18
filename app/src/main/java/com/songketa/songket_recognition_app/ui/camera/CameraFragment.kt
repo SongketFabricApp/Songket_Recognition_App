@@ -1,6 +1,7 @@
 package com.songketa.songket_recognition_app.ui.camera
 
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
@@ -15,6 +16,7 @@ import android.widget.Toast
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
 import com.songketa.songket_recognition_app.R
@@ -29,6 +31,8 @@ import okhttp3.RequestBody.Companion.asRequestBody
 import com.songketa.songket_recognition_app.data.Result
 import com.songketa.songket_recognition_app.data.model.Songket
 import com.songketa.songket_recognition_app.ui.detailsongket.DetailSongketActivity
+import com.songketa.songket_recognition_app.utils.Constant.CAMERA_PERMISSION_REQUEST_CODE
+import android.Manifest
 
 
 class CameraFragment : Fragment(), View.OnClickListener{
@@ -42,21 +46,50 @@ class CameraFragment : Fragment(), View.OnClickListener{
     }
     private var currentImageUri: Uri? = null
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentCameraBinding.inflate(inflater, container, false)
         return binding.root
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.CAMERA)
+            == PackageManager.PERMISSION_DENIED
+        ) {
+            requestPermissions(
+                arrayOf(Manifest.permission.CAMERA),
+                CAMERA_PERMISSION_REQUEST_CODE
+            )
+        }
+
         binding.btnCamera.setOnClickListener(this)
         binding.btnGallery.setOnClickListener(this)
         binding.btnCheckOut.setOnClickListener(this)
+
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        when (requestCode) {
+            CAMERA_PERMISSION_REQUEST_CODE -> {
+                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    val granted = getString(R.string.access_granted)
+                    showToast(granted)
+                } else {
+                    val denied = getString(R.string.access_denied)
+                    showToast(denied)
+                }
+            }
+        }
     }
 
     override fun onClick(v: View) {

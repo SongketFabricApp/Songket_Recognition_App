@@ -131,6 +131,9 @@
     <string name="invalid_phone_number">Invalid phone number</string>
     <string name="enter_email">Enter email</string>
 
+    <string name="access_granted">Access granted</string>
+    <string name="access_denied">Camera permission denied. This feature will not work</string>
+
 
 
 </resources>
