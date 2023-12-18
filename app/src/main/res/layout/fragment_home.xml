@@ -92,7 +92,7 @@
             android:textColor="@color/primary"
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintHorizontal_bias="0.808"
             app:layout_constraintStart_toEndOf="@+id/textView12"
             app:layout_constraintTop_toBottomOf="@+id/cardview_menu" />
 
@@ -110,116 +110,17 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/img_banner" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/cardview_menu"
-            android:layout_width="390dp"
-            android:layout_height="117dp"
-            android:layout_marginTop="8dp"
-            android:background="@color/bgmenu"
-            app:layout_constraintTop_toBottomOf="@+id/tv_menu"
-            tools:layout_editor_absoluteX="11dp">
+            android:layout_width="360dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_menu">
 
-            <!-- Menu 1: Maps -->
-            <ImageButton
-                android:id="@+id/menu_maps"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_marginStart="18dp"
-                android:layout_marginTop="16dp"
-                android:background="@android:color/transparent"
-                android:contentDescription="@string/market_finder_button"
-                android:scaleType="fitCenter"
-                android:src="@drawable/icon_home_maps2"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/tv_maps"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="1dp"
-                android:layout_marginTop="8dp"
-                android:text="@string/market_finder"
-                android:textColor="@color/black"
-                app:layout_constraintStart_toStartOf="@+id/menu_maps"
-                app:layout_constraintTop_toBottomOf="@+id/menu_maps" />
-
-            <!-- Menu 2: Scanner -->
-
-            <ImageButton
-                android:id="@+id/menu_scan"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="216dp"
-                android:background="@android:color/transparent"
-                android:contentDescription="@string/scanner_button"
-                android:scaleType="fitCenter"
-                android:src="@drawable/icon_home_scanner2"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/tv_scanner"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="@string/scanner"
-                android:textColor="@color/black"
-                app:layout_constraintEnd_toEndOf="@+id/menu_scan"
-                app:layout_constraintTop_toBottomOf="@+id/menu_scan" />
-
-            <!-- Menu 3: List -->
-
-            <ImageButton
-                android:id="@+id/menu_list"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="116dp"
-                android:background="@android:color/transparent"
-                android:contentDescription="@string/list_songket_button"
-                android:scaleType="fitCenter"
-                android:src="@drawable/icon_home_list"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/tv_list"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="@string/list_songket"
-                android:textColor="@color/black"
-                app:layout_constraintEnd_toEndOf="@+id/menu_list"
-                app:layout_constraintTop_toBottomOf="@+id/menu_list" />
-
-            <!-- Menu 4: Article -->
-
-            <ImageButton
-                android:id="@+id/menu_artikel"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                android:background="@android:color/transparent"
-                android:contentDescription="@string/article_button"
-                android:scaleType="fitCenter"
-                android:src="@drawable/icon_home_article"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/tv_article"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="@string/what_s_new"
-                android:textColor="@color/black"
-                app:layout_constraintEnd_toEndOf="@+id/menu_artikel"
-                app:layout_constraintTop_toBottomOf="@+id/menu_artikel" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.recyclerview.widget.RecyclerView>
 
         <TextView
             android:id="@+id/textView12"

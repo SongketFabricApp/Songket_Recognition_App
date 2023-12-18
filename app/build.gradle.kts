@@ -98,6 +98,8 @@ dependencies {
 
     implementation ("com.jakewharton.rxbinding2:rxbinding:2.0.0")
     implementation ("io.reactivex.rxjava2:rxjava:2.2.19")
+    implementation ("androidx.recyclerview:recyclerview:1.3.2")
+    implementation ("androidx.cardview:cardview:1.0.0")
 
 
 }
