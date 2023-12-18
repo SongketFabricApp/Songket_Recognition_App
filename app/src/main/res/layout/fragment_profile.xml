@@ -15,7 +15,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="5dp">
+        android:paddingBottom="10dp">
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/card1"
@@ -99,7 +99,7 @@
                 android:scaleType="fitCenter"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintVertical_bias="0.575"
-                app:srcCompat="@drawable/language" />
+                app:srcCompat="@drawable/ic_language" />
 
         </com.google.android.material.card.MaterialCardView>
 
@@ -133,7 +133,7 @@
                 tools:layout_editor_absoluteY="441dp" />
 
             <ImageButton
-                android:id="@+id/btn_logout3"
+                android:id="@+id/btn_edit"
                 android:layout_width="35dp"
                 android:layout_height="35dp"
                 android:layout_gravity="end"
@@ -141,7 +141,7 @@
                 android:background="@color/white"
                 android:contentDescription="@string/log_out_button"
                 android:scaleType="fitCenter"
-                app:srcCompat="@drawable/logout" />
+                app:srcCompat="@drawable/ic_config" />
 
         </com.google.android.material.card.MaterialCardView>
 
@@ -183,7 +183,7 @@
                 android:background="@color/white"
                 android:contentDescription="@string/log_out_button"
                 android:scaleType="fitCenter"
-                app:srcCompat="@drawable/logout" />
+                app:srcCompat="@drawable/ic_logout" />
 
         </com.google.android.material.card.MaterialCardView>
 

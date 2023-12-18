@@ -17,14 +17,14 @@ class SongketRepository (application: Application) {
     }
     fun getSongket(): LiveData<List<SongketEntity>> = dao.getSongket()
 
-    fun insertSongket(users: SongketEntity){
-        executorService.execute { dao.insertSongket(users) }
-    }
-    fun deleteSongket(users: SongketEntity) {
-        executorService.execute { dao.deleteSongket(users) }
-    }
-    fun updateSongket(users: SongketEntity) {
-        executorService.execute { dao.updateSongket(users) }
-    }
+//    fun insertSongket(users: SongketEntity){
+//        executorService.execute { dao.insertSongket(users) }
+//    }
+//    fun deleteSongket(users: SongketEntity) {
+//        executorService.execute { dao.deleteSongket(users) }
+//    }
+//    fun updateSongket(users: SongketEntity) {
+//        executorService.execute { dao.updateSongket(users) }
+//    }
 
 }

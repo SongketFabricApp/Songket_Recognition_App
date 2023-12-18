@@ -1,6 +1,7 @@
 package com.songketa.songket_recognition_app.data.api
 
 import com.songketa.songket_recognition_app.data.response.DetailSongketResponse
+import com.songketa.songket_recognition_app.data.response.EditUserResponse
 import com.songketa.songket_recognition_app.data.response.LoginResponse
 import com.songketa.songket_recognition_app.data.response.MachineLearningResponse
 import com.songketa.songket_recognition_app.data.response.PostResponse
@@ -34,6 +35,15 @@ interface ApiService {
     suspend fun getDetailStory(
         @Path("id") id: String
     ): DetailSongketResponse
+
+    @FormUrlEncoded
+    @PUT("users/{userId}")
+    suspend fun editUser(
+        @Path("userId") id: String,
+        @Field("username") name: String,
+        @Field("phone") phone: String,
+        @Field("password") password: String
+    ): EditUserResponse
 
     @Multipart
     @POST("predict")

@@ -19,7 +19,7 @@ data class LoginResponse(
 @Parcelize
 data class LoginResult(
 
-    @field:SerializedName("name")
+    @field:SerializedName("username")
     val name: String,
 
     @field:SerializedName("userId")

@@ -16,13 +16,13 @@ import retrofit2.HttpException
 class BookmarkViewModel (application: Application) : AndroidViewModel(application) {
     private val songketRepository: SongketRepository = SongketRepository(application)
 
-    fun insert(users: SongketEntity) {
-        songketRepository.insertSongket(users)
-    }
-
-    fun delete(users: SongketEntity) {
-        songketRepository.deleteSongket(users)
-    }
+//    fun insert(users: SongketEntity) {
+//        songketRepository.insertSongket(users)
+//    }
+//
+//    fun delete(users: SongketEntity) {
+//        songketRepository.deleteSongket(users)
+//    }
 
     fun getSongket(): LiveData<List<SongketEntity>> {
         return songketRepository.getSongket()

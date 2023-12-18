@@ -13,14 +13,14 @@ interface SongketDao {
     @Query("SELECT * FROM songket")
     fun getSongket(): LiveData<List<SongketEntity>>
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
-    fun insertSongket(news: SongketEntity)
-
-    @Update
-    fun updateSongket(news: SongketEntity)
-
-    @Delete
-    fun deleteSongket(news: SongketEntity)
+//    @Insert(onConflict = OnConflictStrategy.IGNORE)
+//    fun insertSongket(news: SongketEntity)
+//
+//    @Update
+//    fun updateSongket(news: SongketEntity)
+//
+//    @Delete
+//    fun deleteSongket(news: SongketEntity)
 
 
     /////////////////////////////////

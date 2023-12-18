@@ -83,6 +83,10 @@ class ProfileFragment : Fragment() {
             val back = getString(R.string.return_notif)
             showOptionDialogWithIntent(title,message,next,back)
         }
+        binding.btnEdit.setOnClickListener {
+            val intent = Intent(requireContext(), ProfileChangeActivity::class.java)
+            startActivity(intent)
+        }
 
         return binding.root
     }
@@ -127,9 +131,11 @@ class ProfileFragment : Fragment() {
         val card1 = ObjectAnimator.ofFloat(binding.card1, View.ALPHA, 1f).setDuration(100)
         val card2 = ObjectAnimator.ofFloat(binding.card2, View.ALPHA, 1f).setDuration(100)
         val card3 = ObjectAnimator.ofFloat(binding.card3, View.ALPHA, 1f).setDuration(100)
+        val card4 = ObjectAnimator.ofFloat(binding.card4, View.ALPHA, 1f).setDuration(100)
+
 
         AnimatorSet().apply {
-            playSequentially(ivimage,titleusername,titleemail,titlephone,card1,card2,card3)
+            playSequentially(ivimage,titleusername,titleemail,titlephone,card1,card2,card4,card3)
             start()
         }
     }

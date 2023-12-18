@@ -119,9 +119,9 @@
         app:layout_constraintTop_toBottomOf="@+id/materialToolbar"
         app:layout_constraintVertical_bias="1.0"
         tools:layout_editor_absoluteX="0dp"
-        android:contentDescription="@string/background_image" />
-<!--        android:src="@drawable/half_circle_up"-->
-<!--        tools:src="@drawable/half_circle_up"-->
+        android:contentDescription="@string/background_image"
+        android:src="@drawable/half_circle_up"
+        tools:src="@drawable/half_circle_up"/>
 
     <TextView
         android:id="@+id/textView17"

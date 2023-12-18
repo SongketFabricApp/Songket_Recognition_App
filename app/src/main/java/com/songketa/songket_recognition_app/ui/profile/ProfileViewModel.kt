@@ -1,11 +1,13 @@
 package com.songketa.songket_recognition_app.ui.profile
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.songketa.songket_recognition_app.data.Repository
 import com.songketa.songket_recognition_app.data.model.User
+import com.songketa.songket_recognition_app.data.response.EditUserResponse
 import kotlinx.coroutines.launch
 
 class ProfileViewModel(private val repository: Repository) : ViewModel() {
@@ -19,4 +21,8 @@ class ProfileViewModel(private val repository: Repository) : ViewModel() {
             repository.logout()
         }
     }
+
+    fun editUser(id: String, name: String, phone: String, password: String) =
+        repository.editUser(id, name, phone, password)
+
 }

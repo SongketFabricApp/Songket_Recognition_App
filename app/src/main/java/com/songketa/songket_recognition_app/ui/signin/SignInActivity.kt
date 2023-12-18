@@ -155,6 +155,7 @@ class SignInActivity : AppCompatActivity() {
                         is Result.Success -> {
                             showLoading(false)
                             val user = User(
+                                userId = hoho.data.loginResult.userId,
                                 name = hoho.data.loginResult.name,
                                 token = hoho.data.loginResult.token,
                                 email = email,

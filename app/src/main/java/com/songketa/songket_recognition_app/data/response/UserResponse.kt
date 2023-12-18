@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName
 
 @Parcelize
 data class UserResponse(
-	@field:SerializedName("user_id")
+	@field:SerializedName("userId")
 	val userId: String? = null,
 
 	@field:SerializedName("phone")
