@@ -89,20 +89,22 @@ class HomeFragment : Fragment(), MenuAdapter.OnMenuItemClickListener {
         mImageUrls.clear()
         mNames.clear()
 
+        // Menggunakan resource string
         mImageUrls.add("android.resource://${requireContext().packageName}/${R.drawable.icon_home_maps2}")
-        mNames.add("Market Finder")
+        mNames.add(getString(R.string.market_finder))
 
         mImageUrls.add("android.resource://${requireContext().packageName}/${R.drawable.icon_home_scanner2}")
-        mNames.add("Scanner")
+        mNames.add(getString(R.string.scanner))
 
         mImageUrls.add("android.resource://${requireContext().packageName}/${R.drawable.icon_home_list}")
-        mNames.add("List Songket")
+        mNames.add(getString(R.string.list_songket))
 
         mImageUrls.add("android.resource://${requireContext().packageName}/${R.drawable.icon_home_article}")
-        mNames.add("What's new?")
+        mNames.add(getString(R.string.article))
 
         initRecyclerView()
     }
+
 
     private fun initRecyclerView() {
         Log.d(TAG, "initRecyclerView: init recyclerview")
