@@ -130,4 +130,6 @@
 
     <string name="access_granted">授予访问权限</string>
     <string name="access_denied">相机权限被拒绝。此功能将无法使用</string>
+    <string name="edit_profile">编辑个人资料</string>
+    <string name="change">更改</string>
 </resources>

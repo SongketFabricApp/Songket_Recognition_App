@@ -133,7 +133,8 @@
 
     <string name="access_granted">Access granted</string>
     <string name="access_denied">Camera permission denied. This feature will not work</string>
-
+    <string name="edit_profile">Edit Profile</string>
+    <string name="change">Change</string>
 
 
 </resources>

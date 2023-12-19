@@ -27,11 +27,11 @@ import com.songketa.songket_recognition_app.ui.ViewModelFactory
 import com.songketa.songket_recognition_app.ui.camera.CameraFragment
 import com.songketa.songket_recognition_app.ui.listsongket.ListSongketActivity
 import com.songketa.songket_recognition_app.ui.signin.SignInActivity
+import com.songketa.songket_recognition_app.utils.Constant.LOCATION_PERMISSION_REQUEST_CODE
 
 class HomeFragment : Fragment(), MenuAdapter.OnMenuItemClickListener {
 
     private lateinit var binding: FragmentHomeBinding
-    private val LOCATION_PERMISSION_REQUEST_CODE = 123
     private val TAG = "YourFragment"
     private val mNames = ArrayList<String>()
     private val mImageUrls = ArrayList<String>()
@@ -104,8 +104,7 @@ class HomeFragment : Fragment(), MenuAdapter.OnMenuItemClickListener {
 
         initRecyclerView()
     }
-
-
+    
     private fun initRecyclerView() {
         Log.d(TAG, "initRecyclerView: init recyclerview")
 

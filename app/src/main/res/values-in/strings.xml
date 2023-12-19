@@ -124,4 +124,6 @@
 
     <string name="access_granted">Akses diberikan</string>
     <string name="access_denied">Izin kamera ditolak. Fitur ini tidak akan berfungsi</string>
+    <string name="edit_profile">Edit Profil</string>
+    <string name="change">Ubah</string>
 </resources>
