@@ -62,7 +62,7 @@
         android:layout_marginStart="35dp"
         android:text="@string/email"
         android:textColor="@color/bgTextColor"
-        android:textSize="18sp"
+        android:textSize="17sp"
         android:alpha="0"
         android:fontFamily="@font/roboto_medium"
         app:layout_constraintStart_toStartOf="parent"
@@ -99,14 +99,14 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
         android:text="@string/password"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="16dp"
         android:layout_marginStart="35dp"
         android:textColor="@color/bgTextColor"
         android:alpha="0"
         android:fontFamily="@font/roboto_medium"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/emailEditTextLayout"
-        android:textSize="18sp"
+        android:textSize="17sp"
         tools:alpha="100"/>
 
     <com.google.android.material.textfield.TextInputLayout
