@@ -1,11 +1,9 @@
 package com.songketa.songket_recognition_app.ui.listsongket
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.liveData
-import androidx.lifecycle.viewModelScope
 import com.google.gson.Gson
 import com.songketa.songket_recognition_app.data.Repository
 import com.songketa.songket_recognition_app.data.Result
@@ -13,7 +11,6 @@ import com.songketa.songket_recognition_app.data.api.ApiConfig
 import com.songketa.songket_recognition_app.data.model.User
 import com.songketa.songket_recognition_app.data.response.DatasetItem
 import com.songketa.songket_recognition_app.data.response.LoginResponse
-import kotlinx.coroutines.launch
 import retrofit2.HttpException
 
 class ListSongketViewModel(private val repository: Repository) : ViewModel() {
@@ -30,7 +27,9 @@ class ListSongketViewModel(private val repository: Repository) : ViewModel() {
             val response = ApiConfig.getApiService().getListSongket()
             songketList = response.dataset
 
-            val filteredList = songketList.filter { it.fabricname.contains(query, true) }
+            val filteredList = songketList.filter {
+                it.fabricname.contains(query, true) || it.origin.contains(query, true)
+            }
 
             emit(Result.Success(filteredList))
         } catch (e: HttpException) {
@@ -42,15 +41,6 @@ class ListSongketViewModel(private val repository: Repository) : ViewModel() {
             emit(Result.Error("Something Error"))
         }
     }
+
 }
-
-
-//    private val _data = MutableLiveData<List<DatasetItem>>()
-//    val data: LiveData<List<DatasetItem>> get() = _data
-
-//    fun getListSongket() {
-//        viewModelScope.launch {
-//            _data.value = repository.getListSongket()
-//        }
-//    }
 

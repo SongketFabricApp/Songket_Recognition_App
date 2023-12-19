@@ -44,9 +44,6 @@ class ViewModelFactory(private val repository: Repository) : ViewModelProvider.N
             modelClass.isAssignableFrom(CameraViewModel::class.java) -> {
                 CameraViewModel(repository) as T
             }
-//            modelClass.isAssignableFrom(BookmarkViewModel::class.java) -> {
-//                BookmarkViewModel(repository) as T
-//            }
             modelClass.isAssignableFrom(BookmarkViewModel::class.java) -> {
                 BookmarkViewModel(repository.getApplication()) as T
             }

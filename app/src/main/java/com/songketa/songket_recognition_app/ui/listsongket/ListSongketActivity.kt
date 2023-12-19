@@ -8,6 +8,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
+import com.songketa.songket_recognition_app.R
 import com.songketa.songket_recognition_app.adapter.ListSongketAdapter
 import com.songketa.songket_recognition_app.databinding.ActivityListSongketBinding
 import com.songketa.songket_recognition_app.ui.ViewModelFactory
@@ -28,13 +29,11 @@ class ListSongketActivity : AppCompatActivity() {
         binding = ActivityListSongketBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
         val layoutManager = LinearLayoutManager(this)
         binding.rvListSongket.layoutManager = layoutManager
         setupSearchView()
 
         listSongketAdapter = ListSongketAdapter(context = this)
-
         binding.rvListSongket.adapter = listSongketAdapter
         getStory()
     }
@@ -57,17 +56,16 @@ class ListSongketActivity : AppCompatActivity() {
         viewModel.searchSongket(query).observe(this@ListSongketActivity) { result ->
             when (result) {
                 is Result.Loading -> {
-                    // Tampilkan indikator loading jika diperlukan
                 }
                 is Result.Success -> {
-                    val filteredList = result.data.filter { it.fabricname.contains(query, true) }
+                    val filteredList = result.data.filter { item ->
+                        item.fabricname.contains(query, true) || item.origin.contains(query, true)
+                    }
 
                     if (filteredList.isEmpty()) {
-                        // Tampilkan pemberitahuan jika hasil pencarian kosong
                         showEmptySearchNotification()
-                        listSongketAdapter.submitList(emptyList()) // Clear the list
+                        listSongketAdapter.submitList(emptyList())
                     } else {
-                        // Convert DatasetItem to SongketEntity
                         val songketEntities = filteredList.map { datasetItem ->
                             SongketEntity(
                                 idfabric = datasetItem.idfabric,
@@ -89,10 +87,11 @@ class ListSongketActivity : AppCompatActivity() {
     private fun showEmptySearchNotification() {
         Snackbar.make(
             binding.root,
-            "No items found for the given search query.",
+            getString(R.string.empty_search_notification),
             Snackbar.LENGTH_SHORT
         ).show()
     }
+
 
     private fun getStory() {
         viewModel.getStories().observe(this) { result ->
@@ -123,7 +122,6 @@ class ListSongketActivity : AppCompatActivity() {
     }
 
     private fun songketAdapter(listSongket: List<SongketEntity>) {
-        // Update data pada adapter
         listSongketAdapter.submitList(listSongket)
     }
 

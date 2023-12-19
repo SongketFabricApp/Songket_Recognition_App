@@ -73,13 +73,12 @@ class DetailSongketActivity : AppCompatActivity() {
                                 item.data.datasetItem.imgUrl,
                                 item.data.datasetItem.origin,
                             )
-                            if (isFavorite){
+                            if (isFavorite) {
                                 viewModel.deleteFavorite(favSongket)
-                                Toast.makeText(this, "Deleted", Toast.LENGTH_SHORT).show()
-                            }
-                            else{
+                                Toast.makeText(this, getString(R.string.deleted), Toast.LENGTH_SHORT).show()
+                            } else {
                                 viewModel.saveFavorite(favSongket)
-                                Toast.makeText(this, "Favorit <3", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(this, getString(R.string.favorite), Toast.LENGTH_SHORT).show()
                             }
                         }
                     }

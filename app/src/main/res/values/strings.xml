@@ -44,11 +44,16 @@
 
     //List and Bookmark stuff
     <string name="search_here">Search Here…</string>
+    <string name="empty_search_notification">No items found for the given search query.</string>
+    <string name="cannot_get_data">Cannot Get the data: %s</string>
+    <string name="something_error">Something Error</string>
 
     //Camera stuff
     <string name="galery">Galery</string>
     <string name="camera">Camera</string>
     <string name="check_out">Check Out</string>
+    <string name="photo_picker">Photo Picker</string>
+    <string name="no_media_selected">No media selected</string>
 
     //Home stuff
     <string name="article">Article</string>
@@ -60,6 +65,12 @@
     <string name="market_finder">Market Finder</string>
     <string name="scanner">Scanner</string>
     <string name="list_songket">List Songket</string>
+    <string name="location_permission_granted">Location permission granted.</string>
+    <string name="location_permission_denied">Location permission denied.</string>
+    <string name="map_search_keyword">fabric store</string>
+    <string name="google_maps_not_installed">Google Maps app is not installed.</string>
+    <string name="feature_not_available_yet">Features not available yet</string>
+
 
     //Profile stuff
     <string name="button_language">Button Change Language</string>
@@ -97,6 +108,8 @@
     <string name="fabric_origin">Fabric Origin</string>
     <string name="fabric_pattern">Fabric Pattern</string>
     <string name="description">Description</string>
+    <string name="deleted">Deleted from bookmark</string>
+    <string name="favorite">Added to bookmark</string>
 
     //Camera stuff start
     <string name="upload_succes_notif">Sukses</string>

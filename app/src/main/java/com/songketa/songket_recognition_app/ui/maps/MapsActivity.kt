@@ -50,7 +50,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         setSupportActionBar(toolbar)
         supportActionBar?.show()
 
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         val mapFragment = supportFragmentManager.findFragmentById(R.id.maps) as SupportMapFragment
         mapFragment.getMapAsync(this)
     }
@@ -70,12 +69,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         } else {
             showToast("lalalalalal")
         }
-//        mMap.uiSettings.isZoomControlsEnabled = true
-//        mMap.uiSettings.isIndoorLevelPickerEnabled = true
-//        mMap.uiSettings.isCompassEnabled = true
-//        mMap.uiSettings.isMapToolbarEnabled = true
-//        getMyLocation()
-//        searchPlaces(keyword)
     }
     private fun showToast(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
@@ -139,7 +132,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         }
     }
 
-    // Fungsi untuk mencari tempat berdasarkan kata kunci
     @SuppressLint("MissingPermission")
     private fun searchPlaces(keyword: String) {
         val fields = listOf(Place.Field.ID, Place.Field.NAME, Place.Field.LAT_LNG)
@@ -159,7 +151,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
                 placesClient.fetchPlace(fetchPlaceRequest).addOnSuccessListener { placeResponse ->
                     val place = placeResponse.place
-                    // Tambahkan marker pada peta
                     addMarker(place)
                 }.addOnFailureListener { exception ->
                     exception.printStackTrace()
@@ -171,7 +162,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             Log.e("Places", "Failed to fetch autocomplete predictions: ${exception.message}")
         }
     }
-    // Fungsi untuk menambahkan marker pada peta
     private fun addMarker(place: Place) {
         val latLng = place.latLng
         latLng?.let {

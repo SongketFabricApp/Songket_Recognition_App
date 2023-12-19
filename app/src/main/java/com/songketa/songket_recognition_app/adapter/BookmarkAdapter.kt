@@ -38,7 +38,6 @@ class BookmarkAdapter(
                 .into(binding.ivSongketImage)
 
             itemView.setOnClickListener {
-                // Call the provided lambda when the item is clicked
                 onBookmarkClick.invoke(songket)
             }
         }

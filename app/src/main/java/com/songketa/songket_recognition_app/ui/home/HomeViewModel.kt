@@ -10,6 +10,5 @@ class HomeViewModel(private val repository: Repository) : ViewModel() {
     fun getSession(): LiveData<User> {
         return repository.getSession().asLiveData()
     }
-
     fun getSongket() = repository.getSongket()
 }

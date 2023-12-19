@@ -5,6 +5,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
 import com.google.gson.Gson
+import com.songketa.songket_recognition_app.R
 import com.songketa.songket_recognition_app.data.Result
 import com.songketa.songket_recognition_app.data.database.SongketEntity
 import com.songketa.songket_recognition_app.data.SongketRepository
@@ -15,19 +16,9 @@ import retrofit2.HttpException
 
 class BookmarkViewModel (application: Application) : AndroidViewModel(application) {
     private val songketRepository: SongketRepository = SongketRepository(application)
-
-//    fun insert(users: SongketEntity) {
-//        songketRepository.insertSongket(users)
-//    }
-//
-//    fun delete(users: SongketEntity) {
-//        songketRepository.deleteSongket(users)
-//    }
-
     fun getSongket(): LiveData<List<SongketEntity>> {
         return songketRepository.getSongket()
     }
-
     fun searchSongket(query: String): LiveData<Result<List<DatasetItem>>> = liveData {
         emit(Result.Loading)
         try {
@@ -35,7 +26,9 @@ class BookmarkViewModel (application: Application) : AndroidViewModel(applicatio
             val response = ApiConfig.getApiService().getListSongket()
             songketList = response.dataset
 
-            val filteredList = songketList.filter { it.fabricname.contains(query, true) }
+            val filteredList = songketList.filter {
+                it.fabricname.contains(query, true) || it.origin.contains(query, true)
+            }
 
             emit(Result.Success(filteredList))
         } catch (e: HttpException) {

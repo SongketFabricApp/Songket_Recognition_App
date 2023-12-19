@@ -13,15 +13,9 @@ import android.text.method.PasswordTransformationMethod
 import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
-import androidx.core.content.ContentProviderCompat.requireContext
-import androidx.core.content.ContextCompat.startActivity
-import com.bumptech.glide.Glide
 import com.songketa.songket_recognition_app.MainActivity
 import com.songketa.songket_recognition_app.R
 import com.songketa.songket_recognition_app.data.model.User
@@ -32,7 +26,6 @@ import com.songketa.songket_recognition_app.ui.welcome.WelcomeActivity
 import com.songketa.songket_recognition_app.utils.disable
 import com.songketa.songket_recognition_app.utils.enable
 import com.jakewharton.rxbinding2.widget.RxTextView
-import com.songketa.songket_recognition_app.ui.detailsongket.DetailSongketActivity
 import com.songketa.songket_recognition_app.ui.signup.SignUpActivity
 import io.reactivex.Observable
 
@@ -93,8 +86,6 @@ class SignInActivity : AppCompatActivity() {
             start()
         }
     }
-
-
 
     private fun showLoading(isLoading: Boolean) {
         binding.progressIndicator.visibility = if (isLoading) View.VISIBLE else View.GONE

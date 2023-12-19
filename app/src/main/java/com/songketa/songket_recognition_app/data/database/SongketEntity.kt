@@ -9,7 +9,6 @@ import kotlinx.parcelize.Parcelize
 @Entity(tableName = "songket")
 @Parcelize
 class SongketEntity (
-
     @PrimaryKey(autoGenerate = false)
     @ColumnInfo(name = "idfabric")
     val idfabric: String = "",
@@ -21,6 +20,5 @@ class SongketEntity (
     val imgUrl: String? = null,
 
     @ColumnInfo(name="origin")
-    val origin: String? = null,
-
-    ): Parcelable
+    val origin: String? = null
+): Parcelable

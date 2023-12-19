@@ -11,19 +11,11 @@ import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
-import androidx.core.content.ContentProviderCompat.requireContext
-import androidx.fragment.app.viewModels
 import com.jakewharton.rxbinding2.widget.RxTextView
 import com.songketa.songket_recognition_app.R
 import com.songketa.songket_recognition_app.data.Result
-import com.songketa.songket_recognition_app.data.model.User
 import com.songketa.songket_recognition_app.databinding.ActivityProfileChangeBinding
-import com.songketa.songket_recognition_app.databinding.ActivitySignUpBinding
-import com.songketa.songket_recognition_app.databinding.FragmentProfileBinding
 import com.songketa.songket_recognition_app.ui.ViewModelFactory
-import com.songketa.songket_recognition_app.ui.detailsongket.DetailSongketActivity
-import com.songketa.songket_recognition_app.utils.disable
-import com.songketa.songket_recognition_app.utils.enable
 import io.reactivex.Observable
 
 class ProfileChangeActivity : AppCompatActivity() {
@@ -37,9 +29,7 @@ class ProfileChangeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityProfileChangeBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         playAnimation()
-
         setupEditButton()
         showPassword()
     }
@@ -48,7 +38,6 @@ class ProfileChangeActivity : AppCompatActivity() {
         binding.btnEdit.setOnClickListener {
             showEditConfirmationDialog()
         }
-
         processingEdit()
     }
 

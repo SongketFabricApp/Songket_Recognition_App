@@ -43,11 +43,16 @@
 
     <!-- 列表和书签 -->
     <string name="search_here">在这里搜索…</string>
+    <string name="empty_search_notification">未找到给定搜索查询的项。</string>
+    <string name="cannot_get_data" config="zh">无法获取数据：%s</string>
+    <string name="something_error" config="zh">发生错误</string>
 
     <!-- 相机 -->
     <string name="galery">相册</string>
     <string name="camera">相机</string>
     <string name="check_out">查看</string>
+    <string name="photo_picker">照片选择器</string>
+    <string name="no_media_selected">未选择任何媒体</string>
 
     <!-- 主页 -->
     <string name="article">文章</string>
@@ -59,6 +64,11 @@
     <string name="market_finder">市场查找器</string>
     <string name="scanner">扫描仪</string>
     <string name="list_songket">宋凯特清单</string>
+    <string name="location_permission_granted">位置权限已授予。请重试。</string>
+    <string name="location_permission_denied">位置权限已拒绝。</string>
+    <string name="map_search_keyword">面料商店</string>
+    <string name="google_maps_not_installed">Google 地图应用未安装。</string>
+    <string name="feature_not_available_yet">尚未提供此功能</string>
 
     <!-- 个人资料 -->
     <string name="button_language">更改语言按钮</string>
@@ -95,6 +105,8 @@
     <string name="fabric_origin">面料起源</string>
     <string name="fabric_pattern">面料图案</string>
     <string name="description">描述</string>
+    <string name="deleted">已删除</string>
+    <string name="favorite">喜爱 </string>
 
     <!-- 相机 -->
     <string name="upload_succes_notif">成功</string>

@@ -30,7 +30,7 @@ class BookmarkFragment : Fragment() {
     private val bookmarkAdapter: BookmarkAdapter by lazy {
         BookmarkAdapter(
             context = requireContext(),
-            onBookmarkClick = { /* handle bookmark click logic here */ }
+            onBookmarkClick = { }
         )
     }
 
@@ -47,13 +47,11 @@ class BookmarkFragment : Fragment() {
         binding.rvListSongket.adapter = bookmarkAdapter
 
         setupSearchView()
-
         return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         viewModel = ViewModelProvider(this, ViewModelFactory.getInstance(requireContext()))
             .get(BookmarkViewModel::class.java)
 
@@ -66,13 +64,11 @@ class BookmarkFragment : Fragment() {
             }
         }
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
-
         viewModel.getSongket().observe(viewLifecycleOwner, Observer {
             bookmarkAdapter.submitList(it)
         })
 
         bookmarkAdapter.onBookmarkClick = { songket ->
-            // Handle bookmark click here
             val moveDataUserIntent =
                 Intent(requireContext(), DetailSongketActivity::class.java)
             moveDataUserIntent.putExtra(DetailSongketActivity.ID, songket.idfabric)
@@ -98,17 +94,16 @@ class BookmarkFragment : Fragment() {
         viewModel.searchSongket(query).observe(this@BookmarkFragment) { result ->
             when (result) {
                 is Result.Loading -> {
-                    // Tampilkan indikator loading jika diperlukan
                 }
                 is Result.Success -> {
-                    val filteredList = result.data.filter { it.fabricname.contains(query, true) }
+                    val filteredList = result.data.filter { item ->
+                        item.fabricname.contains(query, true) || item.origin.contains(query, true)
+                    }
 
                     if (filteredList.isEmpty()) {
-                        // Tampilkan pemberitahuan jika hasil pencarian kosong
                         showEmptySearchNotification()
-                        bookmarkAdapter.submitList(emptyList()) // Clear the list
+                        bookmarkAdapter.submitList(emptyList())
                     } else {
-                        // Convert DatasetItem to SongketEntity
                         val songketEntities = filteredList.map { datasetItem ->
                             SongketEntity(
                                 idfabric = datasetItem.idfabric,
@@ -130,10 +125,11 @@ class BookmarkFragment : Fragment() {
     private fun showEmptySearchNotification() {
         Snackbar.make(
             binding.root,
-            "No items found for the given search query.",
+            getString(R.string.empty_search_notification),
             Snackbar.LENGTH_SHORT
         ).show()
     }
+
     private fun FragmentManager.replaceFragment(fragment: Fragment, containerId: Int) {
         beginTransaction()
             .replace(containerId, fragment)

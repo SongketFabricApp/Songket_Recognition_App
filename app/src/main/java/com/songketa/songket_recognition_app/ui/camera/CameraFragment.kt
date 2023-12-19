@@ -38,7 +38,6 @@ import android.Manifest
 class CameraFragment : Fragment(), View.OnClickListener{
 
     private var _binding: FragmentCameraBinding? = null
-
     private val binding get() = _binding!!
 
     private val viewModel by viewModels<CameraViewModel> {
@@ -190,9 +189,10 @@ class CameraFragment : Fragment(), View.OnClickListener{
             currentImageUri = uri
             showImage()
         } else {
-            Log.d("Photo Picker", "No media selected")
+            Log.d(getString(R.string.photo_picker), getString(R.string.no_media_selected))
         }
     }
+
 
     private fun startCamera() {
         currentImageUri = getImageUri(requireContext())

@@ -43,11 +43,16 @@
 
     <!-- List dan Bookmark -->
     <string name="search_here">Cari di sini…</string>
+    <string name="empty_search_notification">Tidak ditemukan item untuk kueri pencarian yang diberikan.</string>
+    <string name="cannot_get_data">Tidak dapat memuat data: %s</string>
+    <string name="something_error">Terjadi Kesalahan</string>
 
     <!-- Kamera -->
     <string name="galery">Galeri</string>
     <string name="camera">Kamera</string>
     <string name="check_out">Lihat</string>
+    <string name="photo_picker">Pemilih Foto</string>
+    <string name="no_media_selected">Tidak ada media yang dipilih</string>
 
     <!-- Beranda -->
     <string name="article">Artikel</string>
@@ -59,6 +64,11 @@
     <string name="market_finder">Pencari Pasar</string>
     <string name="scanner">Pemindai</string>
     <string name="list_songket">Daftar Songket</string>
+    <string name="location_permission_granted">Izin lokasi diberikan.</string>
+    <string name="location_permission_denied">Izin lokasi ditolak.</string>
+    <string name="map_search_keyword">toko kain</string>
+    <string name="google_maps_not_installed">Aplikasi Google Maps tidak terinstall.</string>
+    <string name="feature_not_available_yet">Features not available yet</string>
 
     <!-- Profil -->
     <string name="button_language">Ubah Bahasa</string>
@@ -95,6 +105,8 @@
     <string name="fabric_origin">Asal Kain</string>
     <string name="fabric_pattern">Pola Kain</string>
     <string name="description">Deskripsi</string>
+    <string name="deleted">Dihapus dari bookmark</string>
+    <string name="favorite">Ditambahkan ke bookmark</string>
 
     <!-- Kamera -->
     <string name="upload_succes_notif">Sukses</string>

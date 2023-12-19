@@ -186,18 +186,19 @@ class HomeFragment : Fragment(), MenuAdapter.OnMenuItemClickListener {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (requestCode == LOCATION_PERMISSION_REQUEST_CODE) {
             if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                showToast("Izin lokasi diberikan. Coba lagi.")
+                showToast(getString(R.string.location_permission_granted))
             } else {
-                showToast("Izin lokasi ditolak.")
+                showToast(getString(R.string.location_permission_denied))
             }
         }
     }
+
 
     override fun onItemClick(position: Int) {
         when (position) {
             0 -> {
                 if (checkLocationPermission()) {
-                    val keyword = "toko kain"
+                    val keyword = getString(R.string.map_search_keyword)
                     val gmmIntentUri = Uri.parse("geo:0,0?q=$keyword")
 
                     val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
@@ -206,7 +207,7 @@ class HomeFragment : Fragment(), MenuAdapter.OnMenuItemClickListener {
                     if (mapIntent.resolveActivity(requireContext().packageManager) != null) {
                         startActivity(mapIntent)
                     } else {
-                        showToast("Aplikasi Google Maps tidak terinstall.")
+                        showToast(getString(R.string.google_maps_not_installed))
                     }
                 } else {
                     requestLocationPermission()
@@ -219,11 +220,10 @@ class HomeFragment : Fragment(), MenuAdapter.OnMenuItemClickListener {
                 startActivity(Intent(requireContext(), ListSongketActivity::class.java))
             }
             3 -> {
-                showToast("Features not available yet")
+                showToast(getString(R.string.feature_not_available_yet))
             }
         }
     }
-
     companion object {
     }
 }

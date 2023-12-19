@@ -77,7 +77,7 @@ class SignUpActivity : AppCompatActivity() {
     }
     private fun showPassword() {
         binding.showPassword.setOnCheckedChangeListener { _, isChecked ->
-            val editText = binding.passwordField // Assuming password_field is the id of your EditText inside TextInputLayout
+            val editText = binding.passwordField
             editText.transformationMethod = if (isChecked) {
                 HideReturnsTransformationMethod.getInstance()
             } else {
@@ -265,9 +265,7 @@ class SignUpActivity : AppCompatActivity() {
         }
     }
     private fun isValidPassword(password: String): Boolean {
-        // Implement your password validation logic here
-        // For example, you can check if the password meets certain criteria (e.g., length, special characters)
-        return password.length >= 8 // Modify this condition based on your requirements
+        return password.length >= 8
     }
 
 }

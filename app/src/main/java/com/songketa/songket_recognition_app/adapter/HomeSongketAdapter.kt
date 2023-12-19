@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.songketa.songket_recognition_app.R
 import com.songketa.songket_recognition_app.data.response.DatasetItem
 import com.songketa.songket_recognition_app.databinding.SongketHomeItemBinding
 import com.songketa.songket_recognition_app.ui.detailsongket.DetailSongketActivity
